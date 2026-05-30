@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日米マクロ投資戦略レポート</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #B8973A;
+    --gold-light: #F5E6B8;
+    --gold-pale: #FDF8EC;
+    --navy: #0D1B2A;
+    --navy-mid: #1A2E44;
+    --navy-light: #2C4A6E;
+    --slate: #4A5568;
+    --muted: #718096;
+    --border: #E2D9C5;
+    --bg: #FAFAF7;
+    --white: #FFFFFF;
+    --red: #C0392B;
+    --green-text: #1A6B3A;
+    --green-bg: #EAF5EE;
+    --up: #1A6B3A;
+    --tag-bg: #EEE8D8;
+    --tag-text: #7A6030;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--navy);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 400;
+    line-height: 1.8;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: var(--navy);
+    padding: 64px 48px 52px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -80px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    border: 1px solid rgba(184,151,58,0.15);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: 20px; right: 20px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    border: 1px solid rgba(184,151,58,0.1);
+  }
+  .hero-eyebrow {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 0.12em;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-eyebrow::after {
+    content: '';
+    height: 1px;
+    width: 48px;
+    background: var(--gold);
+    opacity: 0.6;
+    display: inline-block;
+  }
+  .hero-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(28px, 4vw, 46px);
+    font-weight: 900;
+    color: #FFFFFF;
+    line-height: 1.35;
+    margin-bottom: 16px;
+  }
+  .hero-title span {
+    color: var(--gold);
+  }
+  .hero-date {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.1em;
+    margin-top: 28px;
+    font-weight: 300;
+  }
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .hero-tag {
+    background: rgba(184,151,58,0.18);
+    color: #F5E6B8;
+    font-size: 11px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ===== SECTION DIVIDER ===== */
+  .section {
+    padding: 52px 48px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section:last-child { border-bottom: none; }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--gold-light);
+    position: relative;
+  }
+  .section-title::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 48px;
+    height: 2px;
+    background: var(--gold);
+  }
+
+  /* ===== MARKET OVERVIEW ===== */
+  .overview-intro {
+    font-size: 15px;
+    color: var(--slate);
+    line-height: 1.9;
+    margin-bottom: 28px;
+  }
+  .overview-intro strong {
+    color: var(--navy);
+    font-weight: 700;
+  }
+
+  .key-topics {
+    background: var(--navy);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 28px;
+  }
+  .key-topics-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .topic-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .topic-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+  .topic-num {
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 11px;
+    font-weight: 700;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .topic-text {
+    color: rgba(255,255,255,0.88);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .topic-text strong {
+    color: #FFFFFF;
+  }
+
+  .market-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 24px;
+  }
+  .market-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 22px;
+  }
+  .market-card-flag {
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+  .market-card-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .market-card p {
+    font-size: 13px;
+    color: var(--slate);
+    line-height: 1.75;
+  }
+  .market-card p strong {
+    color: var(--navy);
+  }
+
+  /* ===== RANK SECTION HEADER ===== */
+  .rank-header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+    margin: 0 -48px;
+    padding: 28px 48px;
+    margin-bottom: 32px;
+  }
+  .rank-header-flag {
+    font-size: 32px;
+    margin-bottom: 8px;
+  }
+  .rank-header-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #FFFFFF;
+  }
+  .rank-header-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 4px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ===== STOCK CARD ===== */
+  .stock-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    margin-bottom: 24px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .stock-card-header {
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .stock-card-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .rank-badge {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    min-width: 42px;
+  }
+  .rank-badge.top3 {
+    color: var(--gold);
+  }
+  .stock-info-group {}
+  .stock-name {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.3;
+  }
+  .stock-ticker {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+  }
+  .stock-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .badge {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .badge-up {
+    background: #EAF5EE;
+    color: var(--up);
+  }
+  .badge-period-short { background: #FEF3E2; color: #9C5A00; }
+  .badge-period-mid { background: #EEF2FF; color: #4338CA; }
+  .badge-period-long { background: #FDF2F8; color: #9D174D; }
+
+  .stock-card-body {
+    padding: 20px 24px;
+  }
+  .soul-block {
+    font-size: 14px;
+    color: var(--slate);
+    line-height: 1.85;
+    margin-bottom: 20px;
+  }
+  .soul-block strong {
+    color: var(--navy);
+    font-weight: 700;
+  }
+
+  .price-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .price-box {
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+  .price-box-buy {
+    background: var(--gold-pale);
+    border: 1px solid var(--gold-light);
+  }
+  .price-box-sell {
+    background: #F0F4FF;
+    border: 1px solid #C7D2FE;
+  }
+  .price-box-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .price-box-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .price-box-note {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+
+  .exit-box {
+    background: #FFF9F0;
+    border: 1px solid #F0DEB4;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--slate);
+    line-height: 1.7;
+  }
+  .exit-box-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #9C5A00;
+    margin-bottom: 4px;
+  }
+
+  .glossary-box {
+    background: var(--bg);
+    border-left: 3px solid var(--gold);
+    padding: 12px 16px;
+    margin-top: 16px;
+    border-radius: 0 8px 8px 0;
+  }
+  .glossary-box-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .glossary-item {
+    font-size: 12px;
+    color: var(--slate);
+    line-height: 1.7;
+    margin-bottom: 4px;
+  }
+  .glossary-item:last-child { margin-bottom: 0; }
+  .glossary-item strong {
+    color: var(--navy);
+  }
+
+  .source-tag {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--border);
+  }
+  .source-tag em {
+    font-style: normal;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    background: var(--navy);
+    padding: 36px 48px;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .footer-disc {
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.7;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  /* ===== SEPARATOR LINE ===== */
+  .divider {
+    border: none;
+    height: 1px;
+    background: var(--border);
+    margin: 32px 0;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 640px) {
+    .hero, .section { padding-left: 24px; padding-right: 24px; }
+    .market-grid { grid-template-columns: 1fr; }
+    .price-row { grid-template-columns: 1fr; }
+    .rank-header { margin-left: -24px; margin-right: -24px; padding-left: 24px; padding-right: 24px; }
+    .stock-card-header { flex-direction: column; }
+    .hero-title { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="hero-eyebrow">Investment Strategy Report</div>
+  <h1 class="hero-title">
+    日米マクロ<span>投資戦略</span><br>レポート
+  </h1>
+  <div class="hero-tags">
+    <span class="hero-tag">🇯🇵 日本株 Top 10</span>
+    <span class="hero-tag">🇺🇸 米国株 Top 10</span>
+    <span class="hero-tag">FRB動向</span>
+    <span class="hero-tag">AI・半導体</span>
+    <span class="hero-tag">スタグフレーション</span>
+  </div>
+  <p class="hero-date">最新版 ｜ マクロ経済分析 × 個別銘柄戦略</p>
+</header>
+
+<!-- ===== MARKET OVERVIEW ===== -->
+<section class="section">
+  <p class="section-label">Market Overview</p>
+  <h2 class="section-title">本日の日米市況感 & 重要ニュース要約</h2>
+
+  <p class="overview-intro">
+    現在の日米株式市場は、新しいマクロ経済の波と、<strong>人工知能（AI）をめぐる巨大な思惑</strong>がぶつかり合う、非常に刺激的な局面を迎えています。
+  </p>
+
+  <div class="key-topics">
+    <div class="key-topics-title">🚨 複数ソースで重複する注目キーワード</div>
+    <div class="topic-item">
+      <div class="topic-num">1</div>
+      <div class="topic-text"><strong>鈴木敏文氏の逝去とセブン＆アイの変革</strong><br>コンビニの父が遺した巨大企業が、今まさに構造改革の分岐点に立つ</div>
+    </div>
+    <div class="topic-item">
+      <div class="topic-num">2</div>
+      <div class="topic-text"><strong>サム・アルトマン（OpenAI）への巨額出資とAIの未来</strong><br>孫正義氏が最大10兆円規模の出資を検討。ソフトバンクはAIの化身へ</div>
+    </div>
+    <div class="topic-item">
+      <div class="topic-num">3</div>
+      <div class="topic-text"><strong>新FRB議長ケビン・ウォーシュ氏の就任と金融政策の行方</strong><br>4月CPI+0.6%、PPI+1.4%。スタグフレーション懸念が市場を揺さぶる</div>
+    </div>
+  </div>
+
+  <div class="market-grid">
+    <div class="market-card">
+      <div class="market-card-flag">🇺🇸</div>
+      <div class="market-card-title">米国マーケット</div>
+      <p><strong>ケビン・ウォーシュ氏</strong>が新FRB議長に正式就任。4月CPI <strong>+0.6%</strong>、PPI <strong>+1.4%</strong>、失業率 <strong>4.3%</strong> へ上昇。インフレと景気後退が同時進行する「<strong>スタグフレーション</strong>」リスクが浮上中。</p>
+    </div>
+    <div class="market-card">
+      <div class="market-card-flag">🇯🇵</div>
+      <div class="market-card-title">日本マーケット</div>
+      <p>セブン＆アイ・鈴木敏文氏の逝去で再編圧力が加速。<strong>孫正義氏のAIシフト</strong>がハイテク株を牽引。役員報酬引き上げ可決など、コーポレートガバナンスの転換期を迎えている。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== JAPAN STOCKS ===== -->
+<section class="section">
+  <div class="rank-header">
+    <div class="rank-header-flag">🇯🇵</div>
+    <div class="rank-header-title">日本株 投資指標ランキング</div>
+    <div class="rank-header-sub">厳選 Top 10 銘柄 ／ 購入タイミング・出口戦略付き</div>
+  </div>
+
+  <!-- 1位 -->
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge top3">1</div>
+        <div class="stock-info-group">
+          <div class="stock-name">セブン＆アイ・ホールディングス</div>
+          <div class="stock-ticker">証券コード：3382</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-mid">📅 中期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        コンビニの父・鈴木敏文氏の逝去という歴史的節目と、<strong>役員報酬上限25億円への引き上げ可決</strong>が重なり、同社は今、ドラスティックな経営改革のプレッシャーに晒されています。コンビニ事業の分離独立や外資による買収提案など、<strong>企業価値を強制的に引き上げるイベント（カタリスト）</strong>が発生しやすい状態です。非効率なスーパー事業の切り離しが進めば、大幅なROE改善による株価の大きな上振れが期待できます。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">¥2,050 前後</div>
+          <div class="price-box-note">PBR1倍水準（¥2,000）手前。買収思惑が下値を支える絶好の仕込み場</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">🎯 目標株価</div>
+          <div class="price-box-value">¥2,600</div>
+          <div class="price-box-note">上昇率 ＋約27%</div>
+        </div>
+      </div>
+      <div class="exit-box">
+        <div class="exit-box-label">📤 出口戦略</div>
+        目標株価¥2,600到達、または再編ストーリーに具体的進捗が見られず失望売りが出た場合（購入から<strong>3ヶ月を目安</strong>に判断）
+      </div>
+      <div class="glossary-box">
+        <div class="glossary-box-label">💡 用語解説</div>
+        <div class="glossary-item"><strong>PBR（株価純資産倍率）</strong>：会社の純資産に対して株価が何倍か。1倍を下回ると「解散価値以下の超お買い得水準」とされる</div>
+        <div class="glossary-item"><strong>ROE（自己資本利益率）</strong>：株主から預かった資金で企業がどれだけ効率よく利益を稼いだかを示す指標</div>
+      </div>
+      <div class="source-tag">情報源：<em>The Globe and Mail</em> <em>東洋経済オンライン</em> <em>Yahoo!ニュース</em></div>
+    </div>
+  </div>
+
+  <!-- 2位 -->
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge top3">2</div>
+        <div class="stock-info-group">
+          <div class="stock-name">ソフトバンクグループ</div>
+          <div class="stock-ticker">証券コード：9984</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-long">🚀 長期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        孫正義社長がOpenAIのサム・アルトマン氏に<strong>最大10兆円規模の出資を検討</strong>というニュースが世界を駆け巡りました。英Arm社を筆頭に世界中のAIスタートアップの株式を保有する「<strong>AIの巨大持株会社</strong>」として、Armの株価上昇に伴い保有資産価値（NAV）は劇的に上昇しています。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">¥8,500 以下</div>
+          <div class="price-box-note">日足75日移動平均線付近。相場全体の調整局面を狙う</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">🎯 目標株価</div>
+          <div class="price-box-value">¥12,000</div>
+          <div class="price-box-note">上昇率 ＋約41%</div>
+        </div>
+      </div>
+      <div class="exit-box">
+        <div class="exit-box-label">📤 出口戦略</div>
+        目標株価¥12,000到達、またはArmの株価が急落し<strong>AIバブルの崩壊</strong>が明確になった時
+      </div>
+      <div class="glossary-box">
+        <div class="glossary-box-label">💡 用語解説</div>
+        <div class="glossary-item"><strong>持株会社</strong>：自分で事業をするのではなく、他社の株を持つことでグループ全体をコントロールする会社</div>
+      </div>
+      <div class="source-tag">情報源：<em>ライブドアニュース</em> <em>Yahoo!ニュース</em> <em>The Globe and Mail</em></div>
+    </div>
+  </div>
+
+  <!-- 3位 -->
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge top3">3</div>
+        <div class="stock-info-group">
+          <div class="stock-name">JFEホールディングス</div>
+          <div class="stock-ticker">証券コード：5411</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-mid">📅 中期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        JFEスチールが開発した<strong>「自動車用鋼板の新スポット溶接技術」</strong>が国内自動車メーカーに採用されました。EV・軽量化を急ぐ自動車業界で、製造コストを抑えつつ車体を強化するこの技術は他社需要も一気に高まる可能性があります。独自の技術力（ミクロの強み）が収益の上振れを牽引します。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">¥1,850 前後</div>
+          <div class="price-box-note">配当利回り5%超の水準。下値が非常に堅いライン</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">🎯 目標株価</div>
+          <div class="price-box-value">¥2,300</div>
+          <div class="price-box-note">上昇率 ＋約24%</div>
+        </div>
+      </div>
+      <div class="exit-box">
+        <div class="exit-box-label">📤 出口戦略</div>
+        目標株価¥2,300到達、または<strong>中国の鉄鋼減産緩和による世界的な鉄鋼価格の急落</strong>時
+      </div>
+      <div class="glossary-box">
+        <div class="glossary-box-label">💡 用語解説</div>
+        <div class="glossary-item"><strong>スポット溶接</strong>：金属板を重ねて電気の熱と力で瞬間的に点状につなぐ溶接方法。自動車製造の基幹技術</div>
+      </div>
+      <div class="source-tag">情報源：<em>Yahoo!ニュース（MONOist）</em></div>
+    </div>
+  </div>
+
+  <!-- 4位〜10位 -->
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge">4</div>
+        <div class="stock-info-group">
+          <div class="stock-name">サントリー食品インターナショナル</div>
+          <div class="stock-ticker">証券コード：2581</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-short">⚡ 短期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        10月の<strong>酒税一本化</strong>に向けて、主力ブランド「金麦」をビール化する「一世一代の勝負」に出ます。ビールへの格上げで高品質・高利益率の本物のビール市場へ顧客を呼び込む戦略。成功すれば来期以降の増益トレンドが確実になります。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">¥4,800 前後</div>
+          <div class="price-box-note">費用負担を懸念した一時的な売りのタイミングを狙う</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">📤 出口戦略</div>
+          <div class="price-box-value" style="font-size:14px; line-height:1.5">金麦ビール初期出荷が好調と判明した時点（発表から1ヶ月内を目安）</div>
+        </div>
+      </div>
+      <div class="source-tag">情報源：<em>東洋経済オンライン</em></div>
+    </div>
+  </div>
+
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge">5</div>
+        <div class="stock-info-group">
+          <div class="stock-name">マツダ</div>
+          <div class="stock-ticker">証券コード：7261</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-mid">📅 中期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        「人とくるまのテクノロジー展2026」で<strong>「高応答遮熱コーティング技術」</strong>を発表。エンジンの熱を逃がさず燃費を大幅改善。EVシフトが一時停滞する現在の「ハイブリッド・内燃機関見直し」トレンドに完全合致。円安も輸出採算を強力サポートしています。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">¥1,500 付近</div>
+          <div class="price-box-note">PER5倍台の超割安水準。下値リスクが小さい節目</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">🎯 目標株価</div>
+          <div class="price-box-value">¥1,950</div>
+          <div class="price-box-note">上昇率 ＋約30%</div>
+        </div>
+      </div>
+      <div class="source-tag">情報源：<em>Yahoo!ニュース（Car Watch）</em></div>
+    </div>
+  </div>
+
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge">6</div>
+        <div class="stock-info-group">
+          <div class="stock-name">オートバックスセブン</div>
+          <div class="stock-ticker">証券コード：9832</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-long">🚀 長期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        中国EV大手など5社と新ブランドを立ち上げ、<strong>「軽自動車サイズのEV」</strong>を来年発売と発表。全国の店舗網・整備網を活用してアフターサービスへの不安を解消することで格安EVの普及を狙う画期的な試み。物販中心から次世代モビリティのプラットフォーム企業へと進化する長期成長ストーリーです。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">¥1,450 前後</div>
+          <div class="price-box-note">配当利回り約4.5%。インカムゲイン狙いの買い手が入る節目</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">🎯 目標株価</div>
+          <div class="price-box-value">¥1,800</div>
+          <div class="price-box-note">上昇率 ＋約24%</div>
+        </div>
+      </div>
+      <div class="source-tag">情報源：<em>ライブドアニュース</em></div>
+    </div>
+  </div>
+
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge">7</div>
+        <div class="stock-info-group">
+          <div class="stock-name">壱番屋（CoCo壱番屋）</div>
+          <div class="stock-ticker">証券コード：7630</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-mid">📅 中期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        「ココイチ客離れ」と報じられる一方で、<strong>直近の売上高は過去最高を更新</strong>。値上げで客数は減少したものの客単価が大幅上昇し、利益率が向上する「プレミアム化」に成功。代替不可なブランド力（モート）を持つ企業ならではの戦略で、財務健全性は極めて高いです。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">¥1,100 前後</div>
+          <div class="price-box-note">客数減少ニュースで一時的に押し下げられたところをすくい取る</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">🎯 目標株価</div>
+          <div class="price-box-value">¥1,350</div>
+          <div class="price-box-note">上昇率 ＋約23%</div>
+        </div>
+      </div>
+      <div class="source-tag">情報源：<em>東洋経済オンライン</em></div>
+    </div>
+  </div>
+
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge">8</div>
+        <div class="stock-info-group">
+          <div class="stock-name">名古屋鉄道</div>
+          <div class="stock-ticker">証券コード：9048</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-mid">📅 中期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        名鉄が名古屋駅エリアの既存ビルに<strong>「ヨドバシカメラ」を誘致する最終調整</strong>に入りました（2026年内開業目標）。にぎわい創出による鉄道利用者の増加と不動産賃貸収入の増加が期待できます。名駅再開発という超巨大プロジェクトに向けた布石として、名鉄の土地資産価値が改めて評価される好機です。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">¥1,900 前後</div>
+          <div class="price-box-note">PBR0.8倍近辺。解散価値を大きく下回る超割安ライン</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">🎯 目標株価</div>
+          <div class="price-box-value">¥2,400</div>
+          <div class="price-box-note">上昇率 ＋約26%</div>
+        </div>
+      </div>
+      <div class="source-tag">情報源：<em>Yahoo!ニュース（中部経済新聞）</em></div>
+    </div>
+  </div>
+
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge">9</div>
+        <div class="stock-info-group">
+          <div class="stock-name">イオン</div>
+          <div class="stock-ticker">証券コード：8267</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-long">🚀 長期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        全国のショッピングモールを背景に独自の「<strong>イオン生活圏</strong>」を拡大。金融事業（イオンフィナンシャルサービス）の成長が利益率を押し上げています。物価高の中でもPB「トップバリュ」の強みで顧客を囲い込む、不景気に強い<strong>ディフェンシブ成長株</strong>として魅力的です。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">¥3,300 付近</div>
+          <div class="price-box-note">上昇トレンドのサポートライン（13週移動平均線）の水準</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">🎯 目標株価</div>
+          <div class="price-box-value">¥4,000</div>
+          <div class="price-box-note">上昇率 ＋約21%</div>
+        </div>
+      </div>
+      <div class="source-tag">情報源：<em>ライブドアニュース</em></div>
+    </div>
+  </div>
+
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge">10</div>
+        <div class="stock-info-group">
+          <div class="stock-name">アオキスーパー</div>
+          <div class="stock-ticker">証券コード：9977</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-long">🚀 長期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        愛知県地盤の食品スーパー。店頭での家庭用廃食油の回収量が<strong>1万リットルを突破</strong>。SAF（持続可能な航空燃料）の原料として高値で買い取られ、将来的な新収益源になる可能性があります。地域密着型ドミナントの強みで住民の信頼を得ながら、安定した業績を誇っています。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">¥850 近辺</div>
+          <div class="price-box-note">出来高が少ないため指値でじっくり待ち伏せが鉄則</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">🎯 目標株価</div>
+          <div class="price-box-value">¥1,100</div>
+          <div class="price-box-note">上昇率 ＋約29%</div>
+        </div>
+      </div>
+      <div class="source-tag">情報源：<em>Yahoo!ニュース（中部経済新聞）</em></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== US STOCKS ===== -->
+<section class="section">
+  <div class="rank-header">
+    <div class="rank-header-flag">🇺🇸</div>
+    <div class="rank-header-title">米国株 投資指標ランキング</div>
+    <div class="rank-header-sub">厳選 Top 10 銘柄 ／ 購入タイミング・出口戦略付き</div>
+  </div>
+
+  <!-- 1位 -->
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge top3">1</div>
+        <div class="stock-info-group">
+          <div class="stock-name">Coinbase Global</div>
+          <div class="stock-ticker">Ticker：COIN</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-mid">📅 中期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        全米地方銀行大手PNC Private Bankが、Coinbaseのインフラ（Crypto-as-a-Service）を使って超富裕層向けにビットコイン取引を直接提供開始。世界の企業が「戦略的財務資産」として<strong>計820億ドル超のビットコイン</strong>を保有し始めており、この「機関投資家マネー流入」の最大の受け皿がCoinbaseです。取引手数料・保管料の爆発的な増加により、今期利益予想は市場の予測を大幅に上振れる見通しです。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">$200 以下</div>
+          <div class="price-box-note">ビットコイン価格調整に伴う急落のタイミングを狙う</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">🎯 目標株価</div>
+          <div class="price-box-value">$300</div>
+          <div class="price-box-note">上昇率 ＋約50%</div>
+        </div>
+      </div>
+      <div class="exit-box">
+        <div class="exit-box-label">📤 出口戦略</div>
+        目標株価$300到達、または米国での<strong>暗号資産に対する急激な規制強化の法律が可決</strong>された時
+      </div>
+      <div class="glossary-box">
+        <div class="glossary-box-label">💡 用語解説</div>
+        <div class="glossary-item"><strong>Crypto-as-a-Service</strong>：銀行などが自前でシステムを作らずCoinbaseの技術を「借りる」だけで暗号資産サービスを開始できる仕組み</div>
+      </div>
+      <div class="source-tag">情報源：<em>Connect Money</em></div>
+    </div>
+  </div>
+
+  <!-- 2位 -->
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge top3">2</div>
+        <div class="stock-info-group">
+          <div class="stock-name">Mastercard</div>
+          <div class="stock-ticker">Ticker：MA</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-long">🚀 長期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        ステーブルコイン決済基盤を持つ<strong>BVNK社を18億ドルで買収</strong>。デロイトの最新報告書では2030年までに2000億ドル以上の買い物がステーブルコイン決済に移行すると予測されています。低コストで瞬時に決済できる「ブロックチェーン決済」をMastercard自身が牛耳ることで覇権を確立。営業利益率55%超の高収益ビジネスはさらに強固になります。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">$440 近辺</div>
+          <div class="price-box-note">移動平均線のサポートライン。長期成長が約束されているため押し目は買い</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">🎯 目標株価</div>
+          <div class="price-box-value">$560</div>
+          <div class="price-box-note">上昇率 ＋約27%</div>
+        </div>
+      </div>
+      <div class="glossary-box">
+        <div class="glossary-box-label">💡 用語解説</div>
+        <div class="glossary-item"><strong>ステーブルコイン</strong>：価格が米ドルと常に「1ドル＝1コイン」で同じになるよう設計された、値動きが極めて安定した仮想通貨</div>
+      </div>
+      <div class="source-tag">情報源：<em>Connect Money</em></div>
+    </div>
+  </div>
+
+  <!-- 3位 -->
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge top3">3</div>
+        <div class="stock-info-group">
+          <div class="stock-name">Microsoft</div>
+          <div class="stock-ticker">Ticker：MSFT</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-long">🚀 長期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        OpenAIの筆頭株主として、その技術をWord・Excel・クラウドサービス「Azure」に独占的に組み込んでいるMicrosoftは、<strong>AI革命の「最大の勝ち組」</strong>です。サム・アルトマン氏も「AIが人間の仕事を奪い去るアポカリプスは来ない」と語り過度な懸念を払拭。企業のAI導入によるクラウド収入の伸びは事前予想を明確に上回り続けています。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">$400 近辺</div>
+          <div class="price-box-note">心理的節目かつ過去に何度も上昇起点となった強力なサポートライン</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">🎯 目標株価</div>
+          <div class="price-box-value">$500</div>
+          <div class="price-box-note">上昇率 ＋約25%</div>
+        </div>
+      </div>
+      <div class="source-tag">情報源：<em>The Globe and Mail</em> <em>ライブドアニュース</em> <em>Yahoo!ニュース</em></div>
+    </div>
+  </div>
+
+  <!-- 4〜10位 -->
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge">4</div>
+        <div class="stock-info-group">
+          <div class="stock-name">Eli Lilly and Company</div>
+          <div class="stock-ticker">Ticker：LLY</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-mid">📅 中期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        肥満治療薬「マンジャロ」の莫大なキャッシュを使い、<strong>ワクチン開発バイオ企業3社を約40億ドルで買収</strong>。肥満治療の単一武器だけでなく感染症予防という巨大な新規市場へポートフォリオを多角化することで、今後10年間の高成長を自ら作り出しています。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">$740 前後</div>
+          <div class="price-box-note">利益確定売りで5%ほど調整した場面を狙う</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">🎯 目標株価</div>
+          <div class="price-box-value">$920</div>
+          <div class="price-box-note">上昇率 ＋約24%</div>
+        </div>
+      </div>
+      <div class="source-tag">情報源：<em>The Globe and Mail</em></div>
+    </div>
+  </div>
+
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge">5</div>
+        <div class="stock-info-group">
+          <div class="stock-name">Bank of Montreal</div>
+          <div class="stock-ticker">Ticker：BMO（カナダ・米国市場）</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-mid">📅 中期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        第2四半期決算が<strong>市場予想を大幅に上回り</strong>株価急伸。資本市場ビジネスとアメリカ部門の業績回復が全体利益を牽引。新FRB議長就任に伴う高金利長期化は銀行の利ざやを拡大するため、今後もさらなる追い風。増配発表で株主還元姿勢も完璧です。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">CAD110 付近</div>
+          <div class="price-box-note">決算後の上昇から一時的な押し目を作る節目</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">🎯 目標株価</div>
+          <div class="price-box-value">CAD130</div>
+          <div class="price-box-note">上昇率 ＋約18%</div>
+        </div>
+      </div>
+      <div class="source-tag">情報源：<em>The Globe and Mail</em></div>
+    </div>
+  </div>
+
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge">6</div>
+        <div class="stock-info-group">
+          <div class="stock-name">National Bank of Canada</div>
+          <div class="stock-ticker">Ticker：NA（カナダ・米国市場）</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-mid">📅 中期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        カナダの大手銀行の中で<strong>最も高い成長率</strong>を記録。第2四半期利益が市場予想をクリアし、配当金を1株あたり<strong>CAD1.32へ増配</strong>。手堅い顧客向け貸出が不透明な経済環境でも利益を生む高いリスク管理能力が際立っており、ROEも同業他社より高い引き締まった財務体質です。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">CAD112 前後</div>
+          <div class="price-box-note">増配発表による買い安心感があり株価のサポートラインとして機能</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">🎯 目標株価</div>
+          <div class="price-box-value">CAD135</div>
+          <div class="price-box-note">上昇率 ＋約21%</div>
+        </div>
+      </div>
+      <div class="source-tag">情報源：<em>The Globe and Mail</em></div>
+    </div>
+  </div>
+
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge">7</div>
+        <div class="stock-info-group">
+          <div class="stock-name">Futu Holdings（Moomoo）</div>
+          <div class="stock-ticker">Ticker：FUTU</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-mid">📅 中期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        テキサス州で<strong>52種類の暗号資産取引を本格開始</strong>。Web3ウォレットからMoomooの口座へ直接入出金できる機能も追加し、株と暗号資産を1つのアプリでシームレスに取引できる「ワンストップ口座」としての地位を確立。米国での個人投資家の顧客獲得が急速に進んでいます。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">$65 付近</div>
+          <div class="price-box-note">株価が25日移動平均線まで調整したところを拾う</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">🎯 目標株価</div>
+          <div class="price-box-value">$85</div>
+          <div class="price-box-note">上昇率 ＋約31%</div>
+        </div>
+      </div>
+      <div class="source-tag">情報源：<em>Connect Money</em></div>
+    </div>
+  </div>
+
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge">8</div>
+        <div class="stock-info-group">
+          <div class="stock-name">The Bank of Nova Scotia（Scotiabank）</div>
+          <div class="stock-ticker">Ticker：BNS（カナダ・米国市場）</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-mid">📅 中期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        カナダ国内ビジネスが好調で第2四半期利益が前年比<strong>約29%増（20億3000万→26億3000万CAD）</strong>へ急拡大。得意の債権・為替トレーディング部門の収益が急増。他行より南米市場展開が早く、グローバルな資金移動の恩恵を受けやすいポジションにあります。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">CAD62 前後</div>
+          <div class="price-box-note">配当利回り6%近く。バリュー投資家に極めて魅力的なライン</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">🎯 目標株価</div>
+          <div class="price-box-value">CAD75</div>
+          <div class="price-box-note">上昇率 ＋約21%</div>
+        </div>
+      </div>
+      <div class="source-tag">情報源：<em>The Globe and Mail</em></div>
+    </div>
+  </div>
+
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge">9</div>
+        <div class="stock-info-group">
+          <div class="stock-name">Spotify Technology</div>
+          <div class="stock-ticker">Ticker：SPOT</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-long">🚀 長期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        オーディオブック機能に『Vogue』や『The Atlantic』などの<strong>有名雑誌記事を音声で聴ける新有料サービス</strong>を追加。アプリ滞在時間が伸び、広告収入と有料プレミアム会員数の両方が上振れる好循環に。コンテンツの仕入れコストが音楽より低いため粗利益率の向上が期待できます。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">$290 近辺</div>
+          <div class="price-box-note">強い上昇チャネルの下限ラインに位置する節目</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">🎯 目標株価</div>
+          <div class="price-box-value">$370</div>
+          <div class="price-box-note">上昇率 ＋約28%</div>
+        </div>
+      </div>
+      <div class="source-tag">情報源：<em>The Globe and Mail</em></div>
+    </div>
+  </div>
+
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge">10</div>
+        <div class="stock-info-group">
+          <div class="stock-name">Lululemon Athletica</div>
+          <div class="stock-ticker">Ticker：LULU</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-mid">📅 中期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        創業者チップ・ウィルソン氏が推薦した社外取締役2名を受け入れ、長期にわたる<strong>プロキシーファイト（委任状争奪戦）が終結</strong>。経営陣と創業者が同じ方向（株価対策・海外成長加速）を向いたことで、ブランドイメージの傷つきによる株価ディスカウントが解消されます。財務はほぼ無借金で、キャッシュ創出能力は衣料ブランドの中で圧倒的です。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">$320 前後</div>
+          <div class="price-box-note">経営体制健全化を好感した大口投資家の買い戻しが本格化するチャートの転換点</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">🎯 目標株価</div>
+          <div class="price-box-value">$410</div>
+          <div class="price-box-note">上昇率 ＋約28%</div>
+        </div>
+      </div>
+      <div class="glossary-box">
+        <div class="glossary-box-label">💡 用語解説</div>
+        <div class="glossary-item"><strong>プロキシーファイト（委任状争奪戦）</strong>：会社の経営方針をめぐって、経営陣と大株主が他の株主から票を集めて株主総会でバトルすること</div>
+      </div>
+      <div class="source-tag">情報源：<em>The Globe and Mail</em></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-logo">Investment Strategy Report</div>
+  <p class="footer-disc">本レポートは情報提供のみを目的としており、投資の勧誘または特定銘柄への投資を推奨するものではありません。投資に関する最終的な決定はご自身の判断と責任においてお願いします。株式投資には元本割れのリスクが伴います。</p>
+</footer>
+
+</body>
+</html>

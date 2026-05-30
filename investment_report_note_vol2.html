@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日米マクロ投資戦略レポート Vol.2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #B8973A;
+    --gold-light: #F5E6B8;
+    --gold-pale: #FDF8EC;
+    --navy: #0D1B2A;
+    --navy-mid: #1A2E44;
+    --navy-light: #2C4A6E;
+    --slate: #4A5568;
+    --muted: #718096;
+    --border: #E2D9C5;
+    --bg: #FAFAF7;
+    --white: #FFFFFF;
+    --red: #C0392B;
+    --green-text: #1A6B3A;
+    --green-bg: #EAF5EE;
+    --up: #1A6B3A;
+    --down: #C0392B;
+    --down-bg: #FEF2F2;
+    --tag-bg: #EEE8D8;
+    --tag-text: #7A6030;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--navy);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 400;
+    line-height: 1.8;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: var(--navy);
+    padding: 64px 48px 52px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -80px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    border: 1px solid rgba(184,151,58,0.15);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: 20px; right: 20px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    border: 1px solid rgba(184,151,58,0.1);
+  }
+  .hero-eyebrow {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 0.12em;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-eyebrow::after {
+    content: '';
+    height: 1px;
+    width: 48px;
+    background: var(--gold);
+    opacity: 0.6;
+    display: inline-block;
+  }
+  .hero-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(28px, 4vw, 46px);
+    font-weight: 900;
+    color: #FFFFFF;
+    line-height: 1.35;
+    margin-bottom: 16px;
+  }
+  .hero-title span { color: var(--gold); }
+  .hero-date {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.1em;
+    margin-top: 28px;
+    font-weight: 300;
+  }
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .hero-tag {
+    background: rgba(184,151,58,0.18);
+    color: #F5E6B8;
+    font-size: 11px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ===== SECTION ===== */
+  .section {
+    padding: 52px 48px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section:last-child { border-bottom: none; }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--gold-light);
+    position: relative;
+  }
+  .section-title::before {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0;
+    width: 48px; height: 2px;
+    background: var(--gold);
+  }
+
+  /* ===== MARKET OVERVIEW ===== */
+  .overview-intro {
+    font-size: 15px;
+    color: var(--slate);
+    line-height: 1.9;
+    margin-bottom: 28px;
+  }
+  .overview-intro strong { color: var(--navy); font-weight: 700; }
+
+  .key-topics {
+    background: var(--navy);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 28px;
+  }
+  .key-topics-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .topic-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .topic-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+  .topic-num {
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 11px;
+    font-weight: 700;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .topic-text { color: rgba(255,255,255,0.88); font-size: 14px; line-height: 1.7; }
+  .topic-text strong { color: #FFFFFF; }
+
+  .market-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 24px;
+  }
+  .market-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 22px;
+  }
+  .market-card-flag { font-size: 22px; margin-bottom: 8px; }
+  .market-card-title {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    color: var(--muted); text-transform: uppercase; margin-bottom: 10px;
+  }
+  .market-card p { font-size: 13px; color: var(--slate); line-height: 1.75; }
+  .market-card p strong { color: var(--navy); }
+
+  /* ===== RANK HEADER ===== */
+  .rank-header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+    margin: 0 -48px;
+    padding: 28px 48px;
+    margin-bottom: 32px;
+  }
+  .rank-header-flag { font-size: 32px; margin-bottom: 8px; }
+  .rank-header-title { font-family: 'Noto Serif JP', serif; font-size: 20px; font-weight: 700; color: #FFFFFF; }
+  .rank-header-sub { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 4px; letter-spacing: 0.05em; }
+
+  /* ===== STOCK CARD ===== */
+  .stock-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+  .stock-card-header {
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .stock-card-left { display: flex; align-items: center; gap: 16px; }
+  .rank-badge {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px; font-weight: 900;
+    color: var(--gold); line-height: 1; min-width: 42px;
+  }
+  .stock-name {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 17px; font-weight: 700; color: var(--navy); line-height: 1.3;
+  }
+  .stock-ticker { font-size: 12px; color: var(--muted); margin-top: 2px; letter-spacing: 0.05em; }
+  .stock-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .badge { font-size: 11px; padding: 3px 10px; border-radius: 20px; font-weight: 500; white-space: nowrap; }
+  .badge-up   { background: #EAF5EE; color: var(--up); }
+  .badge-down { background: #FEF2F2; color: var(--down); }
+  .badge-period-short { background: #FEF3E2; color: #9C5A00; }
+  .badge-period-mid   { background: #EEF2FF; color: #4338CA; }
+  .badge-period-long  { background: #FDF2F8; color: #9D174D; }
+
+  .stock-card-body { padding: 20px 24px; }
+  .soul-block { font-size: 14px; color: var(--slate); line-height: 1.85; margin-bottom: 20px; }
+  .soul-block strong { color: var(--navy); font-weight: 700; }
+
+  .price-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+  .price-box { border-radius: 8px; padding: 14px 16px; }
+  .price-box-buy  { background: var(--gold-pale); border: 1px solid var(--gold-light); }
+  .price-box-sell { background: #F0F4FF; border: 1px solid #C7D2FE; }
+  .price-box-warn { background: #FEF2F2; border: 1px solid #FECACA; }
+  .price-box-label { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+  .price-box-value { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--navy); }
+  .price-box-note  { font-size: 11px; color: var(--muted); margin-top: 4px; line-height: 1.5; }
+
+  .exit-box {
+    background: #FFF9F0; border: 1px solid #F0DEB4;
+    border-radius: 8px; padding: 12px 16px;
+    font-size: 13px; color: var(--slate); line-height: 1.7;
+  }
+  .exit-box-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #9C5A00; margin-bottom: 4px; }
+
+  .warn-box {
+    background: #FEF2F2; border: 1px solid #FECACA;
+    border-radius: 8px; padding: 12px 16px;
+    font-size: 13px; color: #7F1D1D; line-height: 1.7;
+  }
+  .warn-box-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #B91C1C; margin-bottom: 4px; }
+
+  .glossary-box {
+    background: var(--bg);
+    border-left: 3px solid var(--gold);
+    padding: 12px 16px; margin-top: 16px;
+    border-radius: 0 8px 8px 0;
+  }
+  .glossary-box-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+  .glossary-item { font-size: 12px; color: var(--slate); line-height: 1.7; margin-bottom: 4px; }
+  .glossary-item:last-child { margin-bottom: 0; }
+  .glossary-item strong { color: var(--navy); }
+
+  .source-tag { font-size: 11px; color: var(--muted); margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--border); }
+  .source-tag em { font-style: normal; background: var(--tag-bg); color: var(--tag-text); padding: 2px 8px; border-radius: 4px; font-size: 11px; }
+
+  /* ===== FOOTER ===== */
+  .footer { background: var(--navy); padding: 36px 48px; text-align: center; }
+  .footer-logo { font-family: 'Playfair Display', serif; font-style: italic; font-size: 18px; color: var(--gold); margin-bottom: 10px; }
+  .footer-disc { font-size: 11px; color: rgba(255,255,255,0.35); line-height: 1.7; max-width: 560px; margin: 0 auto; }
+
+  @media (max-width: 640px) {
+    .hero, .section { padding-left: 24px; padding-right: 24px; }
+    .market-grid { grid-template-columns: 1fr; }
+    .price-row { grid-template-columns: 1fr; }
+    .rank-header { margin-left: -24px; margin-right: -24px; padding-left: 24px; padding-right: 24px; }
+    .hero-title { font-size: 26px; }
+  }
+
+  /* ===== RUN PEN GUIDE BANNER ===== */
+  @keyframes pulseArrow {
+    0%   { transform: translateY(0);   opacity: 1; }
+    50%  { transform: translateY(6px); opacity: 0.6; }
+    100% { transform: translateY(0);   opacity: 1; }
+  }
+  @keyframes glowBorder {
+    0%   { box-shadow: 0 0 0px 0px rgba(184,151,58,0.4); }
+    50%  { box-shadow: 0 0 16px 4px rgba(184,151,58,0.55); }
+    100% { box-shadow: 0 0 0px 0px rgba(184,151,58,0.4); }
+  }
+  .run-guide {
+    background: linear-gradient(135deg, #0D1B2A 0%, #1A2E44 100%);
+    border: 2px solid var(--gold);
+    border-radius: 16px;
+    margin: 0;
+    padding: 22px 32px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    animation: glowBorder 2.5s ease-in-out infinite;
+  }
+  .run-guide-icon {
+    font-size: 42px;
+    line-height: 1;
+    flex-shrink: 0;
+    animation: pulseArrow 1.6s ease-in-out infinite;
+  }
+  .run-guide-body {}
+  .run-guide-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 6px;
+    line-height: 1.5;
+  }
+  .run-guide-title span { color: var(--gold); }
+  .run-guide-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.72);
+    line-height: 1.7;
+  }
+  .run-guide-desc strong { color: #F5E6B8; }
+  .run-guide-step {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+  .run-step {
+    background: rgba(184,151,58,0.18);
+    border: 1px solid rgba(184,151,58,0.4);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 12px;
+    color: #F5E6B8;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  @media (max-width: 640px) {
+    .run-guide { flex-direction: column; text-align: center; padding: 20px; }
+    .run-guide-step { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== RUN PEN GUIDE BANNER ===== -->
+<div class="run-guide">
+  <div class="run-guide-icon">👆</div>
+  <div class="run-guide-body">
+    <div class="run-guide-title">はじめに：レポートを<span>表示する方法</span></div>
+    <div class="run-guide-desc">
+      このコンテンツは <strong>CodePen</strong> で表示されています。<br>
+      下のエリアに <strong>「Run Pen ⚙️」ボタン</strong> が表示されている場合は、<strong>クリックするとレポートが表示</strong>されます。
+    </div>
+    <div class="run-guide-step">
+      <span class="run-step">① ページを少し下にスクロール</span>
+      <span class="run-step">② 「Run Pen ⚙️」をクリック</span>
+      <span class="run-step">③ レポートが表示されます ✅</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="hero-eyebrow">Investment Strategy Report</div>
+  <h1 class="hero-title">日米マクロ<span>投資戦略</span><br>レポート</h1>
+  <div class="hero-tags">
+    <span class="hero-tag">🇯🇵 日本株 Top 10</span>
+    <span class="hero-tag">🇺🇸 米国株 Top 10</span>
+    <span class="hero-tag">高金利長期化</span>
+    <span class="hero-tag">AI収益化の壁</span>
+    <span class="hero-tag">EV失速・HV復権</span>
+  </div>
+  <p class="hero-date">最新版 ｜ マクロ経済分析 × 個別銘柄戦略</p>
+</header>
+
+<!-- ===== MARKET OVERVIEW ===== -->
+<section class="section">
+  <p class="section-label">Market Overview</p>
+  <h2 class="section-title">本日の日米市況感 & 重要ニュース要約</h2>
+
+  <p class="overview-intro">
+    現在、日米の金融市場は<strong>「インフレのしぶとさによる高金利の長期化」</strong>と<strong>「AIの現実的な稼ぎ方（マネタイズ）」</strong>、そして<strong>「EVからハイブリッド車（HV）への揺り戻し」</strong>という3つの巨大な地殻変動に直面しています。
+  </p>
+
+  <div class="key-topics">
+    <div class="key-topics-title">🚨 複数ソースで重複する注目キーワード</div>
+    <div class="topic-item">
+      <div class="topic-num">1</div>
+      <div class="topic-text"><strong>インフレ再燃と高金利維持</strong><br>4月CPI前月比+0.6%、PCEデフレーターも3年で最速ペース上昇。FRBは金利高止まりを維持し、円相場は1ドル＝159円台まで円安進行</div>
+    </div>
+    <div class="topic-item">
+      <div class="topic-num">2</div>
+      <div class="topic-text"><strong>AIの実需とマネタイズ（収益化の壁）</strong><br>SalesforceのAIエージェント課金問題で株価暴落。生成AI「ゼロクリック問題」で検索広告モデルが崩壊しはじめている</div>
+    </div>
+    <div class="topic-item">
+      <div class="topic-num">3</div>
+      <div class="topic-text"><strong>EV失速とハイブリッド復権</strong><br>中国の自動車販売が前年比約2割減。ホンダはEV急進で1.6兆円の損失計上。「EVオンリー」の幻想が崩れ投資家の目がHVへ戻る</div>
+    </div>
+  </div>
+
+  <div class="market-grid">
+    <div class="market-card">
+      <div class="market-card-flag">🇺🇸</div>
+      <div class="market-card-title">米国マーケット</div>
+      <p>4月CPI <strong>+0.6%</strong>・PCEデフレーターが<strong>3年で最速上昇</strong>。イラン情勢緊迫化による原油高も重なりFRBは<strong>高金利維持</strong>。AI PC需要でHPが業績上振れ、Salesforceはエージェント課金問題で株価暴落。</p>
+    </div>
+    <div class="market-card">
+      <div class="market-card-flag">🇯🇵</div>
+      <div class="market-card-title">日本マーケット</div>
+      <p>円安<strong>159円台</strong>が輸出株を下支え。ホンダが<strong>EV路線転換で1.6兆円損失</strong>。一方トヨタはHV技術で日本企業初の売上高<strong>50兆円超</strong>。セブン＆アイはガバナンス圧力が再編を加速。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== JAPAN STOCKS ===== -->
+<section class="section">
+  <div class="rank-header">
+    <div class="rank-header-flag">🇯🇵</div>
+    <div class="rank-header-title">日本株 投資指標ランキング</div>
+    <div class="rank-header-sub">厳選 Top 10 銘柄 ／ 購入タイミング・出口戦略付き</div>
+  </div>
+
+  <!-- 1位 トヨタ -->
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge">1</div>
+        <div>
+          <div class="stock-name">トヨタ自動車</div>
+          <div class="stock-ticker">証券コード：7203</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-long">🚀 長期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        世界的なEVの減速は、同社にとって最大の追い風です。<strong>売上高は日本企業初の50兆円を突破</strong>。デンソーとの共同開発による高性能SiC（シリコンカーバイド）パワー半導体の採用など、<strong>ハイブリッド技術の圧倒的なリード</strong>が利益率をさらに押し上げています。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">¥2,650 近辺</div>
+          <div class="price-box-note">全体相場の調整で¥2,700の節目を割り込んだところを狙う</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">🎯 投資スタンス</div>
+          <div class="price-box-value" style="font-size:14px;line-height:1.5">長期保有基本。HV利益率低下・規制逆風で手仕舞い</div>
+        </div>
+      </div>
+      <div class="exit-box">
+        <div class="exit-box-label">📤 出口戦略</div>
+        長期保有を基本とするが、<strong>米国の排ガス規制緩和が完全に巻き戻される</strong>か、HVの利益率が競合の低価格HVにより著しく低下した時点で売却
+      </div>
+      <div class="glossary-box">
+        <div class="glossary-box-label">💡 用語解説</div>
+        <div class="glossary-item"><strong>パワー半導体</strong>：電気の強さを変えたりモーターをスムーズに動かすために使われる電力コントロール用の半導体</div>
+        <div class="glossary-item"><strong>SiC（シリコンカーバイド）</strong>：電気を効率よくコントロールして省エネにする次世代の半導体素材</div>
+      </div>
+      <div class="source-tag">情報源：<em>Yahoo!ニュース（モビリティ）</em> <em>ライブドアニュース</em></div>
+    </div>
+  </div>
+
+  <!-- 2位 デンソー -->
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge">2</div>
+        <div>
+          <div class="stock-name">デンソー</div>
+          <div class="stock-ticker">証券コード：6902</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-mid">📅 中期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        トヨタのHV・EVの心臓部「パワーコントロールユニット」を供給。<strong>世界初の独自3次元構造SiC半導体</strong>を「人とくるまのテクノロジー展」で発表。EVの走行距離を飛躍的に延ばすことに成功し、<strong>今期の利益予想は市場予想を明確に上振れる</strong>見通しです。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">¥2,100 付近</div>
+          <div class="price-box-note">自動車セクター全体の輸出懸念で押されたタイミングが絶好の押し目</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">⏱ 保有期間の目安</div>
+          <div class="price-box-value" style="font-size:14px;line-height:1.5">約3ヶ月（中期）</div>
+        </div>
+      </div>
+      <div class="exit-box">
+        <div class="exit-box-label">📤 出口戦略</div>
+        新車の生産スケジュールに遅れが生じるか、<strong>主要顧客トヨタの四半期決算で進捗が鈍化</strong>した場合
+      </div>
+      <div class="glossary-box">
+        <div class="glossary-box-label">💡 用語解説</div>
+        <div class="glossary-item"><strong>押し目</strong>：株価が上がっている途中で一時的に少し安くなったお買い得な瞬間のこと</div>
+      </div>
+      <div class="source-tag">情報源：<em>Yahoo!ニュース（MONOist）</em> <em>ライブドアニュース</em></div>
+    </div>
+  </div>
+
+  <!-- 3位 オムロン -->
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge">3</div>
+        <div>
+          <div class="stock-name">オムロン</div>
+          <div class="stock-ticker">証券コード：6645</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-mid">📅 中期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        世界的PEファンドのカーライルが<strong>オムロンの電子部品事業を買収することを決定</strong>。不採算部門が切り離され財務体質は劇的にスリム化・筋肉質になります。この「しがらみからの解放」は構造改革の成功として、<strong>中期の株価見直しを急激に促すトリガー</strong>となります。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">¥5,400 近辺</div>
+          <div class="price-box-note">事業売却後の特別利益・今期業績上方修正の発表前に仕込む</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">⚠️ 撤退サイン</div>
+          <div class="price-box-value" style="font-size:14px;line-height:1.5">FA事業の受注回復が確認できない時</div>
+        </div>
+      </div>
+      <div class="exit-box">
+        <div class="exit-box-label">📤 出口戦略</div>
+        次の四半期決算でコア事業（FA）の受注回復が確認できない場合、またはチャートで<strong>デッドクロス（下落サイン）</strong>が発生した時
+      </div>
+      <div class="glossary-box">
+        <div class="glossary-box-label">💡 用語解説</div>
+        <div class="glossary-item"><strong>FA（ファクトリー・オートメーション）</strong>：ロボットなどを使って工場の作業を自動化する技術のこと</div>
+        <div class="glossary-item"><strong>PEファンド</strong>：機関投資家から集めた資金で企業を買収し、価値を高めて売却する投資集団</div>
+      </div>
+      <div class="source-tag">情報源：<em>東洋経済オンライン</em></div>
+    </div>
+  </div>
+
+  <!-- 4位 三菱重工 -->
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge">4</div>
+        <div>
+          <div class="stock-name">三菱重工業</div>
+          <div class="stock-ticker">証券コード：7011</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-long">🚀 長期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        世界の地政学リスクが緊迫化する中、<strong>防衛関連予算の拡大は国策</strong>。日本の防衛「ナショナル・チャンピオン」として欧米防衛企業との共同開発・新規受注を総なめにする立場にあります。宇宙・防衛セクターの売上高は<strong>前年比で2桁成長</strong>を記録。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">¥1,900 前後</div>
+          <div class="price-box-note">市場全体の需給悪化で連れ安したタイミングの押し目</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">⚠️ 撤退サイン</div>
+          <div class="price-box-value" style="font-size:14px;line-height:1.5">防衛予算縮小決定・調達制度の大幅変更時</div>
+        </div>
+      </div>
+      <div class="glossary-box">
+        <div class="glossary-box-label">💡 用語解説</div>
+        <div class="glossary-item"><strong>連れ安</strong>：その企業自体には悪いニュースがないのに、市場全体が下がったせいで一緒に株価が下がってしまうこと</div>
+      </div>
+      <div class="source-tag">情報源：<em>東洋経済オンライン</em> <em>The Globe and Mail</em></div>
+    </div>
+  </div>
+
+  <!-- 5位 キリン -->
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge">5</div>
+        <div>
+          <div class="stock-name">キリンホールディングス</div>
+          <div class="stock-ticker">証券コード：2503</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-short">⚡ 短期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        地球温暖化による「猛暑」を逆手に取り、ビール需要の拡大期に入ります。<strong>「一番搾りを飲めば気候変動対策への寄付になるアクション」</strong>を発表し、ESGを重視する海外投資家から高評価を獲得。ブランド価値の向上と実需の両立に成功し、夏本格化に向けた<strong>短期の需給が非常に良好</strong>です。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">¥2,150 の節目</div>
+          <div class="price-box-note">夏季需要本格化前に仕込む</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">⏱ 保有期間の目安</div>
+          <div class="price-box-value" style="font-size:14px;line-height:1.5">約2週間（短期）</div>
+        </div>
+      </div>
+      <div class="exit-box">
+        <div class="exit-box-label">📤 出口戦略</div>
+        例年より<strong>冷夏になる予報が出た場合</strong>、またはお盆のビール出荷数が確定し「材料出尽くし」となった時点で即時利益確定
+      </div>
+      <div class="glossary-box">
+        <div class="glossary-box-label">💡 用語解説</div>
+        <div class="glossary-item"><strong>ESG投資</strong>：財務情報だけでなく地球環境への配慮や社会貢献・組織の透明性などを評価して行う投資スタイル</div>
+        <div class="glossary-item"><strong>材料出尽くし</strong>：期待されていたニュースが現実になり、それ以上株が買われなくなること</div>
+      </div>
+      <div class="source-tag">情報源：<em>Yahoo!ニュース</em></div>
+    </div>
+  </div>
+
+  <!-- 6位 大阪製鉄 -->
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge">6</div>
+        <div>
+          <div class="stock-name">大阪製鉄</div>
+          <div class="stock-ticker">証券コード：5449</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-mid">📅 中期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        建設業界で脱炭素プレッシャーが強まる中、業界に先駆けて<strong>二酸化炭素を出さない電力で作られた鋼材「RECOS（レコス）」の一般販売・在庫流通をスタート</strong>。環境配慮型製品はプレミアム価格で取引されるため、マージン（粗利益率）を大きく上振れさせる原動力となります。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">¥1,850 近辺</div>
+          <div class="price-box-note">RECOS販売好調の確認前に先回りして仕込む</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">⚠️ 撤退サイン</div>
+          <div class="price-box-value" style="font-size:14px;line-height:1.5">住宅・オフィスビル建設着工件数の明確な悪化時</div>
+        </div>
+      </div>
+      <div class="glossary-box">
+        <div class="glossary-box-label">💡 用語解説</div>
+        <div class="glossary-item"><strong>プレミアム価格</strong>：環境に優しいなど特別な付加価値があるため通常より高く設定された販売価格のこと</div>
+      </div>
+      <div class="source-tag">情報源：<em>Yahoo!ニュース</em></div>
+    </div>
+  </div>
+
+  <!-- 7位 任天堂 -->
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge">7</div>
+        <div>
+          <div class="stock-name">任天堂</div>
+          <div class="stock-ticker">証券コード：7974</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-long">🚀 長期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        日経平均急上昇の中、半導体ハイテク株に資金が集中したことで<strong>超優良IP（知的財産）を持つバリュー株として市場の上昇ウェーブに取り残されています</strong>。自己資本比率が極めて高く、Switch後継機の開発も佳境。「乗り遅れ銘柄」への資金還流（循環物色）が起きる確率が極めて高い状況です。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">¥8,000 割れ</div>
+          <div class="price-box-note">¥8,000は強力な下値支持線。ここを割ったところが絶好の仕込み場</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">🎯 出口イメージ</div>
+          <div class="price-box-value" style="font-size:14px;line-height:1.5">後継機正式発表後の株価急騰時（噂で買って事実で売る）</div>
+        </div>
+      </div>
+      <div class="glossary-box">
+        <div class="glossary-box-label">💡 用語解説</div>
+        <div class="glossary-item"><strong>割安株（バリュー株）</strong>：会社の持っている資産や稼ぐ力に比べて株価が安く放置されているお買い得な株のこと</div>
+      </div>
+      <div class="source-tag">情報源：<em>東洋経済オンライン</em></div>
+    </div>
+  </div>
+
+  <!-- 8位 セブン＆アイ -->
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge">8</div>
+        <div>
+          <div class="stock-name">セブン＆アイ・ホールディングス</div>
+          <div class="stock-ticker">証券コード：3382</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-mid">📅 中期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        鈴木敏文氏の死去に伴い株主総会では現状の株価低迷に対する<strong>株主からの厳しい批判が相次いでいます</strong>。アクティビスト（物言う株主）による買収・再編圧力と、非効率な百貨店・スーパー部門の切り離し加速により、<strong>ROE（自己資本利益率）の改善が強制的に義務付けられる</strong>段階に入っています。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">¥1,950 近辺</div>
+          <div class="price-box-note">株主総会後の動揺で一時的に売られたところを狙う</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">⏱ 保有期間の目安</div>
+          <div class="price-box-value" style="font-size:14px;line-height:1.5">約半年</div>
+        </div>
+      </div>
+      <div class="exit-box">
+        <div class="exit-box-label">📤 出口戦略</div>
+        コンビニ特化の具体的ロードマップが会社から示され、<strong>株価が適正価値まで見直された時</strong>に利益確定
+      </div>
+      <div class="glossary-box">
+        <div class="glossary-box-label">💡 用語解説</div>
+        <div class="glossary-item"><strong>アクティビスト</strong>：株式をたくさん保有し「もっと配当を増やせ」「ダメな事業は売れ」などと会社に迫る投資家のこと</div>
+      </div>
+      <div class="source-tag">情報源：<em>東洋経済オンライン</em></div>
+    </div>
+  </div>
+
+  <!-- 9位 マネックス -->
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge">9</div>
+        <div>
+          <div class="stock-name">マネックスグループ</div>
+          <div class="stock-ticker">証券コード：8698</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-short">⚡ 短期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        新社会人や<strong>40代・50代の投資活動の活発化</strong>、および日経平均の上昇トレンドの継続から、オンライン証券への手数料収入・預かり資産残高が急激に積み上がっています。株高に直結する<strong>ベータ（感応度）の高い銘柄</strong>として、短期的に強い買い圧力が期待されます。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">¥850 の指値</div>
+          <div class="price-box-note">指定した価格で待ち伏せ注文を入れる</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">⚠️ 撤退サイン</div>
+          <div class="price-box-value" style="font-size:14px;line-height:1.5">日経平均のピークアウト・口座開設ペースの鈍化</div>
+        </div>
+      </div>
+      <div class="glossary-box">
+        <div class="glossary-box-label">💡 用語解説</div>
+        <div class="glossary-item"><strong>指値注文</strong>：「この値段なら買ってもいい」とあらかじめ価格を指定して出す買い注文のこと</div>
+        <div class="glossary-item"><strong>ベータ</strong>：市場全体が動いたときにその株がどれくらい大きく動くかの感応度</div>
+      </div>
+      <div class="source-tag">情報源：<em>東洋経済オンライン</em> <em>Yahoo!ニュース</em></div>
+    </div>
+  </div>
+
+  <!-- 10位 LINEヤフー（下落注意） -->
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge">10</div>
+        <div>
+          <div class="stock-name">LINEヤフー</div>
+          <div class="stock-ticker">証券コード：4689</div>
+          <div class="stock-badges">
+            <span class="badge badge-down">🔽 下落（下振れリスク）</span>
+            <span class="badge badge-period-mid">📅 中期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        決算自体はPayPayの好調で最高益を更新しているものの、今後の成長の柱である「検索事業」が<strong>生成AIの進化による「ゼロクリック問題」によって構造的に衰退するリスク</strong>に直面しています。AIエージェント導入を急いでいますが、広告モデルの崩壊スピードの方が速く、今期後半以降の業績が<strong>市場予想を下回る危険性</strong>があります。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-warn">
+          <div class="price-box-label">⛔ 購入判断</div>
+          <div class="price-box-value" style="font-size:15px;color:#B91C1C">購入は非推奨</div>
+          <div class="price-box-note">保有中の方は¥380以上での「戻り売り」を推奨</div>
+        </div>
+        <div class="price-box price-box-warn">
+          <div class="price-box-label">🚨 損切りライン</div>
+          <div class="price-box-value" style="font-size:18px;color:#B91C1C">¥350 割れ</div>
+          <div class="price-box-note">AI検索広告収入の落ち込みが想定以上に激しい場合は即損切り</div>
+        </div>
+      </div>
+      <div class="warn-box">
+        <div class="warn-box-label">⚠️ リスク警告</div>
+        生成AIの「ゼロクリック問題」で検索広告モデルが構造的に崩壊。<strong>今期後半の業績下方修正リスクに要警戒</strong>
+      </div>
+      <div class="glossary-box">
+        <div class="glossary-box-label">💡 用語解説</div>
+        <div class="glossary-item"><strong>ゼロクリック問題</strong>：生成AIの要約が優秀すぎて検索結果をクリックしなくなり広告収入が減ってしまう現象</div>
+        <div class="glossary-item"><strong>損切り</strong>：さらに大損するのを防ぐために、あえてマイナス（損失）を確定させて売ること</div>
+      </div>
+      <div class="source-tag">情報源：<em>東洋経済オンライン</em></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== US STOCKS ===== -->
+<section class="section">
+  <div class="rank-header">
+    <div class="rank-header-flag">🇺🇸</div>
+    <div class="rank-header-title">米国株 投資指標ランキング</div>
+    <div class="rank-header-sub">厳選 Top 10 銘柄 ／ 購入タイミング・出口戦略付き</div>
+  </div>
+
+  <!-- 1位 MicroStrategy -->
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge">1</div>
+        <div>
+          <div class="stock-name">MicroStrategy（Strategy）</div>
+          <div class="stock-ticker">Ticker：MSTR</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-long">🚀 長期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        上場企業のビットコイン総保有量の<strong>63.6%にあたる約73.8万BTC（約825億ドル分）</strong>を支配。ビットコインを「戦略的な企業財務の予備資産」として活用するパイオニアであり、伝統的な株式市場にいながら<strong>実質的な暗号資産の価格上昇メリットを享受できる唯一無二の代替手段</strong>です。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">直近高値 -15〜20%</div>
+          <div class="price-box-note">暗号資産のボラティリティで急落した瞬間を狙う</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">⚠️ 撤退サイン</div>
+          <div class="price-box-value" style="font-size:14px;line-height:1.5">会計基準の不利変更・暗号資産の壊滅的規制決定時</div>
+        </div>
+      </div>
+      <div class="glossary-box">
+        <div class="glossary-box-label">💡 用語解説</div>
+        <div class="glossary-item"><strong>ボラティリティ</strong>：価格が上がったり下がったりする「変動の激しさ」のこと。これが大きいとハイリスク・ハイリターンになる</div>
+      </div>
+      <div class="source-tag">情報源：<em>Connect Money</em></div>
+    </div>
+  </div>
+
+  <!-- 2位 Mastercard -->
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge">2</div>
+        <div>
+          <div class="stock-name">Mastercard</div>
+          <div class="stock-ticker">Ticker：MA</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-long">🚀 長期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        デロイトは<strong>2030年までに約2,000億ドルの小売決済がステーブルコイン経由</strong>になると予測。同社はいち早くステーブルコイン決済インフラのBVNKを18億ドルで買収。「既存の決済ネットワークにステーブルコインを組み込む」ことで、<strong>競合Visaに対して決済インフラの規格争いで完全なリードを奪いました</strong>。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">$450 付近</div>
+          <div class="price-box-note">金利据え置き発表による短期的なハイテク株安の局面</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">⚠️ 撤退サイン</div>
+          <div class="price-box-value" style="font-size:14px;line-height:1.5">BVNK買収が規制当局により白紙撤回された時</div>
+        </div>
+      </div>
+      <div class="glossary-box">
+        <div class="glossary-box-label">💡 用語解説</div>
+        <div class="glossary-item"><strong>ステーブルコイン</strong>：米ドルなど「現実のお金」と常に同じ価値になるよう設計された、値動きが安定した暗号資産のこと</div>
+      </div>
+      <div class="source-tag">情報源：<em>Connect Money</em></div>
+    </div>
+  </div>
+
+  <!-- 3位 Microsoft -->
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge">3</div>
+        <div>
+          <div class="stock-name">Microsoft</div>
+          <div class="stock-ticker">Ticker：MSFT</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-long">🚀 長期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        Salesforceの決算暴落（AIエージェント課金問題）でこぼれた顧客を奪い去っているのが同社の「<strong>Copilot Studio</strong>」です。AI PCにはWindowsが標準搭載され、<strong>AIのインフラからアプリ・OSまですべてを牛耳る「AIのトータル・ディフェンダー」</strong>として、他社が苦しむ中で唯一確実な収益を上げ続けています。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">$415 前後の押し目</div>
+          <div class="price-box-note">心理的節目かつ過去に何度も上昇起点となったサポートライン</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">⚠️ 撤退サイン</div>
+          <div class="price-box-value" style="font-size:14px;line-height:1.5">独占禁止法による制裁・AI部門の強制分離命令時</div>
+        </div>
+      </div>
+      <div class="glossary-box">
+        <div class="glossary-box-label">💡 用語解説</div>
+        <div class="glossary-item"><strong>OS（オペレーティング・システム）</strong>：パソコンやスマホを動かすための最も基本的なソフトウェア。WindowsやiOSなど</div>
+      </div>
+      <div class="source-tag">情報源：<em>Yahoo!ニュース</em> <em>The Globe and Mail</em></div>
+    </div>
+  </div>
+
+  <!-- 4位 NVIDIA -->
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge">4</div>
+        <div>
+          <div class="stock-name">NVIDIA</div>
+          <div class="stock-ticker">Ticker：NVDA</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-mid">📅 中期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        単にGPUを作るだけでなく、<strong>独自プログラミング規格「CUDA（クダ）」を世界中の開発者に握らせています</strong>。このソフトウェアの参入障壁があるため、他社がどれほど優れたチップを安く出そうとも開発者はNVIDIAのエコシステムから抜け出せません。<strong>データセンター需要は前年比で数倍規模の拡大</strong>を継続中。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">株分割後の調整局面</div>
+          <div class="price-box-note">適正価格の節目を試すタイミングを狙う</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">⚠️ 撤退サイン</div>
+          <div class="price-box-value" style="font-size:14px;line-height:1.5">TSMC工場の操業停止・代替ハードウェアの急速実用化</div>
+        </div>
+      </div>
+      <div class="glossary-box">
+        <div class="glossary-box-label">💡 用語解説</div>
+        <div class="glossary-item"><strong>GPU</strong>：もともとゲーム画面描画用の半導体だが、大量の計算を同時にこなすのが得意なため現在はAIの頭脳として欠かせない存在</div>
+      </div>
+      <div class="source-tag">情報源：<em>Yahoo!ニュース</em></div>
+    </div>
+  </div>
+
+  <!-- 5位 HP -->
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge">5</div>
+        <div>
+          <div class="stock-name">HP Inc.</div>
+          <div class="stock-ticker">Ticker：HPQ</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-mid">📅 中期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        企業の「パソコン買い替え期」に、<strong>Windows 10のサポート終了と「AI PC」へのアップグレード需要が完璧に重なりました</strong>。第2四半期決算は売上高・利益ともにアナリスト予想を大きくクリア。メモリチップ不足というコスト増をプレミアム製品の単価上昇で完全に打ち消し、<strong>収益性は非常に高い</strong>状態です。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">$33 付近</div>
+          <div class="price-box-note">決算後の一時的な利益確定売りで押されたところを狙う</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">⚠️ 撤退サイン</div>
+          <div class="price-box-value" style="font-size:14px;line-height:1.5">月次のPC出荷台数データが減少トレンドに転換した時</div>
+        </div>
+      </div>
+      <div class="glossary-box">
+        <div class="glossary-box-label">💡 用語解説</div>
+        <div class="glossary-item"><strong>価格転嫁</strong>：原材料や部品の仕入れ値が上がった分を商品の販売価格に上乗せして会社の利益を守ること</div>
+      </div>
+      <div class="source-tag">情報源：<em>The Globe and Mail</em></div>
+    </div>
+  </div>
+
+  <!-- 6位 Coinbase -->
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge">6</div>
+        <div>
+          <div class="stock-name">Coinbase Global</div>
+          <div class="stock-ticker">Ticker：COIN</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-short">⚡ 短期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        米大手地銀PNC Private Bankが同社の<strong>「Crypto-as-a-Service」を採用し富裕層向けビットコイン直接取引の提供を開始</strong>。BVNKとの20億ドル買収交渉をあえて打ち切り財務健全性を守ったことも評価材料。<strong>ビットコインETFのカストディ（保管業務）の独占状態</strong>から高い確実な定期収入を得ています。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">$210 前後</div>
+          <div class="price-box-note">ビットコイン価格の調整局面で連動して下がったところを拾う</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">⏱ 保有期間の目安</div>
+          <div class="price-box-value" style="font-size:14px;line-height:1.5">約2週間（短期）</div>
+        </div>
+      </div>
+      <div class="exit-box">
+        <div class="exit-box-label">📤 出口戦略</div>
+        暗号資産（ビットコイン）の価格が急落し需給が崩れた場合、または<strong>SECによる新たな訴訟リスク</strong>が生じた時
+      </div>
+      <div class="glossary-box">
+        <div class="glossary-box-label">💡 用語解説</div>
+        <div class="glossary-item"><strong>カストディ</strong>：ビットコインなどを政府のルールに従って安全なデジタルウォレットで代わりに預かるサービスのこと</div>
+      </div>
+      <div class="source-tag">情報源：<em>Connect Money</em></div>
+    </div>
+  </div>
+
+  <!-- 7位 Alphabet（下落注意） -->
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge">7</div>
+        <div>
+          <div class="stock-name">Alphabet（Google）</div>
+          <div class="stock-ticker">Ticker：GOOGL</div>
+          <div class="stock-badges">
+            <span class="badge badge-down">🔽 下落（下振れリスク）</span>
+            <span class="badge badge-period-mid">📅 中期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        検索広告モデルの限界（ゼロクリック問題）が表面化する中、<strong>GoogleのエンジニアがGoogleトレンドの未公開データを盗み出し、予測市場Polymarketでインサイダー取引を行い120万ドルを荒稼ぎして逮捕・起訴</strong>。内部管理体制への不信と検索シェアそのものの構造変化のダブルパンチが株価を下押ししています。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-warn">
+          <div class="price-box-label">⛔ 購入判断</div>
+          <div class="price-box-value" style="font-size:15px;color:#B91C1C">購入は非推奨</div>
+          <div class="price-box-note">現在の株価水準からの戻り売り（$155付近）を推奨</div>
+        </div>
+        <div class="price-box price-box-warn">
+          <div class="price-box-label">🚨 即損切りライン</div>
+          <div class="price-box-value" style="font-size:14px;color:#B91C1C">司法省の追加調査・デフォルト検索契約打ち切り時</div>
+        </div>
+      </div>
+      <div class="warn-box">
+        <div class="warn-box-label">⚠️ リスク警告</div>
+        インサイダー取引スキャンダルによる内部管理不信 ＋ AIによる検索シェア構造変化の<strong>ダブルパンチに要警戒</strong>
+      </div>
+      <div class="glossary-box">
+        <div class="glossary-box-label">💡 用語解説</div>
+        <div class="glossary-item"><strong>インサイダー取引</strong>：まだ一般に公開されていない秘密の情報を使って自分だけ確実に儲かるようにお金を動かす違法な取引のこと</div>
+      </div>
+      <div class="source-tag">情報源：<em>The Globe and Mail</em> <em>東洋経済オンライン</em></div>
+    </div>
+  </div>
+
+  <!-- 8位 Novo Nordisk（下落注意） -->
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge">8</div>
+        <div>
+          <div class="stock-name">Novo Nordisk</div>
+          <div class="stock-ticker">Ticker：NVO</div>
+          <div class="stock-badges">
+            <span class="badge badge-down">🔽 下落（下振れリスク）</span>
+            <span class="badge badge-period-mid">📅 中期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        肥満治療薬「Ozempic（オゼンピック）」で空前の利益を上げてきた同社に最大の試練が訪れました。カナダの製薬大手Apotaxが<strong>オゼンピックの3分の1以下の価格でジェネリック医薬品として発売し薬局の店頭に並び始めました</strong>。これまでの「独占・高収益」のシナリオにヒビが入っています。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-warn">
+          <div class="price-box-label">⛔ 購入判断</div>
+          <div class="price-box-value" style="font-size:15px;color:#B91C1C">購入は非推奨</div>
+          <div class="price-box-note">現在の株価水準からの下落リスクに厳戒注意</div>
+        </div>
+        <div class="price-box price-box-warn">
+          <div class="price-box-label">🚨 即手仕舞いライン</div>
+          <div class="price-box-value" style="font-size:14px;color:#B91C1C">ジェネリック普及で北米売上高の成長率が明確に減速した時</div>
+        </div>
+      </div>
+      <div class="warn-box">
+        <div class="warn-box-label">⚠️ リスク警告</div>
+        ジェネリック薬の普及スピードが予想以上に早まった場合、<strong>独占高収益モデルが急速に崩れるリスク</strong>に要警戒
+      </div>
+      <div class="glossary-box">
+        <div class="glossary-box-label">💡 用語解説</div>
+        <div class="glossary-item"><strong>ジェネリック医薬品</strong>：特許が切れた（または切れに近い）薬と同じ成分・効果の薬を他社が安く販売する「後発の薬」のこと</div>
+      </div>
+      <div class="source-tag">情報源：<em>The Globe and Mail</em></div>
+    </div>
+  </div>
+
+  <!-- 9位 Dropbox -->
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge">9</div>
+        <div>
+          <div class="stock-name">Dropbox</div>
+          <div class="stock-ticker">Ticker：DBX</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-mid">📅 中期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        共同創業者兼CEOのドリュー・ヒューストンが退任し、<strong>AI製品統括のアシュラフ・アルカーミが新CEOに就任</strong>。「ただのクラウドストレージ（ファイル置き場）」から「AIを組み込んだ次世代スマートワークスペース」への移行が決定づけられました。新体制によるスピードアップと<strong>コストカットで利益率の前年比大幅上振れが期待</strong>されます。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">$21 近辺</div>
+          <div class="price-box-note">新CEO発表後のガバナンス移行期のブレを拾う</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">⚠️ 撤退サイン</div>
+          <div class="price-box-value" style="font-size:14px;line-height:1.5">AI連携サービス開始遅延・ユーザー解約率（チャーンレート）の上昇</div>
+        </div>
+      </div>
+      <div class="glossary-box">
+        <div class="glossary-box-label">💡 用語解説</div>
+        <div class="glossary-item"><strong>ローンチ</strong>：新しいウェブサービスやソフトウェアを世に売り出しサービスを開始すること</div>
+        <div class="glossary-item"><strong>チャーンレート</strong>：サービスの解約率のこと。これが上がるとサブスクリプション（月額課金）の収益が減る</div>
+      </div>
+      <div class="source-tag">情報源：<em>The Globe and Mail</em></div>
+    </div>
+  </div>
+
+  <!-- 10位 Saab AB -->
+  <div class="stock-card">
+    <div class="stock-card-header">
+      <div class="stock-card-left">
+        <div class="rank-badge">10</div>
+        <div>
+          <div class="stock-name">Saab AB</div>
+          <div class="stock-ticker">Ticker：SAABF（OTC市場）</div>
+          <div class="stock-badges">
+            <span class="badge badge-up">🔼 上昇（業績上振れ）</span>
+            <span class="badge badge-period-long">🚀 長期</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stock-card-body">
+      <div class="soul-block">
+        カナダのマーク・カーニー首相が「アメリカの軍事装備への過度な依存を減らす」公約を実行。<strong>カナダ空軍の次期早期警戒機にボーイングなどの米国防大手を退け、サーブ製「GlobalEye」を採用</strong>。防衛博覧会CANSECでも注目度No.1。<strong>欧米の防衛ナショナリズムの最大の受益者</strong>となっています。
+      </div>
+      <div class="price-row">
+        <div class="price-box price-box-buy">
+          <div class="price-box-label">📌 購入タイミング</div>
+          <div class="price-box-value">大型契約確定後の押し目</div>
+          <div class="price-box-note">北米での大型契約確定後に一時的な利益確定売りで押されたところ</div>
+        </div>
+        <div class="price-box price-box-sell">
+          <div class="price-box-label">⚠️ 撤退サイン</div>
+          <div class="price-box-value" style="font-size:14px;line-height:1.5">欧州の終戦・軍縮で各国の国防予算が大幅削減された時</div>
+        </div>
+      </div>
+      <div class="glossary-box">
+        <div class="glossary-box-label">💡 用語解説</div>
+        <div class="glossary-item"><strong>早期警戒機</strong>：大型の強力なレーダーを飛行機の上に載せ、遠くの不審な飛行機やミサイルをいち早く発見して味方に伝える「空飛ぶレーダー基地」のこと</div>
+      </div>
+      <div class="source-tag">情報源：<em>The Globe and Mail</em></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-logo">Investment Strategy Report</div>
+  <p class="footer-disc">本レポートは情報提供のみを目的としており、投資の勧誘または特定銘柄への投資を推奨するものではありません。投資に関する最終的な決定はご自身の判断と責任においてお願いします。株式投資には元本割れのリスクが伴います。</p>
+</footer>
+
+</body>
+</html>
