@@ -3,7 +3,7 @@ import time
 import requests
 
 LINE_TOKEN = os.environ.get("LINE_NOTIFY_TOKEN")
-LINE_USER_ID = os.environ.get("LINE_USER_ID")
+LINE_USER_ID = os.environ.get("LINE_USER_ID", "U0a00078a576de205f40bf8a05920178b")
 HTML_FILE = os.environ.get("HTML_FILE")
 GITHUB_PAGES_BASE = os.environ.get("GITHUB_PAGES_BASE")
 
