@@ -8,6 +8,7 @@ on:
       - 'investment_report_*.html'
   schedule:
     - cron: '0 22 * * *'
+  workflow_dispatch: {}
 
 jobs:
   post:
