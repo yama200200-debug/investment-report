@@ -1,1 +1,1 @@
-{"日本株": {"ロング候補": [], "ショート候補": [], "監視候補": []}, "米国株": {"ロング候補": [], "ショート候補": [], "監視候補": []}}
+{"日本株": {"ロング候補": ["株式会社タカラトミー", "株式会社メタプラネット", "楽天銀行株式会社"], "ショート候補": ["日産自動車株式会社", "サンリオ", "ユニチカ", "三井E&S"], "監視候補": ["セブン＆アイ・ホールディングス", "データセクション株式会社", "東日本旅客鉄道株式会社"]}, "米国株": {"ロング候補": ["Shopify Inc.", "Mastercard Inc.", "Coinbase Global Inc.", "Suncor Energy Inc.", "Apple Inc.", "Algonquin Power & Utilities Corp."], "ショート候補": ["Nutrien Ltd.", "Meta Platforms Inc."], "監視候補": ["Alphabet Inc.", "JPMorgan Chase & Co."]}}
