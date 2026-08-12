@@ -1,1 +1,1 @@
-{"日本株": {"ロング候補": [], "ショート候補": [], "監視候補": []}, "米国株": {"ロング候補": [], "ショート候補": [], "監視候補": []}}
+{"日本株": {"ロング候補": ["ソニーグループ", "サンリオ", "ＡＮＡホールディングス"], "ショート候補": ["日産自動車", "トヨタ自動車", "ジャパンディスプレイ", "ＲｅＹｕｕ　Ｊａｐａｎ"], "監視候補": ["メタプラネット", "セブン＆アイ・ホールディングス", "日本製鉄"]}, "米国株": {"ロング候補": ["NVIDIA Corporation", "Berkshire Hathaway Inc.", "Coinbase Global, Inc.", "Mastercard Incorporated", "AbCellera Biologics Inc."], "ショート候補": ["Intel Corporation", "Barrick Gold Corporation"], "監視候補": ["Curaleaf Holdings, Inc.", "H&R Real Estate Investment Trust", "Air Canada"]}}
