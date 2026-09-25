@@ -1,0 +1,554 @@
+{
+  "as_of": "2026-09-25",
+  "total_records_all_schema": 197,
+  "total_records_new_schema": 92,
+  "overall": {
+    "1d": {
+      "evaluated": 83,
+      "success": 16,
+      "failure": 9,
+      "neutral": 58,
+      "hit_rate_ex_neutral": 0.64,
+      "avg_return_pct": 0.12
+    },
+    "5d": {
+      "evaluated": 31,
+      "success": 6,
+      "failure": 8,
+      "neutral": 17,
+      "hit_rate_ex_neutral": 0.4286,
+      "avg_return_pct": -0.303
+    },
+    "20d": {
+      "evaluated": 0,
+      "success": 0,
+      "failure": 0,
+      "neutral": 0,
+      "hit_rate_ex_neutral": null,
+      "avg_return_pct": null
+    }
+  },
+  "by_direction": {
+    "down": {
+      "sample_size": 16,
+      "1d": {
+        "evaluated": 15,
+        "success": 3,
+        "failure": 1,
+        "neutral": 11,
+        "hit_rate_ex_neutral": 0.75,
+        "avg_return_pct": -0.32
+      },
+      "5d": {
+        "evaluated": 5,
+        "success": 2,
+        "failure": 0,
+        "neutral": 3,
+        "hit_rate_ex_neutral": 1.0,
+        "avg_return_pct": -2.205
+      },
+      "20d": {
+        "evaluated": 0,
+        "success": 0,
+        "failure": 0,
+        "neutral": 0,
+        "hit_rate_ex_neutral": null,
+        "avg_return_pct": null
+      }
+    },
+    "flat": {
+      "sample_size": 11,
+      "1d": {
+        "evaluated": 11,
+        "success": 8,
+        "failure": 3,
+        "neutral": 0,
+        "hit_rate_ex_neutral": 0.7273,
+        "avg_return_pct": -0.146
+      },
+      "5d": {
+        "evaluated": 5,
+        "success": 2,
+        "failure": 3,
+        "neutral": 0,
+        "hit_rate_ex_neutral": 0.4,
+        "avg_return_pct": -1.32
+      },
+      "20d": {
+        "evaluated": 0,
+        "success": 0,
+        "failure": 0,
+        "neutral": 0,
+        "hit_rate_ex_neutral": null,
+        "avg_return_pct": null
+      }
+    },
+    "up": {
+      "sample_size": 65,
+      "1d": {
+        "evaluated": 57,
+        "success": 5,
+        "failure": 5,
+        "neutral": 47,
+        "hit_rate_ex_neutral": 0.5,
+        "avg_return_pct": 0.287
+      },
+      "5d": {
+        "evaluated": 21,
+        "success": 2,
+        "failure": 5,
+        "neutral": 14,
+        "hit_rate_ex_neutral": 0.2857,
+        "avg_return_pct": 0.391
+      },
+      "20d": {
+        "evaluated": 0,
+        "success": 0,
+        "failure": 0,
+        "neutral": 0,
+        "hit_rate_ex_neutral": null,
+        "avg_return_pct": null
+      }
+    }
+  },
+  "by_category": {
+    "ショート候補": {
+      "sample_size": 4,
+      "1d": {
+        "evaluated": 4,
+        "success": 0,
+        "failure": 0,
+        "neutral": 4,
+        "hit_rate_ex_neutral": null,
+        "avg_return_pct": -0.002
+      },
+      "5d": {
+        "evaluated": 3,
+        "success": 1,
+        "failure": 0,
+        "neutral": 2,
+        "hit_rate_ex_neutral": 1.0,
+        "avg_return_pct": -1.901
+      },
+      "20d": {
+        "evaluated": 0,
+        "success": 0,
+        "failure": 0,
+        "neutral": 0,
+        "hit_rate_ex_neutral": null,
+        "avg_return_pct": null
+      }
+    },
+    "ロング候補": {
+      "sample_size": 59,
+      "1d": {
+        "evaluated": 53,
+        "success": 5,
+        "failure": 5,
+        "neutral": 43,
+        "hit_rate_ex_neutral": 0.5,
+        "avg_return_pct": 0.327
+      },
+      "5d": {
+        "evaluated": 20,
+        "success": 2,
+        "failure": 5,
+        "neutral": 13,
+        "hit_rate_ex_neutral": 0.2857,
+        "avg_return_pct": 0.392
+      },
+      "20d": {
+        "evaluated": 0,
+        "success": 0,
+        "failure": 0,
+        "neutral": 0,
+        "hit_rate_ex_neutral": null,
+        "avg_return_pct": null
+      }
+    },
+    "監視候補": {
+      "sample_size": 29,
+      "1d": {
+        "evaluated": 26,
+        "success": 11,
+        "failure": 4,
+        "neutral": 11,
+        "hit_rate_ex_neutral": 0.7333,
+        "avg_return_pct": -0.284
+      },
+      "5d": {
+        "evaluated": 8,
+        "success": 3,
+        "failure": 3,
+        "neutral": 2,
+        "hit_rate_ex_neutral": 0.5,
+        "avg_return_pct": -1.443
+      },
+      "20d": {
+        "evaluated": 0,
+        "success": 0,
+        "failure": 0,
+        "neutral": 0,
+        "hit_rate_ex_neutral": null,
+        "avg_return_pct": null
+      }
+    }
+  },
+  "by_market": {
+    "日本株": {
+      "sample_size": 53,
+      "1d": {
+        "evaluated": 48,
+        "success": 11,
+        "failure": 4,
+        "neutral": 33,
+        "hit_rate_ex_neutral": 0.7333,
+        "avg_return_pct": 0.234
+      },
+      "5d": {
+        "evaluated": 20,
+        "success": 5,
+        "failure": 6,
+        "neutral": 9,
+        "hit_rate_ex_neutral": 0.4545,
+        "avg_return_pct": -0.114
+      },
+      "20d": {
+        "evaluated": 0,
+        "success": 0,
+        "failure": 0,
+        "neutral": 0,
+        "hit_rate_ex_neutral": null,
+        "avg_return_pct": null
+      }
+    },
+    "米国株": {
+      "sample_size": 39,
+      "1d": {
+        "evaluated": 35,
+        "success": 5,
+        "failure": 5,
+        "neutral": 25,
+        "hit_rate_ex_neutral": 0.5,
+        "avg_return_pct": -0.036
+      },
+      "5d": {
+        "evaluated": 11,
+        "success": 1,
+        "failure": 2,
+        "neutral": 8,
+        "hit_rate_ex_neutral": 0.3333,
+        "avg_return_pct": -0.648
+      },
+      "20d": {
+        "evaluated": 0,
+        "success": 0,
+        "failure": 0,
+        "neutral": 0,
+        "hit_rate_ex_neutral": null,
+        "avg_return_pct": null
+      }
+    }
+  },
+  "by_confidence": {
+    "中": {
+      "sample_size": 37,
+      "1d": {
+        "evaluated": 32,
+        "success": 1,
+        "failure": 4,
+        "neutral": 27,
+        "hit_rate_ex_neutral": 0.2,
+        "avg_return_pct": -0.355
+      },
+      "5d": {
+        "evaluated": 10,
+        "success": 2,
+        "failure": 2,
+        "neutral": 6,
+        "hit_rate_ex_neutral": 0.5,
+        "avg_return_pct": -1.893
+      },
+      "20d": {
+        "evaluated": 0,
+        "success": 0,
+        "failure": 0,
+        "neutral": 0,
+        "hit_rate_ex_neutral": null,
+        "avg_return_pct": null
+      }
+    },
+    "低": {
+      "sample_size": 19,
+      "1d": {
+        "evaluated": 18,
+        "success": 10,
+        "failure": 2,
+        "neutral": 6,
+        "hit_rate_ex_neutral": 0.8333,
+        "avg_return_pct": 0.066
+      },
+      "5d": {
+        "evaluated": 6,
+        "success": 2,
+        "failure": 3,
+        "neutral": 1,
+        "hit_rate_ex_neutral": 0.4,
+        "avg_return_pct": -0.789
+      },
+      "20d": {
+        "evaluated": 0,
+        "success": 0,
+        "failure": 0,
+        "neutral": 0,
+        "hit_rate_ex_neutral": null,
+        "avg_return_pct": null
+      }
+    },
+    "高": {
+      "sample_size": 36,
+      "1d": {
+        "evaluated": 33,
+        "success": 5,
+        "failure": 3,
+        "neutral": 25,
+        "hit_rate_ex_neutral": 0.625,
+        "avg_return_pct": 0.61
+      },
+      "5d": {
+        "evaluated": 15,
+        "success": 2,
+        "failure": 3,
+        "neutral": 10,
+        "hit_rate_ex_neutral": 0.4,
+        "avg_return_pct": 0.951
+      },
+      "20d": {
+        "evaluated": 0,
+        "success": 0,
+        "failure": 0,
+        "neutral": 0,
+        "hit_rate_ex_neutral": null,
+        "avg_return_pct": null
+      }
+    }
+  },
+  "by_date": {
+    "2026-09-18": {
+      "sample_size": 7,
+      "1d": {
+        "evaluated": 7,
+        "success": 2,
+        "failure": 1,
+        "neutral": 4,
+        "hit_rate_ex_neutral": 0.6667,
+        "avg_return_pct": -0.627
+      },
+      "5d": {
+        "evaluated": 7,
+        "success": 1,
+        "failure": 2,
+        "neutral": 4,
+        "hit_rate_ex_neutral": 0.3333,
+        "avg_return_pct": -1.148
+      },
+      "20d": {
+        "evaluated": 0,
+        "success": 0,
+        "failure": 0,
+        "neutral": 0,
+        "hit_rate_ex_neutral": null,
+        "avg_return_pct": null
+      }
+    },
+    "2026-09-19": {
+      "sample_size": 14,
+      "1d": {
+        "evaluated": 14,
+        "success": 3,
+        "failure": 0,
+        "neutral": 11,
+        "hit_rate_ex_neutral": 1.0,
+        "avg_return_pct": -0.001
+      },
+      "5d": {
+        "evaluated": 14,
+        "success": 4,
+        "failure": 3,
+        "neutral": 7,
+        "hit_rate_ex_neutral": 0.5714,
+        "avg_return_pct": 0.842
+      },
+      "20d": {
+        "evaluated": 0,
+        "success": 0,
+        "failure": 0,
+        "neutral": 0,
+        "hit_rate_ex_neutral": null,
+        "avg_return_pct": null
+      }
+    },
+    "2026-09-20": {
+      "sample_size": 10,
+      "1d": {
+        "evaluated": 10,
+        "success": 2,
+        "failure": 0,
+        "neutral": 8,
+        "hit_rate_ex_neutral": 1.0,
+        "avg_return_pct": 0.0
+      },
+      "5d": {
+        "evaluated": 10,
+        "success": 1,
+        "failure": 3,
+        "neutral": 6,
+        "hit_rate_ex_neutral": 0.25,
+        "avg_return_pct": -1.316
+      },
+      "20d": {
+        "evaluated": 0,
+        "success": 0,
+        "failure": 0,
+        "neutral": 0,
+        "hit_rate_ex_neutral": null,
+        "avg_return_pct": null
+      }
+    },
+    "2026-09-21": {
+      "sample_size": 9,
+      "1d": {
+        "evaluated": 9,
+        "success": 1,
+        "failure": 1,
+        "neutral": 7,
+        "hit_rate_ex_neutral": 0.5,
+        "avg_return_pct": 0.915
+      },
+      "5d": {
+        "evaluated": 0,
+        "success": 0,
+        "failure": 0,
+        "neutral": 0,
+        "hit_rate_ex_neutral": null,
+        "avg_return_pct": null
+      },
+      "20d": {
+        "evaluated": 0,
+        "success": 0,
+        "failure": 0,
+        "neutral": 0,
+        "hit_rate_ex_neutral": null,
+        "avg_return_pct": null
+      }
+    },
+    "2026-09-22": {
+      "sample_size": 10,
+      "1d": {
+        "evaluated": 10,
+        "success": 1,
+        "failure": 0,
+        "neutral": 9,
+        "hit_rate_ex_neutral": 1.0,
+        "avg_return_pct": -0.516
+      },
+      "5d": {
+        "evaluated": 0,
+        "success": 0,
+        "failure": 0,
+        "neutral": 0,
+        "hit_rate_ex_neutral": null,
+        "avg_return_pct": null
+      },
+      "20d": {
+        "evaluated": 0,
+        "success": 0,
+        "failure": 0,
+        "neutral": 0,
+        "hit_rate_ex_neutral": null,
+        "avg_return_pct": null
+      }
+    },
+    "2026-09-23": {
+      "sample_size": 19,
+      "1d": {
+        "evaluated": 19,
+        "success": 3,
+        "failure": 4,
+        "neutral": 12,
+        "hit_rate_ex_neutral": 0.4286,
+        "avg_return_pct": -0.577
+      },
+      "5d": {
+        "evaluated": 0,
+        "success": 0,
+        "failure": 0,
+        "neutral": 0,
+        "hit_rate_ex_neutral": null,
+        "avg_return_pct": null
+      },
+      "20d": {
+        "evaluated": 0,
+        "success": 0,
+        "failure": 0,
+        "neutral": 0,
+        "hit_rate_ex_neutral": null,
+        "avg_return_pct": null
+      }
+    },
+    "2026-09-24": {
+      "sample_size": 14,
+      "1d": {
+        "evaluated": 14,
+        "success": 4,
+        "failure": 3,
+        "neutral": 7,
+        "hit_rate_ex_neutral": 0.5714,
+        "avg_return_pct": 1.589
+      },
+      "5d": {
+        "evaluated": 0,
+        "success": 0,
+        "failure": 0,
+        "neutral": 0,
+        "hit_rate_ex_neutral": null,
+        "avg_return_pct": null
+      },
+      "20d": {
+        "evaluated": 0,
+        "success": 0,
+        "failure": 0,
+        "neutral": 0,
+        "hit_rate_ex_neutral": null,
+        "avg_return_pct": null
+      }
+    },
+    "2026-09-25": {
+      "sample_size": 9,
+      "1d": {
+        "evaluated": 0,
+        "success": 0,
+        "failure": 0,
+        "neutral": 0,
+        "hit_rate_ex_neutral": null,
+        "avg_return_pct": null
+      },
+      "5d": {
+        "evaluated": 0,
+        "success": 0,
+        "failure": 0,
+        "neutral": 0,
+        "hit_rate_ex_neutral": null,
+        "avg_return_pct": null
+      },
+      "20d": {
+        "evaluated": 0,
+        "success": 0,
+        "failure": 0,
+        "neutral": 0,
+        "hit_rate_ex_neutral": null,
+        "avg_return_pct": null
+      }
+    }
+  }
+}
