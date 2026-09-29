@@ -1,1 +1,1 @@
-[]
+[{"prefecture": "長野県", "indicator": "鉱工業指数", "data_period": "2026-06", "release_type": "速報値", "index_basis": "季節調整済指数", "base_year": 2020.0, "production_index": 115.4, "production_mom_pct": 8.2, "shipment_index": 103.3, "shipment_mom_pct": 4.0, "inventory_index": 115.9, "inventory_mom_pct": 6.7, "page_updated": "2026-08-31", "source_url": "https://www.pref.nagano.lg.jp/tokei/tyousa/iip.html", "retrieved_at": "2026-09-30", "first_retrieved_at": "2026-09-30"}]
