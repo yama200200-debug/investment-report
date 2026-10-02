@@ -1,0 +1,43 @@
+name: Validate Fortune
+
+on:
+  schedule:
+    - cron: '0 23 * * 6'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: validate-fortune
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate fortune events
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+        run: python scripts/validate_fortune.py
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research-data/validation/fortune_validation.json
+          if git diff --cached --quiet; then
+            echo "変更なし"
+          else
+            git commit -m "update fortune_validation.json"
+            git pull --rebase
+            git push
+          fi
