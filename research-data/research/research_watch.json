@@ -1,1 +1,168 @@
-[]
+[
+  {
+    "schema_version": 1,
+    "source": "quantpedia",
+    "guid": "https://quantpedia.com/?p=46374",
+    "title": "Why Average Strategy Performance Can Mislead Portfolio Research",
+    "url": "https://quantpedia.com/why-average-strategy-performance-can-mislead-portfolio-research/",
+    "published": "2026-09-02T13:59:15+00:00",
+    "categories": [
+      "Uncategorized",
+      "benchmarking",
+      "peer group",
+      "quantpedia API",
+      "trading strategy",
+      "trendfollowing"
+    ],
+    "retrieved_at": "2026-10-02T14:04:26+09:00"
+  },
+  {
+    "schema_version": 1,
+    "source": "quantpedia",
+    "guid": "https://quantpedia.com/?p=46635",
+    "title": "Do LLM “Crowds” Produce Investment Signals? An Empirical Test",
+    "url": "https://quantpedia.com/do-llm-crowds-produce-investment-signals-an-empirical-test/",
+    "published": "2026-09-04T13:41:20+00:00",
+    "categories": [
+      "Uncategorized",
+      "AI agents",
+      "factor investing",
+      "LLM",
+      "machine learning",
+      "trading strategy"
+    ],
+    "retrieved_at": "2026-10-02T14:04:26+09:00"
+  },
+  {
+    "schema_version": 1,
+    "source": "quantpedia",
+    "guid": "https://quantpedia.com/?p=46871",
+    "title": "Quantpedia Premium Update – September 10th",
+    "url": "https://quantpedia.com/quantpedia-premium-update-september-10th/",
+    "published": "2026-09-10T06:39:30+00:00",
+    "categories": [
+      "Uncategorized"
+    ],
+    "retrieved_at": "2026-10-02T14:04:26+09:00"
+  },
+  {
+    "schema_version": 1,
+    "source": "quantpedia",
+    "guid": "https://quantpedia.com/?p=46851",
+    "title": "Quantpedia in August 2026",
+    "url": "https://quantpedia.com/quantpedia-in-august-2026/",
+    "published": "2026-09-11T14:50:36+00:00",
+    "categories": [
+      "Uncategorized"
+    ],
+    "retrieved_at": "2026-10-02T14:04:26+09:00"
+  },
+  {
+    "schema_version": 1,
+    "source": "quantpedia",
+    "guid": "https://quantpedia.com/?p=46486",
+    "title": "From Barrier Crossings to Terminal Distributions: A Skellam-Based Options Pricing Framework for 0-DTE Markets",
+    "url": "https://quantpedia.com/from-barrier-crossings-to-terminal-distributions-a-skellam-based-options-pricing-framework-for-0-dte-markets/",
+    "published": "2026-09-14T14:44:16+00:00",
+    "categories": [
+      "Uncategorized",
+      "0DTE options",
+      "option trading",
+      "options",
+      "volatility effect",
+      "volatility hedging",
+      "volatility premium"
+    ],
+    "retrieved_at": "2026-10-02T14:04:26+09:00"
+  },
+  {
+    "schema_version": 1,
+    "source": "quantpedia",
+    "guid": "https://quantpedia.com/?p=46815",
+    "title": "Do Airline Stocks Take Off Around U.S. Holidays?",
+    "url": "https://quantpedia.com/do-airline-stocks-take-off-around-u-s-holidays/",
+    "published": "2026-09-18T14:32:22+00:00",
+    "categories": [
+      "Uncategorized",
+      "airlines",
+      "calendar anomaly",
+      "calendar effect",
+      "crude oil",
+      "holiday effect",
+      "JETS",
+      "own-research"
+    ],
+    "retrieved_at": "2026-10-02T14:04:26+09:00"
+  },
+  {
+    "schema_version": 1,
+    "source": "quantpedia",
+    "guid": "https://quantpedia.com/?p=46920",
+    "title": "Building and Testing Trend-Following Strategies on One-Minute SPY Data",
+    "url": "https://quantpedia.com/building-and-testing-trend-following-strategies-on-one-minute-spy-data/",
+    "published": "2026-09-22T12:56:20+00:00",
+    "categories": [
+      "Uncategorized",
+      "algoseek",
+      "alternative data",
+      "calendar effect",
+      "intraday trading",
+      "market timing",
+      "own-research",
+      "seasonality",
+      "trendfollowing"
+    ],
+    "retrieved_at": "2026-10-02T14:04:26+09:00"
+  },
+  {
+    "schema_version": 1,
+    "source": "quantpedia",
+    "guid": "https://quantpedia.com/?p=46943",
+    "title": "Can Weakening Morning Order Flow Predict SPY Reversals?",
+    "url": "https://quantpedia.com/can-weakening-morning-order-flow-predict-spy-reversals/",
+    "published": "2026-09-24T13:49:37+00:00",
+    "categories": [
+      "Uncategorized",
+      "algoseek",
+      "alternative data",
+      "calendar effect",
+      "intraday trading",
+      "order flow",
+      "own-research",
+      "reversal",
+      "seasonality"
+    ],
+    "retrieved_at": "2026-10-02T14:04:26+09:00"
+  },
+  {
+    "schema_version": 1,
+    "source": "quantpedia",
+    "guid": "https://quantpedia.com/?p=47002",
+    "title": "Quantpedia Premium Update – September 27th",
+    "url": "https://quantpedia.com/quantpedia-premium-update-september-27th-2/",
+    "published": "2026-09-27T17:58:58+00:00",
+    "categories": [
+      "Uncategorized"
+    ],
+    "retrieved_at": "2026-10-02T14:04:26+09:00"
+  },
+  {
+    "schema_version": 1,
+    "source": "quantpedia",
+    "guid": "https://quantpedia.com/?p=47149",
+    "title": "A New Stage, a New Deadline: Quantpedia Awards 2027 Are Here Again!",
+    "url": "https://quantpedia.com/a-new-stage-a-new-deadline-quantpedia-awards-2027-are-here-again/",
+    "published": "2026-09-30T16:06:38+00:00",
+    "categories": [
+      "Uncategorized",
+      "2027",
+      "awards",
+      "competition",
+      "quant",
+      "quantitative trading",
+      "quantpedia",
+      "trading strategy"
+    ],
+    "retrieved_at": "2026-10-02T14:04:26+09:00"
+  }
+]
