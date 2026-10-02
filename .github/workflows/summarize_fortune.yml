@@ -1,0 +1,45 @@
+name: Summarize Fortune
+
+on:
+  workflow_run:
+    workflows: ["Validate Fortune"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: summarize-fortune
+  cancel-in-progress: false
+
+jobs:
+  summarize:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Summarize fortune validation
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+        run: python scripts/summarize_fortune.py
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research-data/validation/fortune_validation_summary.json
+          if git diff --cached --quiet; then
+            echo "変更なし"
+          else
+            git commit -m "update fortune_validation_summary.json"
+            git pull --rebase
+            git push
+          fi
