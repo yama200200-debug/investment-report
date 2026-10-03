@@ -21,8 +21,8 @@ import sys
 import time
 import urllib.parse
 import urllib.request
-from bisect import bisect_left
-from datetime import date, datetime, timedelta, timezone
+from bisect import bisect_left, bisect_right
+from datetime import datetime, timezone
 from pathlib import Path
 from statistics import fmean, median
 
@@ -101,14 +101,6 @@ def return_for_target(target_date, obs_dates, obs_vals, horizon):
     return (obs_vals[future_idx] / base - 1.0) * 100.0
 
 
-def date_range(start, end):
-    current = date.fromisoformat(start)
-    finish = date.fromisoformat(end)
-    while current <= finish:
-        yield current.isoformat()
-        current += timedelta(days=1)
-
-
 def stable_seed(key):
     digest = hashlib.sha256(key.encode("utf-8")).digest()
     return (RANDOM_SEED + int.from_bytes(digest[:8], "big")) % (2**63)
@@ -150,9 +142,12 @@ def positive_rate(values):
 
 
 def build_normal_pool(start_date, end_date, event_dates, obs_dates, obs_vals, horizon):
+    """同じ期間のFRED実観測日（営業日）だけを通常日として使う。"""
     event_date_set = set(event_dates)
+    lo = bisect_left(obs_dates, start_date)
+    hi = bisect_right(obs_dates, end_date)
     values = []
-    for target in date_range(start_date, end_date):
+    for target in obs_dates[lo:hi]:
         if target in event_date_set:
             continue
         value = return_for_target(target, obs_dates, obs_vals, horizon)
@@ -284,7 +279,7 @@ def main():
             "random_seed": RANDOM_SEED,
             "p_value_method": "two-sided permutation test; (extreme_count + 1) / (iterations + 1)",
             "permutation_unit": "event dates are reassigned as whole dates within the same event-type/series/horizon comparison period",
-            "normal_day_rule": "same calendar period; event dates excluded; returns use the same previous-observation base and subsequent-observation counting rule as base_prev_close_v1",
+            "normal_day_rule": "same calendar period; only FRED observation dates are eligible; event dates excluded; returns use the same previous-observation base and subsequent-observation counting rule as base_prev_close_v1",
             "bonferroni_method": "p_adjusted = min(p_value * 60, 1.0)",
         },
         "comparisons": comparisons,
