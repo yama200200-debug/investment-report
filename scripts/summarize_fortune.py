@@ -6,12 +6,15 @@
 - 同日イベントは event 種別ごとに別集計する。
 - イベント実績は fortune_validation.json を読むだけで、同ファイルは変更しない。
 - 通常日の比較対象は、同じイベント種別・系列・期間・営業日カウント規則で作る。
-- イベント日を含む同期間の候補日から、イベント件数と同数の日付を無作為抽出して
+- イベント日を含む同期間の候補日のreturn値から、イベント件数と同数を無作為抽出して
   イベント群ラベルを入れ替える permutation test を10,000回行う。
+  return値は日付と1対1に対応するため、結果は日付ラベルの無作為化と同値である。
 - p値は両側、(極端以上の回数 + 1) / (試行回数 + 1)。
 - Bonferroni補正は全60検定に対して行う。
 - null は集計から除外し、n を明示する。
 - 乱数シードは固定し、同じ入力なら同じ結果になるようにする。
+- 5D/20Dは重複windowであり、観測値間に系列相関が生じるため、p値は保守的に解釈する。
+- WTIなど基準価格が0以下となる窓は騰落率を定義できないため除外する。
 """
 import hashlib
 import json
@@ -96,7 +99,7 @@ def return_for_target(target_date, obs_dates, obs_vals, horizon):
         return None
 
     base = obs_vals[base_idx]
-    if base == 0:
+    if base <= 0:
         return None
     return (obs_vals[future_idx] / base - 1.0) * 100.0
 
@@ -147,13 +150,16 @@ def build_normal_pool(start_date, end_date, event_dates, obs_dates, obs_vals, ho
     lo = bisect_left(obs_dates, start_date)
     hi = bisect_right(obs_dates, end_date)
     values = []
+    null_count = 0
     for target in obs_dates[lo:hi]:
         if target in event_date_set:
             continue
         value = return_for_target(target, obs_dates, obs_vals, horizon)
         if value is not None:
             values.append((target, value))
-    return values
+        else:
+            null_count += 1
+    return values, null_count
 
 
 def main():
@@ -207,12 +213,19 @@ def main():
 
                 event_values = list(values_by_date.values())
                 event_dates = list(values_by_date.keys())
+                event_dates_all = {
+                    row.get("event_date_utc")
+                    for row in event_rows
+                    if row.get("event_date_utc")
+                }
+                event_null_count = max(len(event_dates_all) - len(event_dates), 0)
 
                 normal_pairs = []
+                normal_null_count = 0
                 if event_dates and obs_dates:
                     start_date = min(event_dates)
                     end_date = max(event_dates)
-                    normal_pairs = build_normal_pool(
+                    normal_pairs, normal_null_count = build_normal_pool(
                         start_date,
                         end_date,
                         event_dates,
@@ -249,7 +262,9 @@ def main():
                     "series_name": label,
                     "horizon_days": horizon,
                     "event_count": len(event_values),
+                    "event_null_count": event_null_count,
                     "normal_day_count": len(normal_values),
+                    "normal_null_count": normal_null_count,
                     "eligible_comparison_dates": len(normal_pairs) + len(event_dates),
                     "event_mean_pct": round(event_mean, 6) if event_mean is not None else None,
                     "event_median_pct": round(median(event_values), 6) if event_values else None,
@@ -269,7 +284,7 @@ def main():
         "schema_version": 1,
         "source": "research-data/validation/fortune_validation.json",
         "validation_rule": "base_prev_close_v1",
-        "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "generated_at": None,
         "statistics": {
             "event_types": list(EVENT_TYPES),
             "series_count": len(SERIES),
@@ -278,12 +293,32 @@ def main():
             "randomization_iterations": RANDOMIZATION_ITERATIONS,
             "random_seed": RANDOM_SEED,
             "p_value_method": "two-sided permutation test; (extreme_count + 1) / (iterations + 1)",
-            "permutation_unit": "event dates are reassigned as whole dates within the same event-type/series/horizon comparison period",
-            "normal_day_rule": "same calendar period; only FRED observation dates are eligible; event dates excluded; returns use the same previous-observation base and subsequent-observation counting rule as base_prev_close_v1",
+            "permutation_unit": "return values paired 1-to-1 with dates are randomized; this is equivalent to randomizing date labels",
+            "normal_day_rule": "normal days are FRED observation dates on which the tested event type did not occur; only FRED observation dates are eligible and event dates for that event type are excluded; returns use the same previous-observation base and subsequent-observation counting rule as base_prev_close_v1",
+            "window_dependence_note": "5D/20D use overlapping windows, so observations can be serially correlated and p-values should be interpreted conservatively",
             "bonferroni_method": "p_adjusted = min(p_value * 60, 1.0)",
         },
         "comparisons": comparisons,
     }
+
+    existing_generated_at = None
+    if OUT.exists():
+        try:
+            previous = json.loads(OUT.read_text(encoding="utf-8"))
+            previous_generated_at = previous.get("generated_at")
+            previous_without_time = dict(previous)
+            previous_without_time.pop("generated_at", None)
+            current_without_time = dict(output)
+            current_without_time.pop("generated_at", None)
+            if previous_without_time == current_without_time:
+                existing_generated_at = previous_generated_at
+        except (OSError, json.JSONDecodeError):
+            pass
+
+    output["generated_at"] = (
+        existing_generated_at
+        or datetime.now(timezone.utc).isoformat(timespec="seconds")
+    )
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(output, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
