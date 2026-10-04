@@ -65,7 +65,7 @@ def compute_row(record, obs_dates, obs_vals):
     if base_idx < 0:
         return None  # 系列の開始より前のイベント
     base = obs_vals[base_idx]
-    if base == 0:
+    if base <= 0:
         return None
     row = {"base_date": obs_dates[base_idx]}
     for n in HORIZONS:
