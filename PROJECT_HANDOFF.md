@@ -282,3 +282,26 @@ research-data/validation/fortune_validation_summary.json
 を実データとしてレビューする段階。
 
 ここから先は、結果を見て都合よく検定ルールを変更しないこと。
+
+
+## 15. 2026/10/04 統計レビュー更新
+
+Claude AIによる統計レビューを実施し、以下を確認した。
+
+- 現行のpermutation実装は統計的に妥当。計算ロジックは変更しない。
+- 60検定、10,000回、seed=20261003、Bonferroni×60は維持。
+- 5D/20Dの重複windowは研究上の限界としてmetadataに明記する。
+- normal日は「検定対象のevent typeが発生していないFRED実観測日」と明記する。
+- permutation_unitは、return値を無作為化する実装に合わせて説明を修正する。
+- WTI等の基準価格が0以下の場合を除外するガードをsummarize_fortune.py / validate_fortune.pyへ反映した。
+- summaryにevent_null_count / normal_null_countを追加した。
+- generated_atだけの差では毎回コミットされないよう、実質的な出力変更がない場合は既存generated_atを維持する処理を追加した。
+
+今回のコード変更後SHA:
+- scripts/summarize_fortune.py: fe9994b39322b5c7f43517541a2585096888e0d7
+- scripts/validate_fortune.py: 0a111babb6545dc3569cd5f7eb61b9ecb8223918
+
+未完了:
+- Validate Fortuneを再実行し、WTIガードによる既存イベント行の差分が0であることを確認する。
+- その後Summarize Fortuneを実行し、summaryのnull件数・統計結果・60検定を再確認する。
+- 変更後のsummaryが実質的に変化しない場合、generated_atだけを理由としたコミットが発生しないことを確認する。
