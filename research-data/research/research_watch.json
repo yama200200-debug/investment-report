@@ -164,5 +164,25 @@
       "trading strategy"
     ],
     "retrieved_at": "2026-10-02T14:04:26+09:00"
+  },
+  {
+    "schema_version": 1,
+    "source": "quantpedia",
+    "guid": "https://quantpedia.com/?p=46716",
+    "title": "A Century of Meme Stocks and the Price of Coordination",
+    "url": "https://quantpedia.com/a-century-of-meme-stocks-and-the-price-of-coordination/",
+    "published": "2026-10-05T13:17:13+00:00",
+    "categories": [
+      "Uncategorized",
+      "alternative data",
+      "factor investing",
+      "LLM",
+      "machine learning",
+      "meme stocks",
+      "sentiment",
+      "smart beta",
+      "stock picking"
+    ],
+    "retrieved_at": "2026-10-06T11:26:26+09:00"
   }
 ]
