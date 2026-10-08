@@ -184,5 +184,23 @@
       "stock picking"
     ],
     "retrieved_at": "2026-10-06T11:26:26+09:00"
+  },
+  {
+    "schema_version": 1,
+    "source": "quantpedia",
+    "guid": "https://quantpedia.com/?p=46901",
+    "title": "Trading the Multi-Asset Drift Around U.S. Elections",
+    "url": "https://quantpedia.com/trading-the-multi-asset-drift-around-u-s-elections/",
+    "published": "2026-10-07T15:48:19+00:00",
+    "categories": [
+      "Uncategorized",
+      "calendar anomaly",
+      "calendar effect",
+      "elections",
+      "market timing",
+      "own-research",
+      "seasonality"
+    ],
+    "retrieved_at": "2026-10-08T11:12:28+09:00"
   }
 ]
