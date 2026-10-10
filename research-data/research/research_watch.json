@@ -202,5 +202,29 @@
       "seasonality"
     ],
     "retrieved_at": "2026-10-08T11:12:28+09:00"
+  },
+  {
+    "schema_version": 1,
+    "source": "quantpedia",
+    "guid": "https://quantpedia.com/?p=47245",
+    "title": "Quantpedia Premium Post – October 8th",
+    "url": "https://quantpedia.com/quantpedia-premium-post-october-8th/",
+    "published": "2026-10-08T06:16:58+00:00",
+    "categories": [
+      "Uncategorized"
+    ],
+    "retrieved_at": "2026-10-10T10:52:26+09:00"
+  },
+  {
+    "schema_version": 1,
+    "source": "quantpedia",
+    "guid": "https://quantpedia.com/?p=47199",
+    "title": "Quantpedia in September 2026",
+    "url": "https://quantpedia.com/quantpedia-in-september-2026/",
+    "published": "2026-10-09T06:21:34+00:00",
+    "categories": [
+      "Uncategorized"
+    ],
+    "retrieved_at": "2026-10-10T10:52:26+09:00"
   }
 ]
