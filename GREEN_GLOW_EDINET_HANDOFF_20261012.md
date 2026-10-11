@@ -1,68 +1,64 @@
-# GREEN GLOW EDINET MVP 引継ぎ（2026-10-12）
+# GREEN GLOW EDINET MVP 引継ぎ（2026-10-12・最新状態）
 
 再開キーワード：**GREEN GLOW再開**
 
-## 現在の作業
-Windows PC 上で EDINET MVP の小規模試験を準備中。まだ EDINET への接続・実データ取得は実行していない。
+## 現在地
+Windows PC の C:\GREEN_GLOW_EDINET で EDINET MVP の P2 小規模試験を準備中。**EDINET API への実データ取得はまだ一度も実行していない。実行ボタン／コマンドはまだ押さない。**
 
-## 承認範囲と禁止事項
-- 実行環境：ユーザー自身の Windows PC
-- 取得対象：P2 のみ（2024-08-01〜2024-08-31）
-- ユーザーは、この範囲での実行・実データ取得を承認済み
-- コード変更、GitHub Actions 登録、保留事項の解決は別途承認なしに行わない
-- APIキーをチャットやGitHubに貼らない。キーの値を出力・保存しない
-- 既存データや既存ファイルを推測で変更しない
+## 承認範囲・守るルール
+- 対象は P2 のみ：2024-08-01〜2024-08-31。
+- ユーザーは P2 のローカル小規模試験を承認済み。ただし、現在の実行ガード設定は未承認状態に戻してあり、コード確認後に最終判断する。
+- コード変更、GitHub Actions 登録、P1への拡張、M1〜M4など保留事項の解決は別途承認なしに行わない。
+- APIキーをチャット・GitHub・スクリーンショットに表示／保存しない。値を尋ねない。
+- 既存の出力・ファイルを推測で変更・削除しない。エラー時は結果確認前に再実行しない。
+- 新しいチャットからPCや開いたPowerShellを直接操作することはできない。ユーザーが画面を見ながら一手ずつ進める。
 
-## Dropbox のスクリプト（確認済み）
-- `edinet_fetch.py` v3、7,672 bytes
-  - Dropboxフォルダ：`/AI産業サイクル/レビュー専用/20261010_mvp_split_v3/`
-- `edinet_parse.py` v3.1、12,720 bytes
-  - Dropboxフォルダ：`/AI産業サイクル/レビュー専用/20261010_mvp_split_v3_1/`
-- PC上の保存先：`C:\GREEN_GLOW_EDINET\`
-- PC上のファイルサイズは一致済み：fetch 7,672 bytes、parse 12,720 bytes
-- SHA-256照合は未実施。GitHubにはスクリプト未保存。
+## 確認済みスクリプト
+- edinet_fetch.py：Dropbox /AI産業サイクル/レビュー専用/20261010_mvp_split_v3/ の版、7,672 bytes。
+- edinet_parse.py：Dropbox /AI産業サイクル/レビュー専用/20261010_mvp_split_v3_1/ の版、12,720 bytes。**v3 フォルダー内の 12,545-byte 版は使用しない。**
+- ローカル保存先：C:\GREEN_GLOW_EDINET\。ローカルのファイルサイズは一致。Dropbox content_hash と照合した値も双方一致。ただし、これは別途計算したファイル SHA-256 とは区別する。
+- PowerShell の UTF-8 明示読み込みで日本語ソース表示を確認。既定表示での文字化けは表示エンコーディングの問題とみられる。
+- Python 3.15.0、仮想環境 .venv、requests 2.34.2、pandas 3.0.6。import は確認済みだが、スクリプト全体の実行互換性は未検証。
 
-## Windows PC の準備状況（ユーザーが実行して確認）
-- Python 3.15.0
-- 仮想環境：`C:\GREEN_GLOW_EDINET\.venv` 作成済み
-- `requests 2.34.2`、`pandas 3.0.6` のインストールと import 確認済み
-- PowerShell の現在のセッションで以下を設定済み：
-  - `EDINET_WINDOWS=P2`
-  - `APPROVED_TO_RUN=YES`
-  - `EDINET_KEY` は設定済み（キー値はこのファイルに記録しない）
-- 重要：APIキーは現在のPowerShellセッションの環境変数に入っている。PowerShellを閉じると失われるため、次の作業を続ける場合はそのウィンドウを閉じないこと。新しいチャットからPCを直接操作することはできない。
+## 直近の実行状態（最重要）
+直近の安全状態チェック結果：
+- APPROVED_TO_RUN=YES：**False／未設定**
+- EDINET_WINDOWS=P2：P2
+- EDINET_KEY：PowerShell環境変数に設定済みと確認（キー値は記録しない）
+- 既存の edinet_raw_* 出力フォルダー：なし
+- EDINETへのリクエスト／取得：未実行
 
-## 次に行うこと（ここから再開）
-1. ユーザーの現在の PowerShell（`PS C:\GREEN_GLOW_EDINET>`）で、実行前の最終チェックを行う：
-```powershell
-if ($env:EDINET_WINDOWS -ne "P2") {
-    throw "停止：P2以外が指定されています"
-}
-if ($env:APPROVED_TO_RUN -ne "YES" -or -not $env:EDINET_KEY) {
-    throw "停止：実行承認またはAPIキーの設定を確認してください"
-}
-Write-Host "最終チェックOK：P2のみ"
-```
-2. 結果が `最終チェックOK：P2のみ` の場合のみ、承認済みP2取得を実行：
-```powershell
-.\.venv\Scripts\python.exe .\edinet_fetch.py
-```
-3. エラーや中断があった場合、結果を確認する前に再実行しない。APIキーを含む出力を共有しない。
-4. 実行後、表示された正確な `edinet_raw_...` フォルダ名を使って `run_info.json`、`manifest.csv`、raw JSON件数を点検する。成功しても完全性が保証されたとは扱わない。
-5. 取得結果をレビューしてから、初めてネットワーク接続をしないパーサーを実行する：
-```powershell
-.\.venv\Scripts\python.exe .\edinet_parse.py ".\edinet_raw_YYYYMMDD_HHMMSS"
-```
-`YYYYMMDD_HHMMSS` は実際のフォルダ名に置換する。実行前にユーザーへ結果確認を求める。
+**前の引継ぎ版にあった「APPROVED_TO_RUN=YES 設定済み」という記載は古い状態。現在は未設定が正しい。**
 
-## 未解決・未検証（勝手に解決しない）
-- SHA-256によるスクリプト照合
-- EDINET API のゼロ件日での `results` キーの公式挙動
-- preflight 応答の公式挙動
-- `docDescription` と文書種別コードの対応
-- M1〜M4
-- Python 3.15.0 とスクリプトの実行時互換性（依存ライブラリの import は成功したが、スクリプト全体の実行は未確認）
-- EDINET API の公式仕様・ホスト・取得データの完全性
+## 未適用のコード案
+ユーザーは「事前確認（preflight）が失敗したら、過去データの取得を続けず停止する」方針 A を選択した。以下は提案段階であり、**ファイルにはまだ適用していない**。
 
-## 再開時の指示
-キーワード「GREEN GLOW再開」と、このファイルの内容を参照して、まず現在の PowerShell が開いたままか確認する。次に実行前最終チェックを案内し、P2以外へ対象を拡張しない。既存コードの変更、Actions登録、未解決事項の解決は、ユーザーの別途承認なしに行わない。
+    PREFLIGHT = "PREFLIGHT_OK" if _pre == "OK_NOT_SAVED" else "PREFLIGHT_FAILED_UPDATE_RISK:" + str(_pre)
+
+    if _pre != "OK_NOT_SAVED":
+        raise Stop("事前確認失敗のため過去データ取得を停止: " + str(_pre))
+
+    fails = 0
+    for w in SEL:
+
+この案をそのまま適用する前に、停止時の終了コードと finally で manifest.csv／run_info.json が作られる挙動も確認する。ユーザーが画面上のどの「実行ボタン」を指しているか未確認のため、現時点では押さない。ユーザーがスクリーンショットを送る場合は APIキーや秘密情報を隠す。
+
+## 次チャットでの手順
+1. キーワード **「GREEN GLOW再開」** とこのファイルを参照し、まず現在の PowerShell が開いたままか、作業場所が C:\GREEN_GLOW_EDINET かを確認する。
+2. コード案が未適用であることを前提に、直前の質問「貼り付けていただいた実行ボタンを押してよいか」から再開する。画面のどのボタンか／スクリーンショットで確認するまで、実行を指示しない。
+3. まず preflight 失敗時停止の差分を静的に再確認し、必要なら終了コードや finally の動作を含めて提案を修正する。ユーザーの承認なしにファイル変更しない。
+4. 変更を行う場合も、変更前の該当箇所を確認し、最小差分だけをユーザーの明示承認後に適用する。
+5. 実行直前に EDINET_WINDOWS=P2、実行許可の状態、APIキーの有無をキー値を表示せず確認する。取得を実行する場合も P2 のみ。
+6. 取得後は実際に表示されたフォルダー名で run_info.json、manifest.csv、raw JSON 件数を点検する。結果をレビューしてから、ユーザー確認を得てネットワーク接続をしないパーサーを実行する。
+
+## 未解決・未検証
+- preflight 失敗時停止のコード案は未適用・未検証。
+- 停止時のプロセス終了コードと finally 出力の挙動。
+- スクリプトの SHA-256 を別途計算する照合。
+- EDINET API のゼロ件日の results キーの公式挙動、preflight応答の公式挙動。
+- docDescription と文書種別コードの対応。
+- M1〜M4、EDINET APIの公式仕様・取得データの完全性。
+- Python 3.15.0 とスクリプト全体の実行時互換性。
+
+## 再開指示
+「GREEN GLOW再開」と入力されたら、この引継ぎを読み、上記の現状から再開する。**未適用のコード案を適用済みと扱わない。実データ取得はまだ未実施。P2以外へ拡張しない。**
