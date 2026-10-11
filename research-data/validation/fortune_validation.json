@@ -9415,11 +9415,11 @@
   "series_id": "SP500",
   "series_name": "S&P500",
   "rule_version": "base_prev_close_v1",
-  "computed_at": "2026-10-02T18:43:10+09:00",
+  "computed_at": "2026-10-11T10:25:48+09:00",
   "base_date": "2026-09-10",
   "ret_1d_pct": 0.8599,
   "ret_5d_pct": 0.6067,
-  "ret_20d_pct": null
+  "ret_20d_pct": 2.2875
  },
  {
   "schema_version": 1,
@@ -14525,11 +14525,11 @@
   "series_id": "VIXCLS",
   "series_name": "VIX",
   "rule_version": "base_prev_close_v1",
-  "computed_at": "2026-10-02T18:43:10+09:00",
+  "computed_at": "2026-10-11T10:25:48+09:00",
   "base_date": "2026-09-10",
   "ret_1d_pct": -11.2108,
   "ret_5d_pct": -13.4529,
-  "ret_20d_pct": null
+  "ret_20d_pct": -13.6211
  },
  {
   "schema_version": 1,
@@ -14539,10 +14539,10 @@
   "series_id": "VIXCLS",
   "series_name": "VIX",
   "rule_version": "base_prev_close_v1",
-  "computed_at": "2026-10-02T18:43:10+09:00",
+  "computed_at": "2026-10-11T10:25:48+09:00",
   "base_date": "2026-09-25",
   "ret_1d_pct": 8.0699,
-  "ret_5d_pct": null,
+  "ret_5d_pct": 2.959,
   "ret_20d_pct": null
  },
  {
@@ -24745,10 +24745,24 @@
   "series_id": "DCOILWTICO",
   "series_name": "WTI原油",
   "rule_version": "base_prev_close_v1",
-  "computed_at": "2026-10-02T18:43:10+09:00",
+  "computed_at": "2026-10-11T10:25:48+09:00",
   "base_date": "2026-09-25",
   "ret_1d_pct": 16.5904,
-  "ret_5d_pct": null,
+  "ret_5d_pct": 14.8539,
+  "ret_20d_pct": null
+ },
+ {
+  "schema_version": 1,
+  "record_id": "astro-full_moon-20260926T1648Z",
+  "event": "full_moon",
+  "event_date_utc": "2026-09-26",
+  "series_id": "DEXJPUS",
+  "series_name": "USDJPY(円/ドル)",
+  "rule_version": "base_prev_close_v1",
+  "computed_at": "2026-10-11T10:25:48+09:00",
+  "base_date": "2026-09-25",
+  "ret_1d_pct": 0.1654,
+  "ret_5d_pct": 0.4008,
   "ret_20d_pct": null
  }
 ]
