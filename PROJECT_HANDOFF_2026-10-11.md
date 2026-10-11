@@ -176,4 +176,4 @@ Jina Reader、Firecrawl、Bright Data等を用いて、API/RSSのない経済・
 
 新しいチャットの最初に、次を送る：
 
-「**GREEN GLOW再開**。GitHubの `PROJECT_HANDOFF_2026-10-11.md`、`PROJECT_HANDOFF_2026-10-10.md`、`PROJECT_HANDOFF_2026-10-06.md)、`PROJECT_HANDOFF.md)、`AI_DEVELOPMENT_RULES.md`を確認し、GitHubの現在状態を再取得してから続けてください。DropboxのEDINET/SEC MVP v2フォルダーとClaudeの最新回答も確認してください。今の最優先方針は『第1段階：現在の開発を完成させる』です。私が伝える新しいアイデアの導入時期・優先順位は、完成への影響を考えてあなたが判断し、すぐ実装項目に追加せず保留候補も管理してください。まず現在状態、未完了事項、最優先タスク、次にやることを【結論】【手順】【注意】【次アクション】で報告してください。記載内容を盲目的に信用せず、推測で変更しないでください。既存コード・YAML・JSON・ノード・正式仕様を勝手に変更しないでください。」 
+「**GREEN GLOW再開**。GitHubの `PROJECT_HANDOFF_2026-10-11.md`、`PROJECT_HANDOFF_2026-10-10.md`、`PROJECT_HANDOFF_2026-10-06.md`, `PROJECT_HANDOFF.md`, `AI_DEVELOPMENT_RULES.md`を確認し、GitHubの現在状態を再取得してから続けてください。DropboxのEDINET/SEC MVP v2フォルダーとClaudeの最新回答も確認してください。今の最優先方針は『第1段階：現在の開発を完成させる』です。私が伝える新しいアイデアの導入時期・優先順位は、完成への影響を考えてあなたが判断し、すぐ実装項目に追加せず保留候補も管理してください。まず現在状態、未完了事項、最優先タスク、次にやることを【結論】【手順】【注意】【次アクション】で報告してください。記載内容を盲目的に信用せず、推測で変更しないでください。既存コード・YAML・JSON・ノード・正式仕様を勝手に変更しないでください。」 
