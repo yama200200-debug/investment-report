@@ -226,5 +226,22 @@
       "Uncategorized"
     ],
     "retrieved_at": "2026-10-10T10:52:26+09:00"
+  },
+  {
+    "schema_version": 1,
+    "source": "quantpedia",
+    "guid": "https://quantpedia.com/?p=46520",
+    "title": "Does More History Help? A Market-Regime HMM and the Trouble with Out-of-Sample Evaluation",
+    "url": "https://quantpedia.com/does-more-history-help-a-market-regime-hmm-and-the-trouble-with-out-of-sample-evaluation/",
+    "published": "2026-10-14T08:35:31+00:00",
+    "categories": [
+      "Uncategorized",
+      "asset allocation",
+      "cross-sectional trading",
+      "machine learning",
+      "market timing",
+      "own-research"
+    ],
+    "retrieved_at": "2026-10-15T09:45:30+09:00"
   }
 ]
