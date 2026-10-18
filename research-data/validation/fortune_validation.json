@@ -5089,11 +5089,11 @@
   "series_id": "NIKKEI225",
   "series_name": "日経平均",
   "rule_version": "base_prev_close_v1",
-  "computed_at": "2026-10-02T18:43:10+09:00",
+  "computed_at": "2026-10-18T09:31:45+09:00",
   "base_date": "2026-09-10",
   "ret_1d_pct": -1.9298,
   "ret_5d_pct": -1.7384,
-  "ret_20d_pct": null
+  "ret_20d_pct": 3.7893
  },
  {
   "schema_version": 1,
@@ -19635,11 +19635,11 @@
   "series_id": "DEXJPUS",
   "series_name": "USDJPY(円/ドル)",
   "rule_version": "base_prev_close_v1",
-  "computed_at": "2026-10-02T18:43:10+09:00",
+  "computed_at": "2026-10-18T09:31:45+09:00",
   "base_date": "2026-09-10",
   "ret_1d_pct": -0.2272,
   "ret_5d_pct": 1.1619,
-  "ret_20d_pct": null
+  "ret_20d_pct": 2.7716
  },
  {
   "schema_version": 1,
@@ -24731,11 +24731,11 @@
   "series_id": "DCOILWTICO",
   "series_name": "WTI原油",
   "rule_version": "base_prev_close_v1",
-  "computed_at": "2026-10-02T18:43:10+09:00",
+  "computed_at": "2026-10-18T09:31:45+09:00",
   "base_date": "2026-09-10",
   "ret_1d_pct": -2.2207,
   "ret_5d_pct": -0.3476,
-  "ret_20d_pct": null
+  "ret_20d_pct": -5.127
  },
  {
   "schema_version": 1,
@@ -24763,6 +24763,62 @@
   "base_date": "2026-09-25",
   "ret_1d_pct": 0.1654,
   "ret_5d_pct": 0.4008,
+  "ret_20d_pct": null
+ },
+ {
+  "schema_version": 1,
+  "record_id": "astro-new_moon-20261010T1550Z",
+  "event": "new_moon",
+  "event_date_utc": "2026-10-10",
+  "series_id": "NIKKEI225",
+  "series_name": "日経平均",
+  "rule_version": "base_prev_close_v1",
+  "computed_at": "2026-10-18T09:31:45+09:00",
+  "base_date": "2026-10-09",
+  "ret_1d_pct": -1.8157,
+  "ret_5d_pct": null,
+  "ret_20d_pct": null
+ },
+ {
+  "schema_version": 1,
+  "record_id": "astro-new_moon-20261010T1550Z",
+  "event": "new_moon",
+  "event_date_utc": "2026-10-10",
+  "series_id": "SP500",
+  "series_name": "S&P500",
+  "rule_version": "base_prev_close_v1",
+  "computed_at": "2026-10-18T09:31:45+09:00",
+  "base_date": "2026-10-09",
+  "ret_1d_pct": -0.055,
+  "ret_5d_pct": -1.9471,
+  "ret_20d_pct": null
+ },
+ {
+  "schema_version": 1,
+  "record_id": "astro-new_moon-20261010T1550Z",
+  "event": "new_moon",
+  "event_date_utc": "2026-10-10",
+  "series_id": "VIXCLS",
+  "series_name": "VIX",
+  "rule_version": "base_prev_close_v1",
+  "computed_at": "2026-10-18T09:31:45+09:00",
+  "base_date": "2026-10-09",
+  "ret_1d_pct": 2.4933,
+  "ret_5d_pct": null,
+  "ret_20d_pct": null
+ },
+ {
+  "schema_version": 1,
+  "record_id": "astro-new_moon-20261010T1550Z",
+  "event": "new_moon",
+  "event_date_utc": "2026-10-10",
+  "series_id": "DCOILWTICO",
+  "series_name": "WTI原油",
+  "rule_version": "base_prev_close_v1",
+  "computed_at": "2026-10-18T09:31:45+09:00",
+  "base_date": "2026-10-09",
+  "ret_1d_pct": 0.0,
+  "ret_5d_pct": null,
   "ret_20d_pct": null
  }
 ]
