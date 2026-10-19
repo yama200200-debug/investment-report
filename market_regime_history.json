@@ -1,1 +1,1 @@
-{"date": "2026年10月19日（月）", "market_regime_emoji_note": "【リスクオフ】", "driver_ranking": [{"label": "Fear & Greed", "stars": 5}, {"label": "相関シグナル", "stars": 4}, {"label": "US10Y（金利）", "stars": 3}, {"label": "NASDAQ", "stars": 3}, {"label": "CAPE（バリュエーション）", "stars": 3}], "total_score": 83, "alert": "危険"}
+{"date": "2026年10月20日（火）", "market_regime_emoji_note": "【中立】", "driver_ranking": [{"label": "US10Y（金利）", "stars": 3}, {"label": "CAPE（バリュエーション）", "stars": 3}, {"label": "Fear & Greed", "stars": 3}, {"label": "USDJPY", "stars": 3}], "total_score": 20, "alert": "注意"}
