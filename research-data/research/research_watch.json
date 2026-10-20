@@ -243,5 +243,21 @@
       "own-research"
     ],
     "retrieved_at": "2026-10-15T09:45:30+09:00"
+  },
+  {
+    "schema_version": 1,
+    "source": "quantpedia",
+    "guid": "https://quantpedia.com/?p=46715",
+    "title": "Bitcoin Runs on a Clock: Why Every Price Indicator Dies and the Halving Clock Doesn’t",
+    "url": "https://quantpedia.com/bitcoin-runs-on-a-clock-why-every-price-indicator-dies-and-the-halving-clock-doesnt/",
+    "published": "2026-10-19T11:29:06+00:00",
+    "categories": [
+      "Uncategorized",
+      "bitcoin",
+      "cryptocurrencies",
+      "halving",
+      "market timing"
+    ],
+    "retrieved_at": "2026-10-20T10:10:14+09:00"
   }
 ]
