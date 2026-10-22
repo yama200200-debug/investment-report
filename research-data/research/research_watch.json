@@ -259,5 +259,17 @@
       "market timing"
     ],
     "retrieved_at": "2026-10-20T10:10:14+09:00"
+  },
+  {
+    "schema_version": 1,
+    "source": "quantpedia",
+    "guid": "https://quantpedia.com/?p=47297",
+    "title": "Quantpedia Premium Post – October 21st",
+    "url": "https://quantpedia.com/quantpedia-premium-post-october-21st/",
+    "published": "2026-10-21T15:00:28+00:00",
+    "categories": [
+      "Uncategorized"
+    ],
+    "retrieved_at": "2026-10-22T09:50:08+09:00"
   }
 ]
