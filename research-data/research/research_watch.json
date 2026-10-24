@@ -271,5 +271,25 @@
       "Uncategorized"
     ],
     "retrieved_at": "2026-10-22T09:50:08+09:00"
+  },
+  {
+    "schema_version": 1,
+    "source": "quantpedia",
+    "guid": "https://quantpedia.com/?p=47163",
+    "title": "Shorting Leveraged ETFs: The Role of Borrowing Costs and Rebalancing in Volatility-Decay Strategies",
+    "url": "https://quantpedia.com/shorting-leveraged-etfs-the-role-of-borrowing-costs-and-rebalancing-in-volatility-decay-strategies/",
+    "published": "2026-10-23T13:49:20+00:00",
+    "categories": [
+      "Uncategorized",
+      "arbitrage",
+      "backtesting",
+      "leveraged ETFs",
+      "own-research",
+      "tech stocks",
+      "triple leveraged ETF",
+      "volatility effect",
+      "volatility premium"
+    ],
+    "retrieved_at": "2026-10-24T09:58:13+09:00"
   }
 ]
