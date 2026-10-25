@@ -24773,10 +24773,10 @@
   "series_id": "NIKKEI225",
   "series_name": "日経平均",
   "rule_version": "base_prev_close_v1",
-  "computed_at": "2026-10-18T09:31:45+09:00",
+  "computed_at": "2026-10-25T09:42:57+09:00",
   "base_date": "2026-10-09",
   "ret_1d_pct": -1.8157,
-  "ret_5d_pct": null,
+  "ret_5d_pct": -5.96,
   "ret_20d_pct": null
  },
  {
@@ -24801,10 +24801,10 @@
   "series_id": "VIXCLS",
   "series_name": "VIX",
   "rule_version": "base_prev_close_v1",
-  "computed_at": "2026-10-18T09:31:45+09:00",
+  "computed_at": "2026-10-25T09:42:57+09:00",
   "base_date": "2026-10-09",
   "ret_1d_pct": 2.4933,
-  "ret_5d_pct": null,
+  "ret_5d_pct": 34.7035,
   "ret_20d_pct": null
  },
  {
@@ -24815,9 +24815,23 @@
   "series_id": "DCOILWTICO",
   "series_name": "WTI原油",
   "rule_version": "base_prev_close_v1",
-  "computed_at": "2026-10-18T09:31:45+09:00",
+  "computed_at": "2026-10-25T09:42:57+09:00",
   "base_date": "2026-10-09",
-  "ret_1d_pct": 0.0,
+  "ret_1d_pct": -3.7881,
+  "ret_5d_pct": 9.6019,
+  "ret_20d_pct": null
+ },
+ {
+  "schema_version": 1,
+  "record_id": "astro-new_moon-20261010T1550Z",
+  "event": "new_moon",
+  "event_date_utc": "2026-10-10",
+  "series_id": "DEXJPUS",
+  "series_name": "USDJPY(円/ドル)",
+  "rule_version": "base_prev_close_v1",
+  "computed_at": "2026-10-25T09:42:57+09:00",
+  "base_date": "2026-10-09",
+  "ret_1d_pct": 0.0126,
   "ret_5d_pct": null,
   "ret_20d_pct": null
  }
