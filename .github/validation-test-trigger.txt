@@ -1,0 +1,2 @@
+This file is an explicit trigger for the isolated Fortune validator comparison workflow.
+Do not update it until the approved test window after checking main SHA and active workflows.
