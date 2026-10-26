@@ -137,6 +137,18 @@ def main():
                         errors.append(
                             f"existing metadata changed in candidate: row[{index}].{field}"
                         )
+                if filled_in_new:
+                    expected_computed_at = fixed_utc.astimezone(
+                        timezone(__import__("datetime").timedelta(hours=9))
+                    ).isoformat(timespec="seconds")
+                    if new.get("computed_at") != expected_computed_at:
+                        errors.append(
+                            f"computed_at not set to fixed time on filled row: row[{index}]"
+                        )
+                elif new.get("computed_at") != baseline.get("computed_at"):
+                    errors.append(
+                        f"computed_at changed without filling a null: row[{index}]"
+                    )
             for field in old:
                 if old[field] == new[field]:
                     continue
@@ -157,8 +169,15 @@ def main():
                     f"old={old_value!r} new={new_value!r}"
                 )
 
-    # Verify field structure against the initial JSON for every pre-existing row.
+    # Verify field structure and relative order against the initial JSON for every pre-existing row.
     new_by_key = {key_for(row): row for row in new_rows if isinstance(row, dict)}
+    initial_order = [key_for(row) for row in initial_rows if isinstance(row, dict)]
+    candidate_existing_order = [
+        key_for(row) for row in new_rows
+        if isinstance(row, dict) and key_for(row) in initial_by_key
+    ]
+    if candidate_existing_order != initial_order:
+        errors.append("pre-existing row order changed in candidate")
     for key, baseline in initial_by_key.items():
         candidate = new_by_key.get(key)
         if candidate is None:
