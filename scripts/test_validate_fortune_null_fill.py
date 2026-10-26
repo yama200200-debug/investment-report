@@ -8,7 +8,7 @@ import os
 import shutil
 import sys
 import tempfile
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 ROOT = Path.cwd()
@@ -139,7 +139,7 @@ def main():
                         )
                 if filled_in_new:
                     expected_computed_at = fixed_utc.astimezone(
-                        timezone(__import__("datetime").timedelta(hours=9))
+                        timezone(timedelta(hours=9))
                     ).isoformat(timespec="seconds")
                     if new.get("computed_at") != expected_computed_at:
                         errors.append(
