@@ -119,8 +119,6 @@ def main():
         for rec in records:
             k = (rec["record_id"], sid)
             old = rows[index[k]] if k in index else None
-            if old is not None and is_complete(old):
-                continue  # 確定済みは変更しない
             res = compute_row(rec, dates, vals)
             if res is None:
                 continue
@@ -140,8 +138,62 @@ def main():
                 index[k] = len(rows) - 1
                 created += 1
             else:
-                if any(old.get(f"ret_{n}d_pct") != new.get(f"ret_{n}d_pct") for n in HORIZONS):
-                    rows[index[k]] = new
+                # 既存行の構造が想定と異なる場合は、補完前に報告して変更しない。
+                metadata_fields = (
+                    "schema_version",
+                    "record_id",
+                    "event",
+                    "event_date_utc",
+                    "series_id",
+                    "series_name",
+                    "rule_version",
+                    "base_date",
+                )
+                return_fields = tuple(f"ret_{n}d_pct" for n in HORIZONS)
+                required_fields = metadata_fields + ("computed_at",) + return_fields
+                missing_fields = [field for field in required_fields if field not in old]
+                if missing_fields:
+                    print(
+                        "WARN: 必須フィールド欠落のため既存行を変更せずスキップ "
+                        f"record_id={k[0]} series_id={sid} "
+                        f"missing_fields={','.join(missing_fields)}"
+                    )
+                    continue
+
+                metadata_mismatches = [
+                    field for field in metadata_fields
+                    if old.get(field) != new.get(field)
+                ]
+                if metadata_mismatches:
+                    print(
+                        "WARN: メタデータ不一致のため既存行を変更せずスキップ "
+                        f"record_id={k[0]} series_id={sid} "
+                        f"metadata_mismatch={','.join(metadata_mismatches)}"
+                    )
+                    continue
+
+                # 非 null の既存値は保持し、不一致だけをログに記録する。
+                # null の値だけを補完し、フィールド構造は変更しない。
+                filled_fields = []
+                for field in return_fields:
+                    old_value = old[field]
+                    new_value = new[field]
+                    if old_value is not None:
+                        if old_value != new_value:
+                            print(
+                                "WARN: 確定値と再計算値が不一致 "
+                                f"record_id={k[0]} series_id={sid} "
+                                f"field={field} existing={old_value} "
+                                f"recomputed={new_value}; 既存値を保持"
+                            )
+                        continue
+                    if new_value is not None:
+                        rows[index[k]][field] = new_value
+                        filled_fields.append(field)
+
+                # 実際に null を補完した行だけ computed_at を更新する。
+                if filled_fields:
+                    rows[index[k]]["computed_at"] = computed_at
                     updated += 1
         time.sleep(0.5)
 
