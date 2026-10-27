@@ -1,0 +1,62 @@
+name: Fortune Validator Protection Tests (Isolated)
+
+on:
+  push:
+    branches:
+      - test/fortune-null-fill-20261027
+    paths:
+      - scripts/test_validate_fortune_protection.py
+
+permissions:
+  contents: read
+
+concurrency:
+  group: fortune-validator-protection-tests
+  cancel-in-progress: false
+
+jobs:
+  protection-tests:
+    runs-on: ubuntu-latest
+    env:
+      EXPECTED_MAIN_SHA: b1292de48cb09d2b52acecf3957c852f72927720
+    steps:
+      - name: Checkout test branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify main SHA before tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main --no-tags
+          actual="$(git rev-parse origin/main)"
+          echo "main SHA before tests: $actual"
+          if [[ "$actual" != "$EXPECTED_MAIN_SHA" ]]; then
+            echo "ERROR: main SHA differs from the approved baseline; tests aborted."
+            exit 1
+          fi
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile candidate and dedicated tests
+        run: python -m py_compile scripts/validate_fortune.py scripts/test_validate_fortune_protection.py
+
+      - name: Run isolated protection tests
+        run: python scripts/test_validate_fortune_protection.py
+
+      - name: Verify main SHA after tests
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main --no-tags
+          actual="$(git rev-parse origin/main)"
+          echo "main SHA after tests: $actual"
+          if [[ "$actual" != "$EXPECTED_MAIN_SHA" ]]; then
+            echo "ERROR: main SHA changed during tests."
+            exit 1
+          fi
