@@ -1,0 +1,91 @@
+name: Fortune Validator Null-Fill Comparison (Test Only)
+
+on:
+  push:
+    branches:
+      - test/fortune-null-fill-20261027
+    paths:
+      - .github/validation-test-trigger.txt
+
+permissions:
+  contents: read
+
+concurrency:
+  group: fortune-validator-null-fill-test
+  cancel-in-progress: false
+
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    env:
+      EXPECTED_MAIN_SHA: b1292de48cb09d2b52acecf3957c852f72927720
+    steps:
+      - name: Checkout test branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify main SHA before test
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main --no-tags
+          actual="$(git rev-parse origin/main)"
+          echo "main SHA before test: $actual"
+          if [[ "$actual" != "$EXPECTED_MAIN_SHA" ]]; then
+            echo "ERROR: main SHA differs from the approved baseline; test aborted."
+            exit 1
+          fi
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install pyflakes and check validator names
+        run: |
+          python -m pip install pyflakes
+          pyflakes scripts/validate_fortune.py
+
+      - name: Compile validator and harness
+        run: python -m py_compile scripts/validate_fortune.py scripts/test_validate_fortune_null_fill.py
+
+      - name: Extract approved old validator
+        shell: bash
+        run: |
+          set -euo pipefail
+          git show "${EXPECTED_MAIN_SHA}:scripts/validate_fortune.py" > "$RUNNER_TEMP/validate_fortune_old.py"
+          test -s "$RUNNER_TEMP/validate_fortune_old.py"
+
+      - name: Compare old and candidate with one frozen FRED snapshot
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          OLD_VALIDATE_SCRIPT_PATH: ${{ runner.temp }}/validate_fortune_old.py
+        run: python scripts/test_validate_fortune_null_fill.py
+
+      - name: Verify main SHA after test
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main --no-tags
+          actual="$(git rev-parse origin/main)"
+          echo "main SHA after test: $actual"
+          if [[ "$actual" != "$EXPECTED_MAIN_SHA" ]]; then
+            echo "ERROR: main SHA changed during test."
+            exit 1
+          fi
+
+      - name: Upload comparison outputs and logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fortune-validator-null-fill-comparison
+          path: |
+            artifacts/fortune_validation_old.json
+            artifacts/fortune_validation_new.json
+            artifacts/fred_snapshot.json
+            artifacts/comparison_report.json
+            artifacts/run_logs.txt
+          if-no-files-found: warn
+          retention-days: 14
