@@ -18,7 +18,7 @@ jobs:
   compare:
     runs-on: ubuntu-latest
     env:
-      EXPECTED_MAIN_SHA: fcd0b0188413e8f24006e0ed66f0151fb2f3ca9d
+      EXPECTED_MAIN_SHA: b1292de48cb09d2b52acecf3957c852f72927720
     steps:
       - name: Checkout test branch
         uses: actions/checkout@v4
