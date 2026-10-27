@@ -5103,11 +5103,11 @@
   "series_id": "NIKKEI225",
   "series_name": "日経平均",
   "rule_version": "base_prev_close_v1",
-  "computed_at": "2026-10-04T11:17:28+09:00",
+  "computed_at": "2026-10-27T10:39:21+09:00",
   "base_date": "2026-09-25",
   "ret_1d_pct": -0.7332,
   "ret_5d_pct": 2.9312,
-  "ret_20d_pct": null
+  "ret_20d_pct": -6.2904
  },
  {
   "schema_version": 1,
@@ -9429,11 +9429,11 @@
   "series_id": "SP500",
   "series_name": "S&P500",
   "rule_version": "base_prev_close_v1",
-  "computed_at": "2026-10-04T11:17:28+09:00",
+  "computed_at": "2026-10-27T10:39:21+09:00",
   "base_date": "2026-09-25",
   "ret_1d_pct": -0.7712,
   "ret_5d_pct": -0.2672,
-  "ret_20d_pct": null
+  "ret_20d_pct": -1.5462
  },
  {
   "schema_version": 1,
@@ -14539,11 +14539,11 @@
   "series_id": "VIXCLS",
   "series_name": "VIX",
   "rule_version": "base_prev_close_v1",
-  "computed_at": "2026-10-11T10:25:48+09:00",
+  "computed_at": "2026-10-27T10:39:21+09:00",
   "base_date": "2026-09-25",
   "ret_1d_pct": 8.0699,
   "ret_5d_pct": 2.959,
-  "ret_20d_pct": null
+  "ret_20d_pct": 30.8003
  },
  {
   "schema_version": 1,
@@ -24829,9 +24829,37 @@
   "series_id": "DEXJPUS",
   "series_name": "USDJPY(円/ドル)",
   "rule_version": "base_prev_close_v1",
-  "computed_at": "2026-10-25T09:42:57+09:00",
+  "computed_at": "2026-10-27T10:39:21+09:00",
   "base_date": "2026-10-09",
   "ret_1d_pct": 0.0126,
+  "ret_5d_pct": 0.0947,
+  "ret_20d_pct": null
+ },
+ {
+  "schema_version": 1,
+  "record_id": "astro-mercury_retrograde_start-20261024T0709Z",
+  "event": "mercury_retrograde_start",
+  "event_date_utc": "2026-10-24",
+  "series_id": "NIKKEI225",
+  "series_name": "日経平均",
+  "rule_version": "base_prev_close_v1",
+  "computed_at": "2026-10-27T10:39:21+09:00",
+  "base_date": "2026-10-23",
+  "ret_1d_pct": -0.8031,
+  "ret_5d_pct": null,
+  "ret_20d_pct": null
+ },
+ {
+  "schema_version": 1,
+  "record_id": "astro-full_moon-20261026T0411Z",
+  "event": "full_moon",
+  "event_date_utc": "2026-10-26",
+  "series_id": "NIKKEI225",
+  "series_name": "日経平均",
+  "rule_version": "base_prev_close_v1",
+  "computed_at": "2026-10-27T10:39:21+09:00",
+  "base_date": "2026-10-23",
+  "ret_1d_pct": -0.8031,
   "ret_5d_pct": null,
   "ret_20d_pct": null
  }
