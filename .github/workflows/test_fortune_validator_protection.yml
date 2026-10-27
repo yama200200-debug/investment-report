@@ -5,6 +5,7 @@ on:
     branches:
       - test/fortune-null-fill-20261027
     paths:
+      - .github/workflows/test_fortune_validator_protection.yml
       - scripts/validate_fortune.py
       - scripts/test_validate_fortune_protection.py
 
