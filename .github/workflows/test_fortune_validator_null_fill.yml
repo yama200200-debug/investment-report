@@ -18,7 +18,8 @@ jobs:
   compare:
     runs-on: ubuntu-latest
     env:
-      EXPECTED_MAIN_SHA: b1292de48cb09d2b52acecf3957c852f72927720
+      EXPECTED_MAIN_SHA: 23be712d4ce8c93350fbe0dcb2e0dca42a01b0e0
+      BASELINE_SHA: b1292de48cb09d2b52acecf3957c852f72927720
     steps:
       - name: Checkout test branch
         uses: actions/checkout@v4
@@ -54,7 +55,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          git show "${EXPECTED_MAIN_SHA}:scripts/validate_fortune.py" > "$RUNNER_TEMP/validate_fortune_old.py"
+          git show "${BASELINE_SHA}:scripts/validate_fortune.py" > "$RUNNER_TEMP/validate_fortune_old.py"
           test -s "$RUNNER_TEMP/validate_fortune_old.py"
 
       - name: Compare old and candidate with one frozen FRED snapshot
