@@ -20,7 +20,7 @@ jobs:
   protection-tests:
     runs-on: ubuntu-latest
     env:
-      EXPECTED_MAIN_SHA: b1292de48cb09d2b52acecf3957c852f72927720
+      EXPECTED_MAIN_SHA: 23be712d4ce8c93350fbe0dcb2e0dca42a01b0e0
     steps:
       - name: Checkout test branch
         uses: actions/checkout@v4
