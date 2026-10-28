@@ -291,5 +291,24 @@
       "volatility premium"
     ],
     "retrieved_at": "2026-10-24T09:58:13+09:00"
+  },
+  {
+    "schema_version": 1,
+    "source": "quantpedia",
+    "guid": "https://quantpedia.com/?p=46244",
+    "title": "Custom Strategy Grading with Quantpedia API",
+    "url": "https://quantpedia.com/custom-strategy-grading-with-quantpedia-api/",
+    "published": "2026-10-27T13:33:27+00:00",
+    "categories": [
+      "Uncategorized",
+      "benchmarking",
+      "factor allocation",
+      "own-research",
+      "peer group",
+      "quantpedia API",
+      "strategy grading",
+      "trading strategy"
+    ],
+    "retrieved_at": "2026-10-28T10:34:04+09:00"
   }
 ]
