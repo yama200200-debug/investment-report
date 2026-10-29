@@ -24745,11 +24745,11 @@
   "series_id": "DCOILWTICO",
   "series_name": "WTI原油",
   "rule_version": "base_prev_close_v1",
-  "computed_at": "2026-10-11T10:25:48+09:00",
+  "computed_at": "2026-10-29T10:58:39+09:00",
   "base_date": "2026-09-25",
   "ret_1d_pct": 16.5904,
   "ret_5d_pct": 14.8539,
-  "ret_20d_pct": null
+  "ret_20d_pct": 28.734
  },
  {
   "schema_version": 1,
@@ -24916,6 +24916,34 @@
   "computed_at": "2026-10-28T10:50:17+09:00",
   "base_date": "2026-10-23",
   "ret_1d_pct": -5.4499,
+  "ret_5d_pct": null,
+  "ret_20d_pct": null
+ },
+ {
+  "schema_version": 1,
+  "record_id": "astro-mercury_retrograde_start-20261024T0709Z",
+  "event": "mercury_retrograde_start",
+  "event_date_utc": "2026-10-24",
+  "series_id": "DCOILWTICO",
+  "series_name": "WTI原油",
+  "rule_version": "base_prev_close_v1",
+  "computed_at": "2026-10-29T10:58:39+09:00",
+  "base_date": "2026-10-23",
+  "ret_1d_pct": -4.074,
+  "ret_5d_pct": null,
+  "ret_20d_pct": null
+ },
+ {
+  "schema_version": 1,
+  "record_id": "astro-full_moon-20261026T0411Z",
+  "event": "full_moon",
+  "event_date_utc": "2026-10-26",
+  "series_id": "DCOILWTICO",
+  "series_name": "WTI原油",
+  "rule_version": "base_prev_close_v1",
+  "computed_at": "2026-10-29T10:58:39+09:00",
+  "base_date": "2026-10-23",
+  "ret_1d_pct": -4.074,
   "ret_5d_pct": null,
   "ret_20d_pct": null
  }
