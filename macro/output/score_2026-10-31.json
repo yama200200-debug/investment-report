@@ -1,0 +1,219 @@
+{
+ "generated_at": "2026-10-31T14:03:41",
+ "source_raw": "output/raw_2026-10-31.json",
+ "total_score": 70.7,
+ "coverage_pct": 78.9,
+ "note": "全体が仮置き。点数が高いほどリスクが高い。重みは仮置き・自動変更なし",
+ "records": [
+  {
+   "id": "PCEPILFE",
+   "weight": 1.0,
+   "status": "ok",
+   "score": 93.8,
+   "latest": 3.1212,
+   "transform": "yoy",
+   "reason": "前年比%",
+   "tag": ""
+  },
+  {
+   "id": "CPILFESL",
+   "weight": 1.0,
+   "status": "ok",
+   "score": 23.9,
+   "latest": 2.5658,
+   "transform": "yoy",
+   "reason": "前年比%",
+   "tag": ""
+  },
+  {
+   "id": "PAYEMS",
+   "weight": 1.0,
+   "status": "ok",
+   "score": 56.2,
+   "latest": 0.3128,
+   "transform": "yoy",
+   "reason": "前年比%",
+   "tag": ""
+  },
+  {
+   "id": "INDPRO",
+   "weight": 1.0,
+   "status": "ok",
+   "score": 2.1,
+   "latest": 2.2452,
+   "transform": "yoy",
+   "reason": "前年比%",
+   "tag": ""
+  },
+  {
+   "id": "PMAIZMTUSDM",
+   "weight": 1.0,
+   "status": "ok",
+   "score": 93.8,
+   "latest": 20.7856,
+   "transform": "yoy",
+   "reason": "前年比%",
+   "tag": ""
+  },
+  {
+   "id": "PWHEAMTUSDM",
+   "weight": 1.0,
+   "status": "ok",
+   "score": 97.9,
+   "latest": 59.141,
+   "transform": "yoy",
+   "reason": "前年比%",
+   "tag": ""
+  },
+  {
+   "id": "PSOYBUSDM",
+   "weight": 1.0,
+   "status": "ok",
+   "score": 97.9,
+   "latest": 30.6988,
+   "transform": "yoy",
+   "reason": "前年比%",
+   "tag": ""
+  },
+  {
+   "id": "UNRATE",
+   "weight": 1.0,
+   "status": "ok",
+   "score": 57.1,
+   "latest": 4.2,
+   "transform": "level",
+   "reason": "水準",
+   "tag": ""
+  },
+  {
+   "id": "FEDFUNDS",
+   "weight": 1.0,
+   "status": "ok",
+   "score": 26.4,
+   "latest": 3.75,
+   "transform": "level",
+   "reason": "水準",
+   "tag": ""
+  },
+  {
+   "id": "DGS2",
+   "weight": 1.0,
+   "status": "ok",
+   "score": 80.8,
+   "latest": 4.61,
+   "transform": "level",
+   "reason": "水準",
+   "tag": ""
+  },
+  {
+   "id": "LONG_RATE",
+   "weight": 1.0,
+   "status": "ok",
+   "score": 96.3,
+   "latest": 4.98,
+   "transform": "level",
+   "reason": "水準",
+   "tag": ""
+  },
+  {
+   "id": "BAMLH0A0HYM2",
+   "weight": 1.0,
+   "status": "ok",
+   "score": 78.1,
+   "latest": 3.26,
+   "transform": "level",
+   "reason": "水準",
+   "tag": ""
+  },
+  {
+   "id": "VIX",
+   "weight": 1.0,
+   "status": "ok",
+   "score": 61.8,
+   "latest": 17.2,
+   "transform": "level",
+   "reason": "水準",
+   "tag": ""
+  },
+  {
+   "id": "WTI",
+   "weight": 1.0,
+   "status": "ok",
+   "score": 96.3,
+   "latest": 103.37,
+   "transform": "level",
+   "reason": "水準",
+   "tag": ""
+  },
+  {
+   "id": "ONI",
+   "weight": 1.0,
+   "status": "ok",
+   "score": 98.5,
+   "latest": 2.16,
+   "transform": "level",
+   "reason": "水準",
+   "tag": ""
+  },
+  {
+   "id": "USDJPY",
+   "weight": 0.0,
+   "status": "ok",
+   "score": null,
+   "latest": null,
+   "transform": null,
+   "reason": "重み0(対象外または要確認)",
+   "tag": ""
+  },
+  {
+   "id": "TSMC_REV_MONTHLY",
+   "weight": 1.0,
+   "status": "ok",
+   "score": null,
+   "latest": null,
+   "transform": null,
+   "reason": "履歴なし(点数化せず)",
+   "tag": "AI・半導体枠: 仮置き・未検証"
+  },
+  {
+   "id": "TAIWAN_EXPORT_ORDERS",
+   "weight": 1.0,
+   "status": "missing",
+   "score": null,
+   "latest": null,
+   "transform": null,
+   "reason": "status=missing",
+   "tag": ""
+  },
+  {
+   "id": "CAPEX_GUIDANCE",
+   "weight": 1.0,
+   "status": "missing",
+   "score": null,
+   "latest": null,
+   "transform": null,
+   "reason": "status=missing",
+   "tag": ""
+  },
+  {
+   "id": "BDRY",
+   "weight": 1.0,
+   "status": "missing",
+   "score": null,
+   "latest": null,
+   "transform": null,
+   "reason": "status=missing",
+   "tag": ""
+  },
+  {
+   "id": "KBW_BKX",
+   "weight": 0.0,
+   "status": "excluded",
+   "score": null,
+   "latest": null,
+   "transform": null,
+   "reason": "重み0(対象外または要確認)",
+   "tag": ""
+  }
+ ]
+}
