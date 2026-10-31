@@ -66,6 +66,13 @@ jobs:
         working-directory: macro
         run: python digest_v1.py
 
+      - name: latest copy
+        working-directory: macro
+        run: |
+          src=$(ls output/macro_digest_2*.txt | sort | tail -n 1)
+          echo "source: $src"
+          cp "$src" output/macro_digest_latest.txt
+
       - name: commit and push
         run: |
           mapfile -t files < <(git ls-files --others --modified --exclude-standard -- 'macro/output/macro_digest_*.txt' 'macro/output/score_*.json')
