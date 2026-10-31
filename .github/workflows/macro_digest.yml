@@ -1,0 +1,101 @@
+name: macro_digest
+
+on:
+  schedule:
+    - cron: '30 22 * * 0-4'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: macro_digest
+  cancel-in-progress: false
+
+jobs:
+  run:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    env:
+      TZ: Asia/Tokyo
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: fetch
+        working-directory: macro
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
+        run: python macro_fetch_v3.py
+
+      - name: check ok count
+        working-directory: macro
+        run: |
+          mapfile -t raws < <(git ls-files --others --exclude-standard -- 'output/raw_*.json')
+          if [ ${#raws[@]} -ne 1 ]; then
+            echo "expected exactly 1 new raw file, found ${#raws[@]}"; exit 1
+          fi
+          python - "${raws[0]}" <<'PY'
+          import json, sys
+          f = sys.argv[1]
+          with open(f, encoding="utf-8") as fh:
+              data = json.load(fh)
+          if not isinstance(data, dict) or not isinstance(data.get("records"), list):
+              sys.exit("invalid raw JSON structure")
+          recs = data["records"]
+          if not all(isinstance(r, dict) for r in recs):
+              sys.exit("invalid record structure")
+          ok = sum(1 for r in recs if r.get("status") == "ok")
+          print("file:", f, "ok count:", ok, "/", len(recs))
+          if ok < 10:
+              sys.exit("ok count below threshold (10)")
+          PY
+
+      - name: score
+        working-directory: macro
+        run: python score_v1.py
+
+      - name: digest
+        working-directory: macro
+        run: python digest_v1.py
+
+      - name: commit and push
+        run: |
+          mapfile -t files < <(git ls-files --others --modified --exclude-standard -- 'macro/output/macro_digest_*.txt' 'macro/output/score_*.json')
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "no new or modified output files"; exit 1
+          fi
+          printf 'target: %s\n' "${files[@]}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "${files[@]}"
+          git commit -m "macro: digest $(date +%F)"
+          BR="${GITHUB_REF_NAME}"
+          for i in 1 2 3; do
+            if git push origin "HEAD:${BR}" 2>&1 | tee /tmp/push.log; [ "${PIPESTATUS[0]}" -eq 0 ]; then
+              exit 0
+            fi
+            echo "push failed (attempt $i of 3)"
+            if [ "$i" -eq 3 ]; then break; fi
+            git fetch origin "${BR}" || { echo "fetch failed"; exit 1; }
+            rc=0
+            git merge-base --is-ancestor "origin/${BR}" HEAD || rc=$?
+            if [ "$rc" -eq 0 ]; then
+              echo "remote not ahead: push rejected for another reason (see log above)"; exit 1
+            elif [ "$rc" -ne 1 ]; then
+              echo "merge-base error rc=$rc"; exit 1
+            fi
+            if ! git rebase "origin/${BR}"; then
+              git rebase --abort || echo "WARNING: rebase --abort failed"
+              echo "rebase conflict"; exit 1
+            fi
+            sleep 5
+          done
+          echo "push failed after 3 attempts"; exit 1
