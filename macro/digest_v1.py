@@ -1,4 +1,4 @@
-import json, glob, os
+﻿import json, glob, os
 
 NAMES = {
     "ONI": "ONI(エルニーニョ指標・太平洋の海面水温の平年差)",
@@ -58,9 +58,11 @@ top = sorted(items, key=lambda x: -x[0])[:5]
 low = sorted(items, key=lambda x: x[1])[:3]
 
 L = []
-L.append("【マクロ景気監視指数(仮置き)】" + day)
+L.append("【マクロ景気監視指数(傾向表示)】" + day)
 L.append("総合点: %s / データ充足率: %s%%" % (d.get("total_score"), d.get("coverage_pct")))
-L.append("注意: 点数は直近3年の中での位置であり、景気の予測値ではありません。重みは全項目均等の仮置きです。AI・半導体枠は仮置き・未検証です。")
+L.append("読み方: この点数は直近3年の中での位置を示すものです。景気や株価の予測値ではありません。")
+L.append("注意: 先行性は統計検証で確認できていません。5日・25日・200日先の数値予測は掲載しません。")
+L.append("補足: 重みは全項目均等の仮置きです。AI・半導体枠は仮置き・未検証です。")
 L.append("■ 高リスク側 上位5")
 for i, x in enumerate(top, 1):
     L.append("%d. %s" % (i, x[2]))
@@ -69,7 +71,6 @@ for i, x in enumerate(low, 1):
     L.append("%d. %s" % (i, x[2]))
 if unscored:
     L.append("■ 未計算: " + " / ".join(name(r) for r in unscored))
-L.append("■ 見通し(5日/25日/200日): 未設計")
 
 out = os.path.join("output", "macro_digest_" + day + ".txt")
 with open(out, "w", encoding="utf-8") as f:
