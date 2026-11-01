@@ -57,6 +57,25 @@ if gr:
 top = sorted(items, key=lambda x: -x[0])[:5]
 low = sorted(items, key=lambda x: x[1])[:3]
 
+SIGNALS = [
+    ("金利の重し", ("FEDFUNDS", "DGS2", "LONG_RATE"), 90.0),
+    ("物価・資源の重し", ("PCEPILFE", "CPILFESL", "WTI"), 85.0),
+    ("食料価格の重し", GRAINS, 85.0),
+]
+SHORT = {"PMAIZMTUSDM": "とうもろこし", "PWHEAMTUSDM": "小麦", "PSOYBUSDM": "大豆"}
+sc = {r["id"]: r["score"] for r in scored}
+sig_lines = []
+on_count = 0
+for sname, ids, th in SIGNALS:
+    if all(i in sc for i in ids):
+        avg = sum(sc[i] for i in ids) / len(ids)
+        on = avg >= th
+        on_count += 1 if on else 0
+        detail = " / ".join("%s %.1f点" % (SHORT.get(i, i), sc[i]) for i in ids)
+        sig_lines.append("・%s: %s(3項目平均 %.1f点・条件%.0f点以上) %s" % (sname, "点灯" if on else "非点灯", avg, th, detail))
+    else:
+        sig_lines.append("・%s: 計算不可(項目不足)" % sname)
+
 L = []
 L.append("【マクロ景気監視指数(傾向表示)】" + day)
 L.append("総合点: %s / データ充足率: %s%%" % (d.get("total_score"), d.get("coverage_pct")))
@@ -69,6 +88,9 @@ for i, x in enumerate(top, 1):
 L.append("■ 低リスク側 下位3")
 for i, x in enumerate(low, 1):
     L.append("%d. %s" % (i, x[2]))
+L.append("■ 観察シグナル(総合点には加算しません・点灯条件は仮置き)")
+L.extend(sig_lines)
+L.append("・重なり(2つ以上点灯): " + ("あり" if on_count >= 2 else "なし"))
 if unscored:
     L.append("■ 未計算: " + " / ".join(name(r) for r in unscored))
 
