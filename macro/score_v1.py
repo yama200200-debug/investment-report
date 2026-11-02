@@ -13,10 +13,10 @@ CFG = [
     ("UNRATE", "level", 1), ("FEDFUNDS", "level", 1),
     ("DGS2", "level", 1), ("LONG_RATE", "level", 1),
     ("BAMLH0A0HYM2", "level", 1), ("VIX", "level", 1), ("WTI", "level", 1),
-    ("ONI", "level", 1), ("USDJPY", "level", 0),
+    ("ONI", "level", 1), ("USDJPY", "level", -1),
 ]
 EXTRA = ["TSMC_REV_MONTHLY", "TAIWAN_EXPORT_ORDERS", "CAPEX_GUIDANCE", "BDRY", "KBW_BKX"]
-ZERO_W = ["USDJPY", "KBW_BKX"]
+ZERO_W = ["KBW_BKX"]
 AI_IDS = ["TSMC_REV_MONTHLY"]
 
 def yoy_series(h):

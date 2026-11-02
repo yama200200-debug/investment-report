@@ -1,4 +1,4 @@
-﻿import json, glob, os
+import json, glob, os
 
 NAMES = {
     "ONI": "ONI(エルニーニョ指標・太平洋の海面水温の平年差)",
@@ -13,7 +13,7 @@ NAMES = {
     "FEDFUNDS": "FEDFUNDS(米政策金利)",
     "BAMLH0A0HYM2": "BAMLH0A0HYM2(米ハイイールド債スプレッド)",
     "VIX": "VIX(恐怖指数)",
-    "USDJPY": "USDJPY(円ドル・向き未決定のため点数化対象外)",
+    "USDJPY": "USDJPY(円ドル・円高をリスクとする向き・仮置き)",
     "TSMC_REV_MONTHLY": "TSMC(月次売上)",
     "TAIWAN_EXPORT_ORDERS": "台湾輸出受注",
     "CAPEX_GUIDANCE": "設備投資ガイダンス",
