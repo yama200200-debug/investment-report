@@ -1,7 +1,7 @@
 {
- "generated_at": "2026-11-03T01:14:20",
+ "generated_at": "2026-11-03T12:33:41",
  "source_raw": "output/raw_2026-11-03.json",
- "total_score": 69.8,
+ "total_score": 69.6,
  "coverage_pct": 80.0,
  "note": "全体が仮置き。点数が高いほどリスクが高い。重みは仮置き・自動変更なし",
  "records": [
@@ -89,8 +89,8 @@
    "id": "FEDFUNDS",
    "weight": 1.0,
    "status": "ok",
-   "score": 27.1,
-   "latest": 3.75,
+   "score": 30.6,
+   "latest": 3.88,
    "transform": "level",
    "reason": "水準",
    "tag": ""
@@ -99,8 +99,8 @@
    "id": "DGS2",
    "weight": 1.0,
    "status": "ok",
-   "score": 81.2,
-   "latest": 4.61,
+   "score": 79.4,
+   "latest": 4.56,
    "transform": "level",
    "reason": "水準",
    "tag": ""
@@ -109,8 +109,8 @@
    "id": "LONG_RATE",
    "weight": 1.0,
    "status": "ok",
-   "score": 96.3,
-   "latest": 4.98,
+   "score": 95.3,
+   "latest": 4.94,
    "transform": "level",
    "reason": "水準",
    "tag": ""
@@ -159,8 +159,8 @@
    "id": "USDJPY",
    "weight": 1.0,
    "status": "ok",
-   "score": 29.1,
-   "latest": 156.87,
+   "score": 25.1,
+   "latest": 157.47,
    "transform": "level",
    "reason": "水準",
    "tag": ""
