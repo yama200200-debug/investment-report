@@ -26,3 +26,12 @@ jobs:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
           SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
         run: python macro_fetch_v4.py
+
+      - name: tsmc status check
+        run: |
+          curl -sS -m 30 -o /dev/null -D - \
+            -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36" \
+            -H "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" \
+            -H "Accept-Language: en-US,en;q=0.9" \
+            -H "Referer: https://investor.tsmc.com/english/monthly-revenue/2025" \
+            "https://investor.tsmc.com/english/monthly-revenue/2025" | head -n 20 || true
