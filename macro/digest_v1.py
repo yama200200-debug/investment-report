@@ -19,6 +19,11 @@ NAMES = {
     "CAPEX_GUIDANCE": "設備投資ガイダンス",
     "BDRY": "BDRY(海運ETF)",
     "KBW_BKX": "KBW(銀行指数・対象外)",
+    "TAIWAN_ORDERS_AUTO": "台湾輸出受注(自動取得・表示のみ)",
+    "AI_CAPEX_BIG4": "AI設備投資(米大手4社・表示のみ)",
+    "WB_WHEAT_HRW": "世界銀行 小麦HRW(米国湾岸輸出価格・表示のみ)",
+    "WB_MAIZE": "世界銀行 とうもろこし(表示のみ)",
+    "WB_SOYBEANS": "世界銀行 大豆(表示のみ)",
 }
 GRAINS = ("PMAIZMTUSDM", "PWHEAMTUSDM", "PSOYBUSDM")
 HIDE_VALUE = ("VIX", "BAMLH0A0HYM2")
