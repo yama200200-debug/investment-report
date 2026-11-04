@@ -21,6 +21,7 @@ NAMES = {
     "KBW_BKX": "KBW(銀行指数・対象外)",
 }
 GRAINS = ("PMAIZMTUSDM", "PWHEAMTUSDM", "PSOYBUSDM")
+HIDE_VALUE = ("VIX", "BAMLH0A0HYM2")
 
 files = sorted(glob.glob(os.path.join("output", "score_*.json")))
 if not files:
@@ -34,6 +35,8 @@ def name(r):
     return NAMES.get(r["id"], r["id"])
 
 def val(r):
+    if r["id"] in HIDE_VALUE:
+        return ""
     v = r.get("latest")
     if v is None:
         return ""
@@ -45,7 +48,7 @@ scored = [r for r in recs if r.get("score") is not None]
 unscored = [r for r in recs if r.get("score") is None]
 items = []
 for r in scored:
-    if r["id"] in GRAINS:
+    if r["id"] in GRAINS or r["id"] == "BAMLH0A0HYM2":
         continue
     suffix = "の前年比" if r.get("transform") == "yoy" else ""
     items.append((r["score"], r["score"], name(r) + suffix + " %.1f点" % r["score"] + val(r)))
@@ -92,11 +95,12 @@ L.append("■ 観察シグナル(総合点には加算しません・点灯条�
 L.extend(sig_lines)
 L.append("・重なり(2つ以上点灯): " + ("あり" if on_count >= 2 else "なし"))
 if unscored:
-    L.append("■ 未計算: " + " / ".join(name(r) for r in unscored))
+    _u = [name(r) for r in unscored if r["id"] != "BAMLH0A0HYM2"]
+    if _u:
+        L.append("■ 未計算: " + " / ".join(_u))
 
 out = os.path.join("output", "macro_digest_" + day + ".txt")
 with open(out, "w", encoding="utf-8") as f:
     f.write("\n".join(L) + "\n")
 print("保存:", out)
 print("\n".join(L))
-
