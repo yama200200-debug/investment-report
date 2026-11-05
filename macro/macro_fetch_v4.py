@@ -69,7 +69,7 @@ def oni():
     except Exception as e:
         return rec(rid, source=src, note=type(e).__name__)
 
-def tsmc():
+def tsmc_ir():
     import ssl
     rid, src = "TSMC_REV_MONTHLY", "investor.tsmc.com"
     MON = {"Jan": 1, "Feb": 2, "Mar": 3, "Apr": 4, "May": 5, "Jun": 6, "Jul": 7,
@@ -113,6 +113,46 @@ def tsmc():
     note = "NT$ million yoy%%=%s months=%d age=%dd retry_notes=%s" % (rows[last][1], len(hist), age, notes)
     return rec(rid, rows[last][0], _me4(last), src, st, note, hist)
 
+
+def tsmc_twse():
+    import ssl
+    rid, src = "TSMC_REV_MONTHLY", "TWSE OpenAPI t187ap05_L"
+    K_CODE = "\u516c\u53f8\u4ee3\u865f"
+    K_YM = "\u8cc7\u6599\u5e74\u6708"
+    K_REV = "\u71df\u696d\u6536\u5165-\u7576\u6708\u71df\u6536"
+    K_YOY = "\u71df\u696d\u6536\u5165-\u53bb\u5e74\u540c\u6708\u589e\u6e1b(%)"
+    K_MOM = "\u71df\u696d\u6536\u5165-\u4e0a\u6708\u6bd4\u8f03\u589e\u6e1b(%)"
+    try:
+        ctx = ssl.create_default_context()
+        ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
+        req = urllib.request.Request("https://openapi.twse.com.tw/v1/opendata/t187ap05_L", headers={"User-Agent": "Mozilla/5.0", "Accept": "application/json"})
+        with urllib.request.urlopen(req, timeout=30, context=ctx) as r:
+            data = json.loads(r.read().decode("utf-8-sig"))
+        hits = [d for d in data if str(d.get(K_CODE, "")).strip() == "2330"]
+        if len(hits) != 1:
+            return rec(rid, source=src, note="twse hits=%d" % len(hits))
+        h = hits[0]
+        m = re.match(r"^(\d{2,3})(\d{2})$", str(h[K_YM]).strip())
+        if not m:
+            return rec(rid, source=src, note="bad year-month: " + str(h[K_YM]))
+        as_of = _me4("%04d-%s" % (int(m.group(1)) + 1911, m.group(2)))
+        value = round(float(str(h[K_REV]).replace(",", "")) / 1000, 3)
+        yoy = round(float(h[K_YOY]), 2)
+        mom = round(float(h[K_MOM]), 2)
+        st, age = judge(as_of, TSMC_STALE)
+        return rec(rid, value, as_of, src, st, "NT$ million yoy%%=%s mom%%=%s age=%dd history=none display_only_weight_0" % (yoy, mom, age), [])
+    except Exception as e:
+        return rec(rid, source=src, note="error: " + type(e).__name__ + ": " + str(e)[:100])
+
+def tsmc():
+    r = tsmc_twse()
+    if r["status"] == "ok":
+        return r
+    r2 = tsmc_ir()
+    if r2["status"] in ("ok", "stale"):
+        r2["note"] = "fallback_from_twse(" + str(r.get("note", "")) + ") " + str(r2.get("note", ""))
+        return r2
+    return r
 
 TAIWAN_CSV_PATH = "taiwan_export_orders.csv"
 TAIWAN_OK_STATUS = "confirmed"  # 仮置き・要確認
@@ -251,6 +291,84 @@ def capex_big4():
     return rec(id_, value=round(tot[last] / 1e9, 3), as_of=last.isoformat(), source="SEC EDGAR XBRL companyconcept",
                status=st, note="USD billion actual cash capex (not guidance), yoy%%=%s, %s, display_only_weight_0" % (yoy, by), history=hist)
 
+# ---- v4 add: World Bank Pink Sheet, display only, weight 0 (tentative) ----
+WB_URL4 = "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx"
+WB_COLS4 = [("WB_WHEAT_HRW", "Wheat, US HRW"), ("WB_MAIZE", "Maize"), ("WB_SOYBEANS", "Soybeans")]
+
+def wb_pink():
+    import zipfile, io, re
+    import xml.etree.ElementTree as ET
+    ns = {"m": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
+    src = "The World Bank: Commodity Price Data (The Pink Sheet)"
+    ids = [a for a, _ in WB_COLS4]
+    try:
+        z = zipfile.ZipFile(io.BytesIO(_g4(WB_URL4, {"User-Agent": "Mozilla/5.0"})))
+        ss = [("".join(t.text or "" for t in si.iter("{%s}t" % ns["m"])))
+              for si in ET.fromstring(z.read("xl/sharedStrings.xml")).findall("m:si", ns)]
+        wbx = ET.fromstring(z.read("xl/workbook.xml"))
+        rid = [s.attrib["{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id"]
+               for s in wbx.find("m:sheets", ns) if s.attrib["name"] == "Monthly Prices"][0]
+        rels = ET.fromstring(z.read("xl/_rels/workbook.xml.rels"))
+        tgt = [r.attrib["Target"] for r in rels if r.attrib["Id"] == rid][0]
+        sh = ET.fromstring(z.read("xl/" + tgt.lstrip("/").replace("xl/", "")))
+        rows = {}
+        for row in sh.find("m:sheetData", ns):
+            cells = {}
+            for c in row:
+                col = re.match(r"[A-Z]+", c.attrib["r"]).group(0)
+                v = c.find("m:v", ns)
+                if v is None:
+                    continue
+                cells[col] = ss[int(v.text)] if c.attrib.get("t") == "s" else v.text
+            rows[int(row.attrib["r"])] = cells
+        hdr = rows[5]
+        out = []
+        for id_, name in WB_COLS4:
+            cols = [k for k, v in hdr.items() if v.strip() == name]
+            if len(cols) != 1:
+                out.append(rec(id_, source=src, note="column not found: " + name))
+                continue
+            col, h = cols[0], []
+            for r in sorted(rows):
+                if r < 7:
+                    continue
+                m = re.match(r"^(\d{4})M(\d{2})$", rows[r].get("A", ""))
+                try:
+                    val = float(rows[r][col])
+                except (KeyError, ValueError):
+                    continue
+                if m:
+                    h.append([_me4("%s-%s" % (m.group(1), m.group(2))), val])
+            h = h[-36:]
+            if not h:
+                out.append(rec(id_, source=src, note="no data"))
+                continue
+            st, age = judge(h[-1][0], 75)
+            out.append(rec(id_, h[-1][1], h[-1][0], src, st, "USD/mt %s age=%dd display_only_weight_0" % (name, age), h))
+        return out
+    except Exception as e:
+        return [rec(i, source=src, note="error: " + type(e).__name__ + ": " + str(e)[:100]) for i in ids]
+
+SHIPPING_PPI_IDS = ("PCU483111483111", "WPU30130101")
+
+def shipping_ppi(key):
+    r = None
+    for sid in SHIPPING_PPI_IDS:
+        r = fred_one(key, sid, 75)
+        if r["status"] in ("ok", "stale"):
+            break
+        time.sleep(0.3)
+    h = r.get("history_3y") or []
+    yoy = None
+    if h:
+        last_d = dt.date.fromisoformat(h[-1][0])
+        for d, v in h:
+            if abs((last_d - dt.date.fromisoformat(d)).days - 365) <= 20 and v:
+                yoy = round((h[-1][1] / v - 1) * 100, 2)
+    r["id"] = "SHIPPING_PPI"
+    r["note"] = (str(r.get("note", "")) + " FRED:" + sid + " yoy%=" + str(yoy) + " display_only_weight_0").strip()
+    return r
+
 key = os.environ.get("FRED_API_KEY", "")
 if not key:
     sys.exit("FRED_API_KEY が未設定です")
@@ -266,10 +384,12 @@ for name, sid, sd in EXTRA:
     out.append(r)
     time.sleep(0.3)
 out.append(oni())
+out.append(shipping_ppi(key))
 out.append(tsmc())
 out.append(taiwan_csv())
 out.append(taiwan_auto())
 out.append(capex_big4())
+out.extend(wb_pink())
 for sid, st, note in SLOTS:
     if sid == "TAIWAN_EXPORT_ORDERS":
         continue

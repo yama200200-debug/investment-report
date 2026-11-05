@@ -15,18 +15,13 @@ NAMES = {
     "VIX": "VIX(恐怖指数)",
     "USDJPY": "USDJPY(円ドル・円高をリスクとする向き・仮置き)",
     "TSMC_REV_MONTHLY": "TSMC(月次売上)",
+    "SHIPPING_PPI": "海運PPI(運賃物価・仮置き・重み0)",
     "TAIWAN_EXPORT_ORDERS": "台湾輸出受注",
     "CAPEX_GUIDANCE": "設備投資ガイダンス",
     "BDRY": "BDRY(海運ETF)",
     "KBW_BKX": "KBW(銀行指数・対象外)",
-    "TAIWAN_ORDERS_AUTO": "台湾輸出受注(自動取得・表示のみ)",
-    "AI_CAPEX_BIG4": "AI設備投資(米大手4社・表示のみ)",
-    "WB_WHEAT_HRW": "世界銀行 小麦HRW(米国湾岸輸出価格・表示のみ)",
-    "WB_MAIZE": "世界銀行 とうもろこし(表示のみ)",
-    "WB_SOYBEANS": "世界銀行 大豆(表示のみ)",
 }
 GRAINS = ("PMAIZMTUSDM", "PWHEAMTUSDM", "PSOYBUSDM")
-HIDE_VALUE = ("VIX", "BAMLH0A0HYM2")
 
 files = sorted(glob.glob(os.path.join("output", "score_*.json")))
 if not files:
@@ -40,8 +35,6 @@ def name(r):
     return NAMES.get(r["id"], r["id"])
 
 def val(r):
-    if r["id"] in HIDE_VALUE:
-        return ""
     v = r.get("latest")
     if v is None:
         return ""
@@ -53,7 +46,7 @@ scored = [r for r in recs if r.get("score") is not None]
 unscored = [r for r in recs if r.get("score") is None]
 items = []
 for r in scored:
-    if r["id"] in GRAINS or r["id"] == "BAMLH0A0HYM2":
+    if r["id"] in GRAINS:
         continue
     suffix = "の前年比" if r.get("transform") == "yoy" else ""
     items.append((r["score"], r["score"], name(r) + suffix + " %.1f点" % r["score"] + val(r)))
@@ -100,12 +93,11 @@ L.append("■ 観察シグナル(総合点には加算しません・点灯条�
 L.extend(sig_lines)
 L.append("・重なり(2つ以上点灯): " + ("あり" if on_count >= 2 else "なし"))
 if unscored:
-    _u = [name(r) for r in unscored if r["id"] != "BAMLH0A0HYM2"]
-    if _u:
-        L.append("■ 未計算: " + " / ".join(_u))
+    L.append("■ 未計算: " + " / ".join(name(r) for r in unscored))
 
 out = os.path.join("output", "macro_digest_" + day + ".txt")
 with open(out, "w", encoding="utf-8") as f:
     f.write("\n".join(L) + "\n")
 print("保存:", out)
 print("\n".join(L))
+
