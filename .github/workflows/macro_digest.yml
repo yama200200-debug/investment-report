@@ -33,7 +33,7 @@ jobs:
         env:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
           SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
-        run: python macro_fetch_v3.py
+        run: python macro_fetch_v4.py
 
       - name: check ok count
         working-directory: macro
