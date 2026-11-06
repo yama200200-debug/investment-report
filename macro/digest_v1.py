@@ -1,4 +1,4 @@
-import json, glob, os
+import json, glob, os, re
 
 NAMES = {
     "ONI": "ONI(エルニーニョ指標・太平洋の海面水温の平年差)",
@@ -20,8 +20,16 @@ NAMES = {
     "CAPEX_GUIDANCE": "設備投資ガイダンス",
     "BDRY": "BDRY(海運ETF)",
     "KBW_BKX": "KBW(銀行指数・対象外)",
+    "TAIWAN_ORDERS_AUTO": "台湾輸出受注(百万ドル・経済部)",
+    "AI_CAPEX_BIG4": "AI大手4社の設備投資(十億ドル・実績)",
+    "WB_WHEAT_HRW": "小麦(米HRW・USD/t)",
+    "WB_MAIZE": "トウモロコシ(USD/t)",
+    "WB_SOYBEANS": "大豆(USD/t)",
 }
 GRAINS = ("PMAIZMTUSDM", "PWHEAMTUSDM", "PSOYBUSDM")
+HIDE_VALUE = ("VIX", "BAMLH0A0HYM2")
+HIDE_ITEM = ("BAMLH0A0HYM2",)
+REF_IDS = ("SHIPPING_PPI", "TAIWAN_ORDERS_AUTO", "TSMC_REV_MONTHLY", "AI_CAPEX_BIG4", "WB_WHEAT_HRW", "WB_MAIZE", "WB_SOYBEANS")
 
 files = sorted(glob.glob(os.path.join("output", "score_*.json")))
 if not files:
@@ -35,6 +43,8 @@ def name(r):
     return NAMES.get(r["id"], r["id"])
 
 def val(r):
+    if r["id"] in HIDE_VALUE:
+        return ""
     v = r.get("latest")
     if v is None:
         return ""
@@ -43,10 +53,10 @@ def val(r):
     return "(%.2f)" % v
 
 scored = [r for r in recs if r.get("score") is not None]
-unscored = [r for r in recs if r.get("score") is None]
+unscored = [r for r in recs if r.get("score") is None and r["id"] not in REF_IDS and r["id"] not in ("TAIWAN_EXPORT_ORDERS", "CAPEX_GUIDANCE")]
 items = []
 for r in scored:
-    if r["id"] in GRAINS:
+    if r["id"] in GRAINS or r["id"] in HIDE_ITEM:
         continue
     suffix = "の前年比" if r.get("transform") == "yoy" else ""
     items.append((r["score"], r["score"], name(r) + suffix + " %.1f点" % r["score"] + val(r)))
@@ -95,9 +105,42 @@ L.append("・重なり(2つ以上点灯): " + ("あり" if on_count >= 2 else "�
 if unscored:
     L.append("■ 未計算: " + " / ".join(name(r) for r in unscored))
 
+raw_files = sorted(glob.glob(os.path.join("output", "raw_*.json")))
+ref_lines = []
+if raw_files:
+    try:
+        with open(raw_files[-1], encoding="utf-8") as f:
+            rr = {x.get("id"): x for x in json.load(f).get("records", [])}
+    except Exception:
+        rr = {}
+    for rid in REF_IDS:
+        x = rr.get(rid)
+        if not x or x.get("status") != "ok" or x.get("value") is None:
+            continue
+        v = float(x["value"])
+        hist = [h[1] for h in (x.get("history_3y") or []) if h[1] is not None]
+        yoy = None
+        m = re.search(r"yoy%=(-?[0-9.]+)", str(x.get("note", "")))
+        if m:
+            yoy = float(m.group(1))
+        elif len(hist) >= 13 and hist[-13]:
+            yoy = (hist[-1] / hist[-13] - 1) * 100
+        parts = []
+        if yoy is not None:
+            parts.append("前年比 %+.1f%%" % yoy)
+        if len(hist) >= 20:
+            parts.append("直近3年の位置 %.0f点" % (100.0 * sum(1 for h in hist if h <= v) / len(hist)))
+        else:
+            parts.append("位置は履歴不足のため非表示")
+        num = "%.1f" % v if v < 1000 else "{:,.0f}".format(v)
+        ref_lines.append("・%s %s(%s)" % (name(x), num, " / ".join(parts)))
+if ref_lines:
+    L.append("■ 参考表示(総合点には加算しません・点数化なし・重み0)")
+    L.extend(ref_lines)
+    L.append("出典(小麦・トウモロコシ・大豆): World Bank Commodity Price Data (The Pink Sheet)")
+
 out = os.path.join("output", "macro_digest_" + day + ".txt")
 with open(out, "w", encoding="utf-8") as f:
     f.write("\n".join(L) + "\n")
 print("保存:", out)
 print("\n".join(L))
-
