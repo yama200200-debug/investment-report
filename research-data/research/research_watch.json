@@ -310,5 +310,23 @@
       "trading strategy"
     ],
     "retrieved_at": "2026-10-28T10:34:04+09:00"
+  },
+  {
+    "schema_version": 1,
+    "source": "quantpedia",
+    "guid": "https://quantpedia.com/?p=46793",
+    "title": "Correlation Acceleration: Detecting Market Stress Through Rising ETF Correlations",
+    "url": "https://quantpedia.com/correlation-acceleration-detecting-market-stress-through-rising-etf-correlations/",
+    "published": "2026-11-06T14:21:01+00:00",
+    "categories": [
+      "Uncategorized",
+      "bear market",
+      "correlation",
+      "crisis hedge",
+      "market timing",
+      "own-research",
+      "sector ETFs"
+    ],
+    "retrieved_at": "2026-11-07T11:14:37+09:00"
   }
 ]
