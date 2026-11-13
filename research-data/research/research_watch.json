@@ -340,5 +340,24 @@
       "Blog Post"
     ],
     "retrieved_at": "2026-11-11T11:07:51+09:00"
+  },
+  {
+    "schema_version": 1,
+    "source": "quantpedia",
+    "guid": "https://quantpedia.com/?p=47271",
+    "title": "The Capacity of Equity Anomalies",
+    "url": "https://quantpedia.com/the-capacity-of-equity-anomalies/",
+    "published": "2026-11-12T09:33:45+00:00",
+    "categories": [
+      "Blog Post",
+      "equity long short",
+      "factor investing",
+      "liquidity effect",
+      "low risk anomaly",
+      "portfolio management",
+      "smart beta",
+      "theory of portfolio management"
+    ],
+    "retrieved_at": "2026-11-13T11:49:56+09:00"
   }
 ]
