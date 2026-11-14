@@ -24983,10 +24983,10 @@
   "series_id": "NIKKEI225",
   "series_name": "日経平均",
   "rule_version": "base_prev_close_v1",
-  "computed_at": "2026-11-10T13:23:32+09:00",
+  "computed_at": "2026-11-14T11:45:00+09:00",
   "base_date": "2026-11-06",
   "ret_1d_pct": 2.3344,
-  "ret_5d_pct": null,
+  "ret_5d_pct": 6.4553,
   "ret_20d_pct": null
  },
  {
@@ -24997,10 +24997,10 @@
   "series_id": "SP500",
   "series_name": "S&P500",
   "rule_version": "base_prev_close_v1",
-  "computed_at": "2026-11-11T11:19:03+09:00",
+  "computed_at": "2026-11-14T11:45:00+09:00",
   "base_date": "2026-11-06",
   "ret_1d_pct": 2.3463,
-  "ret_5d_pct": null,
+  "ret_5d_pct": 2.5053,
   "ret_20d_pct": null
  },
  {
@@ -25028,6 +25028,34 @@
   "computed_at": "2026-11-13T11:58:49+09:00",
   "base_date": "2026-11-06",
   "ret_1d_pct": -4.2068,
+  "ret_5d_pct": null,
+  "ret_20d_pct": null
+ },
+ {
+  "schema_version": 1,
+  "record_id": "astro-mercury_retrograde_end-20261113T1557Z",
+  "event": "mercury_retrograde_end",
+  "event_date_utc": "2026-11-13",
+  "series_id": "NIKKEI225",
+  "series_name": "日経平均",
+  "rule_version": "base_prev_close_v1",
+  "computed_at": "2026-11-14T11:45:00+09:00",
+  "base_date": "2026-11-12",
+  "ret_1d_pct": 0.5311,
+  "ret_5d_pct": null,
+  "ret_20d_pct": null
+ },
+ {
+  "schema_version": 1,
+  "record_id": "astro-mercury_retrograde_end-20261113T1557Z",
+  "event": "mercury_retrograde_end",
+  "event_date_utc": "2026-11-13",
+  "series_id": "SP500",
+  "series_name": "S&P500",
+  "rule_version": "base_prev_close_v1",
+  "computed_at": "2026-11-14T11:45:00+09:00",
+  "base_date": "2026-11-12",
+  "ret_1d_pct": -0.4047,
   "ret_5d_pct": null,
   "ret_20d_pct": null
  }
