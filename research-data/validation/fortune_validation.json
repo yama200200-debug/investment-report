@@ -24829,11 +24829,11 @@
   "series_id": "DEXJPUS",
   "series_name": "USDJPY(円/ドル)",
   "rule_version": "base_prev_close_v1",
-  "computed_at": "2026-10-27T10:39:21+09:00",
+  "computed_at": "2026-11-17T13:49:44+09:00",
   "base_date": "2026-10-09",
   "ret_1d_pct": 0.0126,
   "ret_5d_pct": 0.0947,
-  "ret_20d_pct": null
+  "ret_20d_pct": -0.221
  },
  {
   "schema_version": 1,
@@ -25011,10 +25011,10 @@
   "series_id": "VIXCLS",
   "series_name": "VIX",
   "rule_version": "base_prev_close_v1",
-  "computed_at": "2026-11-11T11:19:03+09:00",
+  "computed_at": "2026-11-17T13:49:44+09:00",
   "base_date": "2026-11-06",
   "ret_1d_pct": -22.3089,
-  "ret_5d_pct": null,
+  "ret_5d_pct": -24.727,
   "ret_20d_pct": null
  },
  {
@@ -25056,6 +25056,48 @@
   "computed_at": "2026-11-14T11:45:00+09:00",
   "base_date": "2026-11-12",
   "ret_1d_pct": -0.4047,
+  "ret_5d_pct": null,
+  "ret_20d_pct": null
+ },
+ {
+  "schema_version": 1,
+  "record_id": "astro-mercury_retrograde_end-20261113T1557Z",
+  "event": "mercury_retrograde_end",
+  "event_date_utc": "2026-11-13",
+  "series_id": "VIXCLS",
+  "series_name": "VIX",
+  "rule_version": "base_prev_close_v1",
+  "computed_at": "2026-11-17T13:49:44+09:00",
+  "base_date": "2026-11-12",
+  "ret_1d_pct": 3.2086,
+  "ret_5d_pct": null,
+  "ret_20d_pct": null
+ },
+ {
+  "schema_version": 1,
+  "record_id": "astro-new_moon-20261109T0702Z",
+  "event": "new_moon",
+  "event_date_utc": "2026-11-09",
+  "series_id": "DEXJPUS",
+  "series_name": "USDJPY(円/ドル)",
+  "rule_version": "base_prev_close_v1",
+  "computed_at": "2026-11-17T13:49:44+09:00",
+  "base_date": "2026-11-06",
+  "ret_1d_pct": -0.1517,
+  "ret_5d_pct": null,
+  "ret_20d_pct": null
+ },
+ {
+  "schema_version": 1,
+  "record_id": "astro-mercury_retrograde_end-20261113T1557Z",
+  "event": "mercury_retrograde_end",
+  "event_date_utc": "2026-11-13",
+  "series_id": "DEXJPUS",
+  "series_name": "USDJPY(円/ドル)",
+  "rule_version": "base_prev_close_v1",
+  "computed_at": "2026-11-17T13:49:44+09:00",
+  "base_date": "2026-11-12",
+  "ret_1d_pct": 0.2068,
   "ret_5d_pct": null,
   "ret_20d_pct": null
  }
