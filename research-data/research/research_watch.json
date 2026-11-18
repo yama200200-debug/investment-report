@@ -378,5 +378,18 @@
       "stock market"
     ],
     "retrieved_at": "2026-11-17T13:42:40+09:00"
+  },
+  {
+    "schema_version": 1,
+    "source": "quantpedia",
+    "guid": "https://quantpedia.com/?p=9204",
+    "title": "Quantpedia’s Black Friday Deal",
+    "url": "https://quantpedia.com/quantpedias-black-friday-deal/",
+    "published": "2026-11-17T07:15:39+00:00",
+    "categories": [
+      "Blog Post",
+      "own-research"
+    ],
+    "retrieved_at": "2026-11-18T12:48:12+09:00"
   }
 ]
