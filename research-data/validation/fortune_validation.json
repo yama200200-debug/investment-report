@@ -25025,10 +25025,10 @@
   "series_id": "DCOILWTICO",
   "series_name": "WTI原油",
   "rule_version": "base_prev_close_v1",
-  "computed_at": "2026-11-13T11:58:49+09:00",
+  "computed_at": "2026-11-19T12:53:09+09:00",
   "base_date": "2026-11-06",
   "ret_1d_pct": -4.2068,
-  "ret_5d_pct": null,
+  "ret_5d_pct": -2.5538,
   "ret_20d_pct": null
  },
  {
@@ -25098,6 +25098,20 @@
   "computed_at": "2026-11-17T13:49:44+09:00",
   "base_date": "2026-11-12",
   "ret_1d_pct": 0.2068,
+  "ret_5d_pct": null,
+  "ret_20d_pct": null
+ },
+ {
+  "schema_version": 1,
+  "record_id": "astro-mercury_retrograde_end-20261113T1557Z",
+  "event": "mercury_retrograde_end",
+  "event_date_utc": "2026-11-13",
+  "series_id": "DCOILWTICO",
+  "series_name": "WTI原油",
+  "rule_version": "base_prev_close_v1",
+  "computed_at": "2026-11-19T12:53:09+09:00",
+  "base_date": "2026-11-12",
+  "ret_1d_pct": -0.3684,
   "ret_5d_pct": null,
   "ret_20d_pct": null
  }
