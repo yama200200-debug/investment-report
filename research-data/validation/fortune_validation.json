@@ -25039,10 +25039,10 @@
   "series_id": "NIKKEI225",
   "series_name": "日経平均",
   "rule_version": "base_prev_close_v1",
-  "computed_at": "2026-11-14T11:45:00+09:00",
+  "computed_at": "2026-11-20T12:45:31+09:00",
   "base_date": "2026-11-12",
   "ret_1d_pct": 0.5311,
-  "ret_5d_pct": null,
+  "ret_5d_pct": -2.261,
   "ret_20d_pct": null
  },
  {
