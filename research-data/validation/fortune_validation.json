@@ -25053,10 +25053,10 @@
   "series_id": "SP500",
   "series_name": "S&P500",
   "rule_version": "base_prev_close_v1",
-  "computed_at": "2026-11-14T11:45:00+09:00",
+  "computed_at": "2026-11-21T12:34:50+09:00",
   "base_date": "2026-11-12",
   "ret_1d_pct": -0.4047,
-  "ret_5d_pct": null,
+  "ret_5d_pct": -5.4867,
   "ret_20d_pct": null
  },
  {
@@ -25067,10 +25067,10 @@
   "series_id": "VIXCLS",
   "series_name": "VIX",
   "rule_version": "base_prev_close_v1",
-  "computed_at": "2026-11-17T13:49:44+09:00",
+  "computed_at": "2026-11-21T12:34:50+09:00",
   "base_date": "2026-11-12",
   "ret_1d_pct": 3.2086,
-  "ret_5d_pct": null,
+  "ret_5d_pct": 52.0856,
   "ret_20d_pct": null
  },
  {
