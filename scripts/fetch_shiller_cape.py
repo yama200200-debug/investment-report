@@ -14,15 +14,36 @@ import requests
 
 PAGE_URL = "https://shillerdata.com/"
 OUT_PATH = "data/shiller_cape.json"
-HEADERS = {"User-Agent": "tetchama-research-bot/1.0 (weekly, 1 file)"}
-LINK_RE = re.compile(r"https://img1\.wsimg\.com/blobby/[^\"'\s)<>]*ie_data\.xls[^\"'\s)<>]*")
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (compatible; tetchama-research-bot/1.0; weekly, 1 file)",
+    "Accept": "text/html,application/xhtml+xml",
+    "Accept-Language": "en-US,en;q=0.9",
+}
+LINK_RE = re.compile(r"(?:https?:)?//[^\s\"'<>)\\]*ie_data\.xls[^\s\"'<>)\\]*")
+
+
+def normalize(text):
+    for a, b in (("\\u002F", "/"), ("\\u002f", "/"), ("\\/", "/"),
+                 ("\\u0026", "&"), ("\\u003D", "="), ("\\u003d", "=")):
+        text = text.replace(a, b)
+    return html.unescape(text)
 
 
 def find_xls_url(page_html):
-    m = LINK_RE.search(html.unescape(page_html))
+    text = normalize(page_html)
+    m = LINK_RE.search(text)
     if not m:
+        i = text.lower().find("ie_data")
+        print("診断: ページ長=%d, 'ie_data'の位置=%d" % (len(text), i), file=sys.stderr)
+        if i >= 0:
+            print("診断: 周辺=" + text[max(0, i - 200):i + 200].replace("\n", " "), file=sys.stderr)
+        else:
+            for k in re.findall(r"[^\s\"'<>]*\.xls[^\s\"'<>]*", text)[:5]:
+                print("診断: xls候補=" + k, file=sys.stderr)
+            print("診断: 先頭=" + text[:300].replace("\n", " "), file=sys.stderr)
         raise ValueError("ie_data.xls のリンクがページから見つかりません")
-    return m.group(0)
+    url = m.group(0)
+    return "https:" + url if url.startswith("//") else url
 
 
 def pick_header_row(df):
