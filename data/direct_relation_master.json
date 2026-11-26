@@ -1,0 +1,123 @@
+{
+ "version": 1,
+ "updated": "2026-11-26",
+ "note": "人間が事実確認した公式発表・適時開示のみ収録",
+ "master": {
+  "NVDA": [
+   {
+    "jp_code": "6857",
+    "jp_name": "アドバンテスト",
+    "relation": "2025年10月、NVIDIAのAI技術をAdvantestの半導体テストシステムに統合する技術提携を公式発表。NVIDIA向けAIチップのテスト工程を担う主要サプライヤー",
+    "source": "Advantest公式発表(2025/10/6)"
+   },
+   {
+    "jp_code": "8035",
+    "jp_name": "東京エレクトロン",
+    "relation": "2026年7月、NVIDIAのエージェントAI基盤(NeMo・NemoClaw等)とロボティクス基盤(Isaac)を、東京エレクトロンのDXソリューション「Epsira」に活用する協業の拡大を発表",
+    "source": "東京エレクトロン・NVIDIA発表(2026/7/16)"
+   },
+   {
+    "jp_code": "6954",
+    "jp_name": "ファナック",
+    "relation": "2026年7月、NVIDIAとAIロボティクス分野での正式提携を発表",
+    "source": "NVIDIA/報道各社(2026/7)"
+   },
+   {
+    "jp_code": "6506",
+    "jp_name": "安川電機",
+    "relation": "2026年7月、NVIDIAとAIロボティクス分野での正式提携を発表",
+    "source": "NVIDIA/報道各社(2026/7)"
+   },
+   {
+    "jp_code": "7203",
+    "jp_name": "トヨタ自動車",
+    "relation": "自動運転・工場シミュレーション分野でのNVIDIAとの提携拡大(2026年7月)",
+    "source": "報道各社(2026/7)"
+   }
+  ],
+  "MSFT": [
+   {
+    "jp_code": "3778",
+    "jp_name": "さくらインターネット",
+    "relation": "2026年4月発表のMicrosoft対日100億ドル投資における中核パートナー。AI向けGPU計算基盤を提供(発表当日株価+20%)",
+    "source": "Microsoft公式発表(2026/4/3)"
+   },
+   {
+    "jp_code": "9434",
+    "jp_name": "ソフトバンク",
+    "relation": "同上、AI計算基盤の共同提供パートナー",
+    "source": "Microsoft公式発表(2026/4/3)"
+   },
+   {
+    "jp_code": "9613",
+    "jp_name": "NTTデータ",
+    "relation": "同上、AI人材育成の提携先5社の一つ",
+    "source": "Microsoft公式発表(2026/4/3)"
+   },
+   {
+    "jp_code": "6701",
+    "jp_name": "NEC",
+    "relation": "2021年7月開始の複数年戦略的パートナーシップ(継続中)。Azureを優先クラウド基盤に採用、AI/IoT分野で協業",
+    "source": "Microsoft/NEC共同発表(2021/7/13)"
+   },
+   {
+    "jp_code": "6702",
+    "jp_name": "富士通",
+    "relation": "2023年5月発表の5年間グローバル戦略提携(継続中)。Fujitsu Uvance事業の拡大に向けたクラウド共同開発",
+    "source": "Microsoft/Fujitsu共同発表(2023/5/30)"
+   },
+   {
+    "jp_code": "6501",
+    "jp_name": "日立製作所",
+    "relation": "2026年4月発表のMicrosoft対日100億ドル投資における、AI人材育成の提携先5社の一つ",
+    "source": "Microsoft公式発表(2026/4/3)"
+   }
+  ],
+  "GOOGL": [
+   {
+    "jp_code": "9433",
+    "jp_name": "KDDI",
+    "relation": "2026年7月「KDDI＆Google AI Futures Fund」共同出資プログラムを正式発表。KDDI大阪堺データセンターがGoogle GeminiにGPUリソースを提供(2026年1月稼働)",
+    "source": "Google/KDDI共同発表(2026/7/28)"
+   }
+  ],
+  "AMZN": [
+   {
+    "jp_code": "9613",
+    "jp_name": "NTTデータ",
+    "relation": "2026年1月、AWSと複数年の戦略的協業契約(Strategic Collaboration Agreement)を正式締結",
+    "source": "NTTデータ/AWS共同発表(2026/1/29)"
+   },
+   {
+    "jp_code": "6503",
+    "jp_name": "三菱電機",
+    "relation": "2025年1月、AWSとデータセンター・クラウド事業における戦略的協業に向けたMOUを正式締結",
+    "source": "三菱電機公式発表(2025/1/14)"
+   }
+  ],
+  "MA": [
+   {
+    "jp_code": "9434",
+    "jp_name": "ソフトバンク",
+    "relation": "2024年3月、Mastercardの予測分析プラットフォーム「Test & Learn」の日本提供開始で正式提携",
+    "source": "Mastercard公式発表(2024/3/14)"
+   }
+  ],
+  "AAPL": [
+   {
+    "jp_code": "6758",
+    "jp_name": "ソニーグループ",
+    "relation": "iPhoneカメラ用CMOSイメージセンサーの主要サプライヤー。ティム・クックCEOが2022年12月、X(旧Twitter)への投稿で「10年以上にわたりソニーと提携し、iPhone向け最先端カメラセンサーを共同開発してきた」と公式に確認",
+    "source": "Tim Cook氏 X投稿(2022/12)"
+   }
+  ],
+  "TSLA": [
+   {
+    "jp_code": "6752",
+    "jp_name": "パナソニック ホールディングス",
+    "relation": "2014年7月、米ネバダ州「ギガファクトリー」建設に関する正式契約を締結。円筒形リチウムイオン電池セルの供給元として現在まで提携継続中",
+    "source": "Tesla/Panasonic共同発表(2014/7/31)"
+   }
+  ]
+ }
+}
